@@ -1,0 +1,161 @@
+html{
+  background-color: #e0e0e0;
+  font-family: "Calibri";
+}
+
+body{
+  background-color: #e0e0e0;
+}
+
+.container{
+  font-family: "Calibri";
+}
+
+.logo {
+  width: 10%;
+  padding-top: 0px;
+  background-color: #e0e0e0;
+}
+
+.cvd {
+  /* default for <button>, but useful for <a> */
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Calibri";
+  font-size: 15px;
+  transition: all 0.3s ease 0s;
+  width: 100px;
+
+  /* create a small space when buttons wrap on 2 lines */
+  margin: 2px 0;
+
+  /* invisible border (will be colored on hover/focus) */
+  border: 2px solid #095e8c;
+  border-radius: 20px;
+
+  /* size comes from text & padding (no width/height) */
+  padding: 0.8em 1em;
+
+  /* make sure colors have enough contrast! */
+  color: #095e8c;
+  background-color: #e0e0e0;
+}
+
+.cvd:active {
+  transform: translateY(2px);
+  filter: saturate(150%);
+  outline: none;
+}
+
+.cvd:hover {
+  color: white;
+  background-color: #095e8c;
+}
+
+.navbar-inverse, .nav.navbar-nav.navbar-right li a {
+  -webkit-transition: background-color .25s ease-in;
+  color: white;
+  background-color: black;
+  margin: 0;
+}
+
+.navbar-inverse {
+  border-bottom: 3px solid #11abff;
+}
+
+.navbar-inverse .navbar-brand {
+  color: white;
+}
+
+.dropdown-menu {
+  border-top: 3px solid #11abff;
+  background-color: black;
+}
+
+/* Controls hovering color */
+.nav.navbar-nav.navbar-right li a:hover {
+ color: white;
+ background-color: #11abff;
+}
+
+.nav.navbar-nav.navbar-right li.active > a {
+ color: white;
+ background-color: #11abff;
+}
+
+.form-control{
+  margin-top: -4px;
+  margin-bottom: 15px;
+  height: 35px;
+  width: 250px;
+  font-size: large;
+}
+
+dt {
+  font-size: large;
+}
+
+.form-control.required {
+  border: 1px solid red;
+}
+
+.flashes {
+  color: #11abff;
+  size: 200%;
+}
+
+.table, .table-striped, .table-hover {
+  font-family: 'Calibri';
+}
+
+#menu-toggle {
+  color: white;
+  float: right;
+  line-height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+#menu-toggle li :hover {
+  background-color: black;
+  color: #e0e0e0;
+}
+
+.navbar-collapse.collapse {
+  display: block!important;
+  padding-right: 50px;
+}
+
+.navbar-right {
+  float: right!important;
+}
+
+@media (max-width: 1200px) {
+
+  #menu-toggle {
+    display: block!important;
+    float: left;
+  }
+
+  #toggle-off {
+    display: none;
+  }
+  .navbar-brand {
+    display: none;
+  }
+}
+
+#hidden {
+  color: black;
+  background-color: black;
+}
+
+.alert {
+  font-size: 60px;
+}
+.save_name {
+  float:left;
+  padding-right: 20px;
+}
