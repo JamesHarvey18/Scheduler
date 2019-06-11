@@ -1,6 +1,8 @@
 from app import db
 import hashlib, binascii, os
 from db_setup import db_session
+import pandas as pd
+import pypyodbc
 
 """
 This file is needed as a model of the database so the data can be entered
@@ -33,6 +35,25 @@ class Schedule(db.Model):
     quantity_complete = db.Column(db.String)
     actual_time = db.Column(db.String)
     mtl = db.Column(db.String)
+
+    @staticmethod
+    def get_description(part_number):
+        cnxn = pypyodbc.connect("Driver={SQL Server};"
+                                "Server=cvdpc93;"
+                                "Database=CVD;"
+                                "UID=READ_ONLY;pwd=Readonly2019")
+
+        df = pd.read_sql_query('select PartNumber, Description '
+                               'from PartMaster ', cnxn)
+        cnxn.close()
+
+        result = df.loc[df['partnumber'] == part_number]['description'].values
+
+        if len(result) != 0:
+            return result[0]
+        else:
+            result = "None"
+            return result
 
 
 class User(db.Model):

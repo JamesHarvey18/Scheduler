@@ -34,7 +34,7 @@
       <div class="row">
         <div class="col-xs-4">
           <dl>
-            {{ render_field(form.due_date, class="form-control", maxlength="25", placeholder="2019-05-02") }}
+            {{ render_field(form.due_date, type="date", class="form-control", maxlength="25", placeholder="2019-05-02") }}
             {{ render_field(form.original_estimated_time, class="form-control", maxlength="20", placeholder="4 Hours") }}
             {{ render_field(form.revised_estimated_time, class="form-control", maxlength="20", placeholder="6 Hours") }}
             {{ render_field(form.actual_time, class="form-control", maxlength="20", placeholder="3 Hours") }}
@@ -53,7 +53,7 @@
             {{ render_field(form.material_status, class="form-control", maxlength="20", placeholder="'Complete'") }}
             {{ render_field(form.machine_center, class="form-control", maxlength="20", placeholder="Job #") }}
             {{ render_field(form.mtl, class="form-control", maxlength="20", placeholder="Job #") }}
-            <button class="cvd" type="submit">SUBMIT</button>
+            <button class="cvd" type="submit"><b>SUBMIT</b></button>
           </dl>
         </div>
         <p></p>

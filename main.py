@@ -7,6 +7,8 @@ from models import Schedule, User, Password
 from tables import Results
 import datetime
 from functools import wraps
+import pypyodbc
+import pandas as pd
 
 
 init_db()
@@ -47,7 +49,6 @@ def search():
     qry = db_session.query(Schedule)
     table = Results(qry)
     table.border = True
-    print(qry.first())
     return render_template('search.html', table=table)
 
 
@@ -133,14 +134,21 @@ def register():
     except Exception as e:
         return str(e)
 
+def preprocess_date(date):
+    month = int(date[5:7])
+    day = int(date[8:10])
+    year = int(date[0:4])
+    # date = year + "-" + month + "-" + day
+    return datetime.date(year, month, day)
+
 
 def save_changes(form):
     schedule = Schedule()
     dt = datetime.datetime.now()
 
     schedule.part_number = form.part_number.data.upper()
-    schedule.due_date = form.due_date.data
-    schedule.part_description = 'PLACE HOLDER'
+    schedule.due_date = preprocess_date(form.due_date.data)
+    schedule.part_description = schedule.get_description(form.part_number.data)
     schedule.job_number = form.job_number.data.upper()
     schedule.work_number = form.work_number.data.upper()
     schedule.part_quantity = form.part_quantity.data.upper()
@@ -161,10 +169,6 @@ def save_changes(form):
     qry = db_session()
     qry.add(schedule)
     qry.commit()
-
-
-def get_description(part_number):
-    pass
 
 
 if __name__ == '__main__':
