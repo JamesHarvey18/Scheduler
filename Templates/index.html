@@ -11,64 +11,64 @@
   <script src="static/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="static/styles.css">
   <script src="static/fas.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
 </head>
 <header>
-  <h1>Machine Shop Scheduler</h1>
   <nav>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Search</a></li>
-      <li><a href="#">Register</a></li>
-      <li><a href="#">Login</a></li>
+      <li><a href="{{url_for('index')}}"><i id="icons" class="fas fa-home"></i>&nbsp;Home</a></li>
+      <li><a href="{{url_for('search')}}"><i class="fas fa-search"></i>&nbsp;Search</a></li>
+      <li><a href="{{url_for('register')}}"><i class="fas fa-user-plus"></i>&nbsp;Register</a></li>
+      <li><a href="{{url_for('login')}}"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a></li>
     </ul>
   </nav>
 </header>
 
 <body>
 
+  <h1>Machine Shop Scheduler</h1>
 
-  <div class="container"></br>
-
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-      {{message}}
-    </div>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
+  <div class="container-entry">
 
     {%from "_formhelpers.html" import render_field %}
     <form method=post>
-      <div class="row">
-        <div class="col-xs-4">
-          <dl>
-            {{ render_field(form.due_date, type="date", class="form-control", maxlength="25", placeholder="2019-05-02") }}
-            {{ render_field(form.original_estimated_time, class="form-control", maxlength="20", placeholder="4 Hours") }}
-            {{ render_field(form.revised_estimated_time, class="form-control", maxlength="20", placeholder="6 Hours") }}
-            {{ render_field(form.actual_time, class="form-control", maxlength="20", placeholder="3 Hours") }}
-            {{ render_field(form.employee_id, class="form-control", maxlength="25", placeholder="Employee Name") }}
-            {{ render_field(form.comments, class="form-control", maxlength="150", placeholder="Max length - 150 characters") }}
-            {{ render_field(form.part_quantity, class="form-control", maxlength="20", placeholder="32") }}
-            {{ render_field(form.quantity_complete, class="form-control", maxlength="20", placeholder="1") }}
-          </dl>
+
+      <div class="wrap-entry">
+        <div class="row">
+
+          <div class="col-xs-4">
+            <dl>
+              {{ render_field(form.part_number, class="form-control", maxlength="30", placeholder="Part #") }}
+              {{ render_field(form.revision, class="form-control", maxlength="10", placeholder="Revision") }}
+              {{ render_field(form.job_number, class="form-control", maxlength="20", placeholder="Job #") }}
+              {{ render_field(form.work_number, class="form-control", maxlength="20", placeholder="Job #") }}
+            </dl>
+          </div>
+
+          <div class="col-xs-4">
+            <dl>
+              {{ render_field(form.due_date, type="date", class="form-control", maxlength="25", placeholder="2019-05-02") }}
+              {{ render_field(form.original_estimated_time, class="form-control", maxlength="20", placeholder="4 Hours") }}
+              {{ render_field(form.quantity_complete, class="form-control", maxlength="20", placeholder="1") }}
+              <div class="container-login100-form-btn">
+    						<button class="login100-form-btn">
+    							Submit
+    						</button>
+    					</div>
+            </dl>
+          </div>
+
+          <div class="col-xs-4">
+            <dl>
+              {{ render_field(form.machine_center, class="form-control", maxlength="20", placeholder="Job #") }}
+              {{ render_field(form.employee_id, class="form-control", maxlength="25", placeholder="Employee Name") }}
+              {{ render_field(form.comments, class="form-control", maxlength="150", placeholder="Max length - 150 characters") }}
+            </dl>
+          </div>
+          <p></p>
         </div>
-        <div class="col-xs-4">
-          <dl>
-            {{ render_field(form.part_number, class="form-control", maxlength="30", placeholder="Part #") }}
-            {{ render_field(form.revision, class="form-control", maxlength="10", placeholder="Revision") }}
-            {{ render_field(form.job_number, class="form-control", maxlength="20", placeholder="Job #") }}
-            {{ render_field(form.work_number, class="form-control", maxlength="20", placeholder="Job #") }}
-            {{ render_field(form.material_status, class="form-control", maxlength="20", placeholder="'Complete'") }}
-            {{ render_field(form.machine_center, class="form-control", maxlength="20", placeholder="Job #") }}
-            {{ render_field(form.mtl, class="form-control", maxlength="20", placeholder="Job #") }}
-            <button class="cvd" type="submit"><b>SUBMIT</b></button>
-          </dl>
-        </div>
-        <p></p>
       </div>
     </form>
-    <div class="col-xs-8">
-      <table class="table table-striped table-hover" {{ table }} </div> </body> </html>
+</body>
+
+</html>

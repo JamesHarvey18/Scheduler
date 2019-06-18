@@ -20,11 +20,58 @@
   <script src="static/buttons.html5.min.js"></script>
   <script src="static/jszip.min.js"></script>
 
+  <script>
+    $(document).ready(function() {
+      $('#myTable').DataTable({
+        "dom": 'Brftip',
+        "deferRender": true,
+        buttons: [
+          {
+            extend: 'copy',
+            text: 'COPY',
+            className: 'cvd'
+          },
+          {
+            extend: 'csv',
+            text: 'CSV',
+            className: 'cvd'
+          },
+          {
+            extend: 'excel',
+            text: 'EXCEL',
+            className: 'cvd'
+          },
+          {
+            extend: 'print',
+            text: 'PRINT',
+            className: 'cvd'
+          }
+        ],
+        "order": [
+          [0, "desc"]
+        ],
+        "pageLength": 100
+      });
+    });
+  </script>
+
   <link rel="stylesheet" type="text/css" href="static/styles.css">
 </head>
+
+<header>
+  <h1>Machine Shop Scheduler</h1>
+  <nav>
+    <ul>
+      <li><a href="{{url_for('index')}}"><i id="icons" class="fas fa-home"></i>&nbsp;Home</a></li>
+      <li><a href="{{url_for('search')}}"><i class="fas fa-search"></i>&nbsp;Search</a></li>
+      <li><a href="{{url_for('register')}}"><i class="fas fa-user-plus"></i>&nbsp;Register</a></li>
+      <li><a href="{{url_for('login')}}"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a></li>
+    </ul>
+  </nav>
+</header>
 
 <body>
 
 
-  <div style='padding-left: 10%; padding-right: 10%;'><br />
+  <div><br />
     <table id="myTable" class="table table-hover table-striped table-bordered" {{ table }} </div> </body> </html>

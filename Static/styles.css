@@ -1,10 +1,10 @@
 html, body{
-  background-color: #e0e0e0;
-  font-family: "Calibri";
+  background-color: #095e8c;
+  font-family: Poppins-Regular, sans-serif;
 }
 header{
   width: 100%;
-  height: 70px;
+  height: 60px;
   background-color: #095e8c;
 }
 h1 {
@@ -24,12 +24,28 @@ li {
   display: inline-block;
   padding: 15px 30px;
 }
-a, a:hover, a:active, a:visited, a:focus {
+nav a, nav a:active, nav a:visited,nav a:focus {
   text-align: center;
   color: white;
   font-size: 1.2vw;
   text-decoration: none;
 }
+nav a:hover {
+  text-decoration: none;
+  color: gray;
+}
+/*
+#icons{
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  line-height: 29px;
+  margin-left: 0.5em;
+  border: 2px solid white;
+  border-radius: 100%;
+  box-sizing: border-box;
+  border: 2px solid white;
+}*/
 .container{
   font-family: "Calibri";
 }
@@ -42,21 +58,21 @@ a, a:hover, a:active, a:visited, a:focus {
   font-family: "Calibri";
   font-size: 15px;
   transition: all 0.3s ease 0s;
-  width: 100px;
+  width: 80px;
 
   /* create a small space when buttons wrap on 2 lines */
   margin: 2px 0;
 
   /* invisible border (will be colored on hover/focus) */
-  border: 2px solid #095e8c;
+  border: 2px solid white;
   border-radius: 20px;
 
   /* size comes from text & padding (no width/height) */
   padding: 0.8em 1em;
 
   /* make sure colors have enough contrast! */
-  color: #095e8c;
-  background-color: #e0e0e0;
+  color: white;
+  background-color: #095e8c;
 }
 
 .cvd:active {
@@ -108,11 +124,14 @@ dt {
 
 .flashes {
   color: #11abff;
-  size: 200%;
+  size: 100%;
 }
 
 .table, .table-striped, .table-hover {
   font-family: 'Calibri';
+  background-color: white;
+  border: 1px red;
+  width: 100%;
 }
 
 #menu-toggle {
