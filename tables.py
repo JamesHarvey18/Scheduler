@@ -16,7 +16,8 @@ class Results(Table):
     job_number = Col('Job Number')
     part_number = Col('Part Number')
     revision = Col('Revision')
-    part_quantity = Col('Quantity')
+    part_quantity = Col('Qty.')
+    quantity_complete = Col('Qty. Complete')
     part_description = Col('Description')
     part_location = Col('Location')
     entry_date = Col('Date Scanned')
@@ -27,7 +28,6 @@ class Results(Table):
     machine_center = Col('Machine Center')
     original_estimated_time = Col('Time Est.')
     actual_time = Col('Actual Time')
-    quantity_complete = Col('Quantity Complete')
     edit = LinkCol('Edit', 'edit', url_kwargs=dict(id='id'))
     delete = LinkCol('Delete', 'delete', url_kwargs=dict(id='id'))
 
