@@ -184,3 +184,14 @@ dt {
   float:left;
   padding-right: 20px;
 }
+.schedule_wrap{
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+.schedule_links a {
+  text-align: left;
+  color: black;
+  font-size: 24px;
+  text-align: left;
+}

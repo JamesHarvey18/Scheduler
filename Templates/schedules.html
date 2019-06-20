@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Machine Shop Scheduler</title>
+  <link rel="shortcut icon" href="{{url_for('static', filename='CVD-Logo-250px-sqaure.png') }}">
+  <link rel="stylesheet" href="static/bootstrap.min.css">
+  <script src="static/jquery.min.js"></script>
+  <script src="static/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/styles.css">
+  <script src="static/fas.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+</head>
+<header>
+  <nav>
+    <ul>
+      <li><a href="{{url_for('index')}}">Home</a></li>
+      <li><a href="{{url_for('schedules')}}">Schedules</a></li>
+      <li><a href="{{url_for('register')}}">Register</a></li>
+      <li><a href="{{url_for('login')}}">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<body>
+  <div class="schedule_wrap">
+    <div class="schedule_links"><br />
+      
+      <a href="{{url_for('master')}}">Master Schedule</a><br />
+      <a href="{{url_for('cncp')}}">CNC Programming - CNCP</a><br />
+      <a href="{{url_for('lasr')}}">Laser Etching - LASR</a><br />
+      <a href="{{url_for('mnul')}}">Manual Machining - MNUL</a><br />
+      <a href="{{url_for('ms')}}">Machine Shop General - MS</a><br />
+      <a href="{{url_for('mso')}}">Machine Shop Office - MSO</a><br />
+      <a href="{{url_for('nllg')}}">Large CNC Turning Machines - NLLG</a><br />
+      <a href="{{url_for('nlmd')}}">Small/Medium CNC Turning Machines - NLMD</a><br />
+      <a href="{{url_for('nmlg')}}">Large CNC Milling Machines - NMLG</a><br />
+      <a href="{{url_for('nmsm')}}">Small/Medium CNC Milling Machines - NMSM</a><br />
+      <a href="{{url_for('pnt')}}">Paint - PNT</a><br />
+      <a href="{{url_for('saws')}}">All Saws - SAWS</a><br />
+      <a href="{{url_for('smbk')}}">Sheet Metal Brake - SMBK</a><br />
+      <a href="{{url_for('smpc')}}">Sheet Metal Punch - SMPC</a><br />
+      <a href="{{url_for('weld')}}">Welding - WELD</a>
+    </div>
+  </div>
+</body>
+
+</html>

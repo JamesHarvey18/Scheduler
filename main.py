@@ -45,7 +45,7 @@ def index():
 
 
 @app.route('/schedules/master', methods=['GET', 'POST'])
-def search():
+def master():
     qry = db_session.query(Schedule)
     table = Results(qry)
     table.border = True
@@ -68,92 +68,121 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/schedules/AMCH', methods=['GET', 'POST'])
-def amch():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'AMCH')
+@app.route('/schedules/CNCP', methods=['GET', 'POST'])
+def cncp():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'CNCP')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
 
 
-@app.route('/schedules/DELC', methods=['GET', 'POST'])
-def delc():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DELC')
+@app.route('/schedules/LASR', methods=['GET', 'POST'])
+def lasr():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'LASR')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
 
 
-@app.route('/schedules/DGAS', methods=['GET', 'POST'])
-def dgas():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DGAS')
+@app.route('/schedules/MNUL', methods=['GET', 'POST'])
+def mnul():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MNUL')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
 
 
-@app.route('/schedules/DGUI', methods=['GET', 'POST'])
-def dgui():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DGUI')
+@app.route('/schedules/MS', methods=['GET', 'POST'])
+def ms():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MS')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
 
 
-@app.route('/schedules/DMCH', methods=['GET', 'POST'])
-def dmch():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DMCH')
+@app.route('/schedules/MSO', methods=['GET', 'POST'])
+def mso():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MSO')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
 
 
-@app.route('/schedules/DPLC', methods=['GET', 'POST'])
-def dplc():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DPLC')
+@app.route('/schedules/NLLG', methods=['GET', 'POST'])
+def nllg():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NLLG')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
 
 
-@app.route('/schedules/DPRC', methods=['GET', 'POST'])
-def dprc():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DPRC')
+@app.route('/schedules/NLMD', methods=['GET', 'POST'])
+def nlmd():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NLMD')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
 
 
-@app.route('/schedules/EDFT', methods=['GET', 'POST'])
-def edft():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'EDFT')
+@app.route('/schedules/NMLG', methods=['GET', 'POST'])
+def nmlg():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NMLG')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
 
 
-@app.route('/schedules/MDFT', methods=['GET', 'POST'])
-def mdft():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MDFT')
+@app.route('/schedules/NMSM', methods=['GET', 'POST'])
+def nmsm():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NMSM')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
 
 
-@app.route('/schedules/PSOP', methods=['GET', 'POST'])
-def psop():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'PSOP')
+@app.route('/schedules/PNT', methods=['GET', 'POST'])
+def pnt():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'PNT')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
 
 
-@app.route('/schedules/TEST', methods=['GET', 'POST'])
-def test():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'TEST')
+@app.route('/schedules/SAWS', methods=['GET', 'POST'])
+def saws():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SAWS')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
+
+
+@app.route('/schedules/SMBK', methods=['GET', 'POST'])
+def smbk():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SMBK')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/SMPC', methods=['GET', 'POST'])
+def smpc():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SMPC')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/WELD', methods=['GET', 'POST'])
+def weld():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'WELD')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules', methods=['GET', 'POST'])
+def schedules():
+    return render_template('schedules.html')
 
 
 @app.route('/item/<int:id>', methods=['GET', 'POST'])
