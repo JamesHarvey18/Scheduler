@@ -35,6 +35,35 @@ class Schedule(db.Model):
     quantity_complete = db.Column(db.String)
     actual_time = db.Column(db.String)
 
+    def get_part_number(self):
+        cnxn = pypyodbc.connect("Driver={SQL Server};"
+                                "Server=cvdpc93;"
+                                "Database=CVD;"
+                                "UID=READ_ONLY;pwd=Readonly2019")
+
+        sql = "SELECT CATALOGUE_NUMBER FROM CVD_WO_WOOP_Rev2 WHERE [JOB NO] = '" + self.job_number + "' AND WORK_ORDER = '" \
+              + self.work_number + "';"
+        # operation = 0020???????????????????????????
+
+        df = pd.read_sql_query(sql, cnxn)
+
+        result = df['catalogue_number'].values[0]
+
+        cnxn.close()
+
+        return result
+
+    @staticmethod
+    def get_job_number(barcode):
+        job_number = barcode.split()[0]
+        return job_number
+
+    @staticmethod
+    def get_work_order(barcode):
+        work_order = barcode.split()[1]
+        work_order = work_order[0:4]
+        return work_order
+
     def get_machine_center(self):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
@@ -59,11 +88,13 @@ class Schedule(db.Model):
                                 "Database=CVD;"
                                 "UID=READ_ONLY;pwd=Readonly2019")
 
-        df = pd.read_sql_query('select PartNumber, Description '
-                               'from PartMaster ', cnxn)
+        sql = "SELECT Description FROM PartMaster WHERE PartNumber = '" + self.part_number + "';"
+
+        df = pd.read_sql_query(sql, cnxn)
+
         cnxn.close()
 
-        result = df.loc[df['partnumber'] == self.part_number]['description'].values
+        result = df['description'].values
 
         if len(result) != 0:
             return result[0]

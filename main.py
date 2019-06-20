@@ -8,6 +8,8 @@ from tables import Results
 import datetime
 from functools import wraps
 from validate_email import validate_email
+import pypyodbc
+import pandas as pd
 
 
 init_db()
@@ -299,14 +301,15 @@ def preprocess_date(date):
 def save_changes(form):
     schedule = Schedule()
     dt = datetime.datetime.now()
-    release_wo = form.job_number.data + ' ' + form.work_number.data
+    barcode = form.part_number.data
 
-    schedule.part_number = form.part_number.data.upper()  # Manual
     schedule.due_date = preprocess_date(form.due_date.data)  # Manual
+    schedule.job_number = schedule.get_job_number(barcode)  # Manual
+    schedule.work_number = schedule.get_work_order(barcode)  # Manual
+    schedule.part_number = schedule.get_part_number()
     schedule.part_description = schedule.get_description()  # Jobscope
-    schedule.job_number = form.job_number.data.upper()  # Manual
-    schedule.work_number = form.work_number.data.upper()  # Manual
     try:
+        release_wo = schedule.job_number + ' ' + schedule.work_number
         schedule.part_quantity = schedule.get_quantity(form.part_number.data, release_wo)  # Jobscope
     except:
         schedule.part_quantity = 0
