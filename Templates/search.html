@@ -7,18 +7,18 @@
   <link rel="shortcut icon" href="{{url_for('static', filename='CVD-Logo-250px-sqaure.png') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Schedule - Machine Shop</title>
-  <link rel="stylesheet" href="static/bootstrap.min.css">
-  <script src="static/jquery.min.js"></script>
-  <script src="static/bootstrap.min.js"></script>
-  <script src="static/jquery.dataTables.min.js"></script>
-  <script src="static/fas.js"></script>
-  <script src="static/dataTables.bootstrap4.min.js"></script>
-  <link rel="stylesheet" href="static/dataTables.bootstrap4.min.css">
-  <script src="static/buttons.flash.min.js"></script>
-  <script src="static/dataTables.buttons.min.js"></script>
-  <script src="static/buttons.print.min.js"></script>
-  <script src="static/buttons.html5.min.js"></script>
-  <script src="static/jszip.min.js"></script>
+  <link rel="stylesheet" href="../static/bootstrap.min.css">
+  <script src="../static/jquery.min.js"></script>
+  <script src="../static/bootstrap.min.js"></script>
+  <script src="../static/jquery.dataTables.min.js"></script>
+  <script src="../static/dataTables.bootstrap4.min.js"></script>
+  <link rel="stylesheet" href="../static/dataTables.bootstrap4.min.css">
+  <script src="../static/buttons.flash.min.js"></script>
+  <script src="../static/dataTables.buttons.min.js"></script>
+  <script src="../static/buttons.print.min.js"></script>
+  <script src="../static/buttons.html5.min.js"></script>
+  <script src="../static/jszip.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../static/css/main.css">
 
   <script>
     $(document).ready(function() {
@@ -55,16 +55,16 @@
     });
   </script>
 
-  <link rel="stylesheet" type="text/css" href="static/styles.css">
+  <link rel="stylesheet" type="text/css" href="../static/styles.css">
 </head>
 
 <header>
   <nav>
     <ul>
-      <li><a href="{{url_for('index')}}"><i id="icons" class="fas fa-home"></i>&nbsp;Home</a></li>
-      <li><a href="{{url_for('search')}}"><i class="fas fa-search"></i>&nbsp;Search</a></li>
-      <li><a href="{{url_for('register')}}"><i class="fas fa-user-plus"></i>&nbsp;Register</a></li>
-      <li><a href="{{url_for('login')}}"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a></li>
+      <li><a href="{{url_for('index')}}">Home</a></li>
+      <li><a href="{{url_for('search')}}">Schedule</a></li>
+      <li><a href="{{url_for('register')}}">Register</a></li>
+      <li><a href="{{url_for('login')}}">Login</a></li>
     </ul>
   </nav>
 </header>

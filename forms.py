@@ -20,10 +20,6 @@ class SchedulerDataEntryForm(Form):
     comments = TextAreaField('Notes', render_kw={"rows": 1, "cols": 20})
     revision = StringField('Revision')
     material_status = StringField('Material Status')
-    machine_center = SelectField(
-        'Machine Center',
-        choices=[('QRTZ', 'QRTZ'), ('ALEC', 'ALEC'), ('WELD', 'WELD'), ('MSQC', 'MSQC'), ('MLU', 'MLU')]
-    )
     original_estimated_time = StringField('Time Estimate')
     actual_time = StringField('Actual Time')
     quantity_complete = StringField('Quantity Complete')

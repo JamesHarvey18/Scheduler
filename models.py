@@ -35,8 +35,25 @@ class Schedule(db.Model):
     quantity_complete = db.Column(db.String)
     actual_time = db.Column(db.String)
 
-    @staticmethod
-    def get_description(part_number):
+    def get_machine_center(self):
+        cnxn = pypyodbc.connect("Driver={SQL Server};"
+                                "Server=cvdpc93;"
+                                "Database=CVD;"
+                                "UID=READ_ONLY;pwd=Readonly2019")
+
+        sql = "SELECT WORK_CENTER FROM CVD_WO_WOOP_Rev2 WHERE [JOB NO] = '" + self.job_number + "' AND WORK_ORDER = '" \
+              + self.work_number + "' AND OPERATION = '0020';"
+        # operation = 0020???????????????????????????
+
+        df = pd.read_sql_query(sql, cnxn)
+
+        result = df['work_center'].values[0]
+
+        cnxn.close()
+
+        return result
+
+    def get_description(self):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
                                 "Database=CVD;"
@@ -46,7 +63,7 @@ class Schedule(db.Model):
                                'from PartMaster ', cnxn)
         cnxn.close()
 
-        result = df.loc[df['partnumber'] == part_number]['description'].values
+        result = df.loc[df['partnumber'] == self.part_number]['description'].values
 
         if len(result) != 0:
             return result[0]
@@ -60,11 +77,10 @@ class Schedule(db.Model):
                                 "Server=cvdpc93;"
                                 "Database=CVD;"
                                 "UID=READ_ONLY;pwd=Readonly2019")
-        print(release_wo.split()[1])
+
         sql = "select QTY_REQUIRED from CVD_WO_WOOP_Rev2 where CATALOGUE_NUMBER = '"\
               + str(part_number) + "' and [JOB NO] = '" + release_wo.split()[0]\
               + "' and WORK_ORDER = '" + release_wo.split()[1] + "';"
-        print(sql)
 
         df = pd.read_sql_query(sql, cnxn)
         cnxn.close()

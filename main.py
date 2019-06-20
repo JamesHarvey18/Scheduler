@@ -44,7 +44,7 @@ def index():
     return render_template('index.html', form=form)
 
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/schedules/master', methods=['GET', 'POST'])
 def search():
     qry = db_session.query(Schedule)
     table = Results(qry)
@@ -66,6 +66,94 @@ def login():
         else:
             flash('Incorrect Password.')
     return render_template('login.html')
+
+
+@app.route('/schedules/AMCH', methods=['GET', 'POST'])
+def amch():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'AMCH')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/DELC', methods=['GET', 'POST'])
+def delc():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DELC')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/DGAS', methods=['GET', 'POST'])
+def dgas():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DGAS')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/DGUI', methods=['GET', 'POST'])
+def dgui():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DGUI')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/DMCH', methods=['GET', 'POST'])
+def dmch():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DMCH')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/DPLC', methods=['GET', 'POST'])
+def dplc():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DPLC')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/DPRC', methods=['GET', 'POST'])
+def dprc():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'DPRC')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/EDFT', methods=['GET', 'POST'])
+def edft():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'EDFT')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/MDFT', methods=['GET', 'POST'])
+def mdft():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MDFT')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/PSOP', methods=['GET', 'POST'])
+def psop():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'PSOP')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/TEST', methods=['GET', 'POST'])
+def test():
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'TEST')
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
 
 
 @app.route('/item/<int:id>', methods=['GET', 'POST'])
@@ -186,7 +274,7 @@ def save_changes(form):
 
     schedule.part_number = form.part_number.data.upper()  # Manual
     schedule.due_date = preprocess_date(form.due_date.data)  # Manual
-    schedule.part_description = schedule.get_description(form.part_number.data)  # Jobscope
+    schedule.part_description = schedule.get_description()  # Jobscope
     schedule.job_number = form.job_number.data.upper()  # Manual
     schedule.work_number = form.work_number.data.upper()  # Manual
     try:
@@ -196,14 +284,11 @@ def save_changes(form):
     schedule.part_location = request.cookies.get('location').upper()  # Auto
     schedule.entry_time = dt.strftime("%H:%M:%S")  # Auto
     schedule.entry_date = datetime.date.today()  # Auto
-    schedule.employee_id = form.employee_id.data.upper()  # Manual
     schedule.comments = form.comments.data.upper()  # Manual
     schedule.revision = form.revision.data.upper()  # Manual
-    # schedule.material_status = form.material_status.data.upper()  # Jobscope
-    schedule.machine_center = form.machine_center.data.upper()  # Manual
+    schedule.machine_center = schedule.get_machine_center()  # schedule.get_machine_center()  # Manual
     schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
     schedule.quantity_complete = form.quantity_complete.data  # Manual
-    # schedule.actual_time = form.actual_time.data.upper()  # Come from Jobscope
 
     qry = db_session()
     qry.add(schedule)
