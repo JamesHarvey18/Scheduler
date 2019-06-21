@@ -35,6 +35,24 @@ class Schedule(db.Model):
     quantity_complete = db.Column(db.String)
     actual_time = db.Column(db.String)
 
+    def get_actual_time(self):
+        cnxn = pypyodbc.connect("Driver={SQL Server};"
+                                "Server=cvdpc93;"
+                                "Database=CVD;"
+                                "UID=READ_ONLY;pwd=Readonly2019")
+
+        sql = "SELECT SUM(HOURS_WORKED) FROM CVD_WO_WOOP_Rev2 WHERE [JOB NO] = '" + self.job_number\
+              + "' AND WORK_ORDER = '" + self.work_number + "';"
+        # operation = 0020???????????????????????????
+
+        df = pd.read_sql_query(sql, cnxn)
+
+        result = df.iloc[0, 0]
+
+        cnxn.close()
+
+        return result
+
     def get_part_number(self):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"

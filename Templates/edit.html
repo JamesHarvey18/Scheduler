@@ -26,7 +26,8 @@
 
 <body>
 
-  <h1>Machine Shop Scheduler</h1>
+  <h1>Machine Shop Scheduler</h1><br /><br /><br />
+  <h2>Edit Entry</h2>
 
   <div class="container-entry">
 
@@ -38,10 +39,8 @@
 
           <div class="col-xs-4">
             <dl>
-              {{ render_field(form.part_number, class="form-control", maxlength="30", placeholder="Part #") }}
+              {{ render_field(form.part_number, class="form-control", maxlength="30", placeholder="Work Order") }}
               {{ render_field(form.revision, class="form-control", maxlength="10", placeholder="Revision") }}
-              {{ render_field(form.job_number, class="form-control", maxlength="20", placeholder="Job #") }}
-              {{ render_field(form.work_number, class="form-control", maxlength="20", placeholder="Job #") }}
             </dl>
           </div>
 
@@ -49,7 +48,6 @@
             <dl>
               {{ render_field(form.due_date, type="date", class="form-control", maxlength="25", placeholder="2019-05-02") }}
               {{ render_field(form.original_estimated_time, class="form-control", maxlength="20", placeholder="4 Hours") }}
-              {{ render_field(form.quantity_complete, class="form-control", maxlength="20", placeholder="1") }}
               <div class="container-login100-form-btn">
     						<button class="login100-form-btn">
     							Edit
@@ -60,8 +58,7 @@
 
           <div class="col-xs-4">
             <dl>
-              {{ render_field(form.machine_center, class="form-control", maxlength="20", placeholder="Job #") }}
-              {{ render_field(form.employee_id, class="form-control", maxlength="25", placeholder="Employee Name") }}
+              {{ render_field(form.quantity_complete, class="form-control", maxlength="20", placeholder="1") }}
               {{ render_field(form.comments, class="form-control", maxlength="150", placeholder="Max length - 150 characters") }}
             </dl>
           </div>

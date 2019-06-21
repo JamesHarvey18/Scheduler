@@ -127,10 +127,11 @@ dt {
   size: 100%;
 }
 
+
 .table, .table-striped, .table-hover {
-  font-family: 'Calibri';
+  font-family: Poppins-Regular, sans-serif;
   background-color: white;
-  border: 1px red;
+  border: 10px red;
   width: 100%;
 }
 
@@ -194,4 +195,10 @@ dt {
   color: black;
   font-size: 24px;
   text-align: left;
+}
+.dt-buttons{
+  padding-left: 20px;
+}
+#myTable_filter{
+  padding-right: 20px;
 }

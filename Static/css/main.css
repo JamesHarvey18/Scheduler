@@ -32,6 +32,9 @@
 	padding: 0px;
 	box-sizing: border-box;
 }
+td a{
+  color: black;
+}
 
 body, html {
 	height: 100%;

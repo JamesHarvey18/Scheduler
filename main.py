@@ -231,7 +231,7 @@ def delete(id):
             db_session.delete(entry)
             db_session.commit()
             flash('Entry deleted')
-            return redirect('/search')
+            return redirect('/')
         else:
             return 'ERROR DELETING #{id}'.format(id=id)
 
@@ -321,6 +321,7 @@ def save_changes(form):
     schedule.machine_center = schedule.get_machine_center()  # schedule.get_machine_center()  # Manual
     schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
     schedule.quantity_complete = form.quantity_complete.data  # Manual
+    schedule.actual_time = schedule.get_actual_time() # Jobscope
 
     qry = db_session()
     qry.add(schedule)
