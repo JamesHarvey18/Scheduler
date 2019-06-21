@@ -31,9 +31,9 @@ class Schedule(db.Model):
     material_status = db.Column(db.String)
     machine_center = db.Column(db.String)
     original_estimated_time = db.Column(db.String)
-    revised_estimated_time = db.Column(db.String)
     quantity_complete = db.Column(db.String)
     actual_time = db.Column(db.String)
+    archived = db.Column(db.Boolean)
 
     def get_actual_time(self):
         cnxn = pypyodbc.connect("Driver={SQL Server};"

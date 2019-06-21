@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Date, create_engine
+from sqlalchemy import Column, Integer, String, Date, create_engine, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 
 engine = create_engine('sqlite:///scheduler.db', echo=True)
@@ -28,6 +28,7 @@ class Schedule(base):
     actual_time = Column(String)
     quantity_complete = Column(String)
     mtl = Column(String)
+    archived = Column(Boolean)
 
     def __repr__(self):
         return "{}".format(self.name)
