@@ -1,53 +1,20 @@
-html, body{
-  background-color: white;
-  font-family: Poppins-Regular, sans-serif;
+html{
+  background-color: #e0e0e0;
+  font-family: "Calibri";
 }
-header{
-  width: 100%;
-  height: 60px;
-  background-color: white;
+
+body{
+  background-color: #e0e0e0;
 }
-h1 {
-  position: absolute;
-  padding: 3px;
-  float:left;
-  margin-left: 2%;
-  margin-top: 10px;
-  color: black;
-}
-ul {
-  width: auto;
-  float: right;
-  margin-top: 8px;
-}
-li {
-  display: inline-block;
-  padding: 15px 30px;
-}
-nav a, nav a:active, nav a:visited,nav a:focus {
-  text-align: center;
-  color: black;
-  font-size: 1.2vw;
-  text-decoration: none;
-}
-nav a:hover {
-  text-decoration: none;
-  color: gray;
-}
-/*
-#icons{
-  width: 32px;
-  height: 32px;
-  font-size: 18px;
-  line-height: 29px;
-  margin-left: 0.5em;
-  border: 2px solid white;
-  border-radius: 100%;
-  box-sizing: border-box;
-  border: 2px solid white;
-}*/
+
 .container{
   font-family: "Calibri";
+}
+
+.logo {
+  width: 10%;
+  padding-top: 0px;
+  background-color: #e0e0e0;
 }
 
 .cvd {
@@ -56,23 +23,29 @@ nav a:hover {
   text-align: center;
   text-decoration: none;
   font-family: "Calibri";
-  font-size: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease 0s;
-  width: 80px;
+  width: 100px;
 
   /* create a small space when buttons wrap on 2 lines */
   margin: 2px 0;
 
   /* invisible border (will be colored on hover/focus) */
-  border: 2px solid #095e8c;
-  border-radius: 20px;
+  border: 1px solid #095e8c;
+  border-radius: 40px;
 
   /* size comes from text & padding (no width/height) */
   padding: 0.8em 1em;
 
   /* make sure colors have enough contrast! */
-  color: #095e8c;
-  background-color: white;
+  color: white;
+  background-color: #11abff;
+
+  background: red; /* For browsers that do not support gradients */
+  /* background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
+  /*background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
+  /*background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
+  /*background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */ 
 }
 
 .cvd:active {
@@ -82,7 +55,7 @@ nav a:hover {
 }
 
 .cvd:hover {
-  color: white;
+  transform: translateY(-2px);
   background-color: #095e8c;
 }
 
@@ -106,6 +79,17 @@ nav a:hover {
   background-color: black;
 }
 
+/* Controls hovering color */
+.nav.navbar-nav.navbar-right li a:hover {
+ color: white;
+ background-color: #11abff;
+}
+
+.nav.navbar-nav.navbar-right li.active > a {
+ color: white;
+ background-color: #11abff;
+}
+
 .form-control{
   margin-top: -4px;
   margin-bottom: 15px;
@@ -124,15 +108,11 @@ dt {
 
 .flashes {
   color: #11abff;
-  size: 100%;
+  size: 200%;
 }
 
-
 .table, .table-striped, .table-hover {
-  font-family: Poppins-Regular, sans-serif;
-  background-color: white;
-  border: 10px red;
-  width: 100%;
+  font-family: 'Calibri';
 }
 
 #menu-toggle {
@@ -181,24 +161,12 @@ dt {
 .alert {
   font-size: 60px;
 }
-.save_name {
-  float:left;
-  padding-right: 20px;
-}
-.schedule_wrap{
-  margin: auto;
-  width: 100%;
-  text-align: center;
-}
-.schedule_links a {
-  text-align: left;
-  color: black;
-  font-size: 24px;
-  text-align: left;
-}
-.dt-buttons{
-  padding-left: 20px;
-}
-#myTable_filter{
-  padding-right: 20px;
+
+#grad1 {
+    height: 200px;
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */
 }

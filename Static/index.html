@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Machine Shop Scheduler</title>
+  <link rel="shortcut icon" href="{{url_for('static', filename='CVD-Logo-250px-sqaure.png') }}">
+  <link rel="stylesheet" href="static/bootstrap.min.css">
+  <script src="static/jquery.min.js"></script>
+  <script src="static/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/styles.css">
+  <script src="static/fas.js"></script>
+</head>
+
+<body>
+
+
+  <div class="container"></br>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+      {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {%from "_formhelpers.html" import render_field %}
+    <form method=post>
+      <div class="row">
+        <div class="col-xs-4">
+          <dl>
+            {{ render_field(form.employee, class="form-control", maxlength="25", placeholder="Employee Name") }}
+            {{ render_field(form.job_number, class="form-control", maxlength="20", placeholder="Job #") }}
+            {{ render_field(form.comments, class="form-control", maxlength="150", placeholder="Max length - 150 characters") }}
+            {{ render_field(form.revision, class="form-control", maxlength="10", placeholder="Revision") }}
+            {{ render_field(form.part_number, class="form-control required", maxlength="30", required='required', placeholder="Drawing #", autofocus="true") }}
+            {{ render_field(form.part_quantity, class="form-control", maxlength="20", placeholder="Job #") }}
+            {{ render_field(form.material_status, class="form-control", maxlength="20", placeholder="Job #") }}
+          </dl>
+        </div>
+        <div class="col-xs-4">
+          <dl>
+            {{ render_field(form.machine_center, class="form-control", maxlength="20", placeholder="Job #") }}
+            {{ render_field(form.original_estimated_time, class="form-control", maxlength="20", placeholder="Job #") }}
+            {{ render_field(form.revised_estimated_time, class="form-control", maxlength="20", placeholder="Job #") }}
+            {{ render_field(form.actual_time, class="form-control", maxlength="20", placeholder="Job #") }}
+            {{ render_field(form.quantity_complete, class="form-control", maxlength="20", placeholder="Job #") }}
+            {{ render_field(form.mtl, class="form-control", maxlength="20", placeholder="Job #") }}
+          </dl>
+        </div>
+        <p></p><button class="cvd" type="submit">SUBMIT</button>
+      </div>
+    </form>
+    <div class="col-xs-8">
+      <table class="table table-striped table-hover" {{ table }} </div> </body> </html>
