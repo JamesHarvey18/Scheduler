@@ -1,20 +1,71 @@
-html{
-  background-color: #e0e0e0;
-  font-family: "Calibri";
-}
+Skip to content
 
-body{
-  background-color: #e0e0e0;
-}
+Search or jump to…
 
+Pull requests
+Issues
+Marketplace
+Explore
+
+@JamesHarvey18
+0
+0 0 JamesHarvey18/Scheduler
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Insights  Settings
+Scheduler/Static/styles.css
+@JamesHarvey18 JamesHarvey18 Row highlighting, changed styling, auto retrieval of actual time data
+23e1347 18 days ago
+205 lines (178 sloc)  3.11 KB
+
+html, body{
+  background-color: white;
+  font-family: Poppins-Regular, sans-serif;
+}
+header{
+  width: 100%;
+  height: 60px;
+  background-color: white;
+}
+h1 {
+  position: absolute;
+  padding: 3px;
+  float:left;
+  margin-left: 2%;
+  margin-top: 10px;
+  color: black;
+}
+ul {
+  width: auto;
+  float: right;
+  margin-top: 8px;
+}
+li {
+  display: inline-block;
+  padding: 15px 30px;
+}
+nav a, nav a:active, nav a:visited,nav a:focus {
+  text-align: center;
+  color: black;
+  font-size: 1.2vw;
+  text-decoration: none;
+}
+nav a:hover {
+  text-decoration: none;
+  color: gray;
+}
+/*
+#icons{
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  line-height: 29px;
+  margin-left: 0.5em;
+  border: 2px solid white;
+  border-radius: 100%;
+  box-sizing: border-box;
+  border: 2px solid white;
+}*/
 .container{
   font-family: "Calibri";
-}
-
-.logo {
-  width: 10%;
-  padding-top: 0px;
-  background-color: #e0e0e0;
 }
 
 .cvd {
@@ -23,29 +74,23 @@ body{
   text-align: center;
   text-decoration: none;
   font-family: "Calibri";
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  font-size: 15px;
   transition: all 0.3s ease 0s;
-  width: 100px;
+  width: 80px;
 
   /* create a small space when buttons wrap on 2 lines */
   margin: 2px 0;
 
   /* invisible border (will be colored on hover/focus) */
-  border: 1px solid #095e8c;
-  border-radius: 40px;
+  border: 2px solid #095e8c;
+  border-radius: 20px;
 
   /* size comes from text & padding (no width/height) */
   padding: 0.8em 1em;
 
   /* make sure colors have enough contrast! */
-  color: white;
-  background-color: #11abff;
-
-  background: red; /* For browsers that do not support gradients */
-  /* background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
-  /*background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
-  /*background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
-  /*background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */ 
+  color: #095e8c;
+  background-color: white;
 }
 
 .cvd:active {
@@ -55,7 +100,7 @@ body{
 }
 
 .cvd:hover {
-  transform: translateY(-2px);
+  color: white;
   background-color: #095e8c;
 }
 
@@ -79,17 +124,6 @@ body{
   background-color: black;
 }
 
-/* Controls hovering color */
-.nav.navbar-nav.navbar-right li a:hover {
- color: white;
- background-color: #11abff;
-}
-
-.nav.navbar-nav.navbar-right li.active > a {
- color: white;
- background-color: #11abff;
-}
-
 .form-control{
   margin-top: -4px;
   margin-bottom: 15px;
@@ -108,11 +142,15 @@ dt {
 
 .flashes {
   color: #11abff;
-  size: 200%;
+  size: 100%;
 }
 
+
 .table, .table-striped, .table-hover {
-  font-family: 'Calibri';
+  font-family: Poppins-Regular, sans-serif;
+  background-color: white;
+  border: 10px red;
+  width: 100%;
 }
 
 #menu-toggle {
@@ -161,12 +199,36 @@ dt {
 .alert {
   font-size: 60px;
 }
-
-#grad1 {
-    height: 200px;
-    background: red; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */
+.save_name {
+  float:left;
+  padding-right: 20px;
 }
+.schedule_wrap{
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+.schedule_links a {
+  text-align: left;
+  color: black;
+  font-size: 24px;
+  text-align: left;
+}
+.dt-buttons{
+  padding-left: 20px;
+}
+#myTable_filter{
+  padding-right: 20px;
+}
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

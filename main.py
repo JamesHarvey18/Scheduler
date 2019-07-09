@@ -193,9 +193,9 @@ def edit(id):
     entry = qry.first()
 
     if entry:
-        form = SchedulerDataEntryForm(formdata = request.form, obj=entry)
+        form = SchedulerDataEntryForm(formdata=request.form, obj=entry)
         if request.method == 'POST':
-            save_changes(form)
+            edit_entry(form)
             flash('Schedule updated successfully')
             return redirect('/search')
         return render_template('edit.html', form=form)
@@ -296,6 +296,32 @@ def preprocess_date(date):
     year = int(date[0:4])
     # date = year + "-" + month + "-" + day
     return datetime.date(year, month, day)
+
+
+def edit_entry(form):
+    schedule = Schedule()
+    dt = datetime.datetime.now()
+    barcode = form.part_number.data
+
+    schedule.due_date = preprocess_date(form.due_date.data)  # Manual
+    try:
+        release_wo = schedule.job_number + ' ' + schedule.work_number
+        schedule.part_quantity = schedule.get_quantity(form.part_number.data, release_wo)  # Jobscope
+    except:
+        schedule.part_quantity = 0
+    schedule.part_location = request.cookies.get('location').upper()  # Auto
+    schedule.entry_time = dt.strftime("%H:%M:%S")  # Auto
+    schedule.entry_date = datetime.date.today()  # Auto
+    schedule.comments = form.comments.data.upper()  # Manual
+    schedule.revision = form.revision.data.upper()  # Manual
+    schedule.machine_center = schedule.get_machine_center()  # schedule.get_machine_center()  # Manual
+    schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
+    schedule.quantity_complete = form.quantity_complete.data  # Manual
+    schedule.actual_time = schedule.get_actual_time() # Jobscope
+
+    qry = db_session()
+    qry.add(schedule)
+    qry.commit()
 
 
 def save_changes(form):
