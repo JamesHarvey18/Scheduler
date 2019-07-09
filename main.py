@@ -195,9 +195,9 @@ def edit(id):
     if entry:
         form = SchedulerDataEntryForm(formdata=request.form, obj=entry)
         if request.method == 'POST':
-            edit_entry(form)
+            edit_entry(form, entry)
             flash('Schedule updated successfully')
-            return redirect('/search')
+            return redirect('/schedules/master')
         return render_template('edit.html', form=form)
     else:
         return 'Error loading #{id}. Please report this issue.'.format(id=id)
@@ -298,26 +298,15 @@ def preprocess_date(date):
     return datetime.date(year, month, day)
 
 
-def edit_entry(form):
-    schedule = Schedule()
+def edit_entry(form, schedule):
     dt = datetime.datetime.now()
     barcode = form.part_number.data
 
     schedule.due_date = preprocess_date(form.due_date.data)  # Manual
-    try:
-        release_wo = schedule.job_number + ' ' + schedule.work_number
-        schedule.part_quantity = schedule.get_quantity(form.part_number.data, release_wo)  # Jobscope
-    except:
-        schedule.part_quantity = 0
-    schedule.part_location = request.cookies.get('location').upper()  # Auto
-    schedule.entry_time = dt.strftime("%H:%M:%S")  # Auto
-    schedule.entry_date = datetime.date.today()  # Auto
     schedule.comments = form.comments.data.upper()  # Manual
     schedule.revision = form.revision.data.upper()  # Manual
-    schedule.machine_center = schedule.get_machine_center()  # schedule.get_machine_center()  # Manual
     schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
     schedule.quantity_complete = form.quantity_complete.data  # Manual
-    schedule.actual_time = schedule.get_actual_time() # Jobscope
 
     qry = db_session()
     qry.add(schedule)
@@ -335,15 +324,17 @@ def save_changes(form):
     schedule.part_number = schedule.get_part_number()
     schedule.part_description = schedule.get_description()  # Jobscope
     try:
-        release_wo = schedule.job_number + ' ' + schedule.work_number
-        schedule.part_quantity = schedule.get_quantity(form.part_number.data, release_wo)  # Jobscope
+        schedule.part_quantity = schedule.get_quantity()  # Jobscope
     except:
         schedule.part_quantity = 0
     schedule.part_location = request.cookies.get('location').upper()  # Auto
     schedule.entry_time = dt.strftime("%H:%M:%S")  # Auto
     schedule.entry_date = datetime.date.today()  # Auto
     schedule.comments = form.comments.data.upper()  # Manual
-    schedule.revision = form.revision.data.upper()  # Manual
+    if form.revision.data == '':
+        schedule.revision = schedule.get_revision()
+    else:
+        schedule.revision = form.revision.data.upper()  # Manual
     schedule.machine_center = schedule.get_machine_center()  # schedule.get_machine_center()  # Manual
     schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
     schedule.quantity_complete = form.quantity_complete.data  # Manual

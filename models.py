@@ -35,6 +35,27 @@ class Schedule(db.Model):
     actual_time = db.Column(db.String)
     archived = db.Column(db.Boolean)
 
+    def get_material_status(self):
+        pass
+
+    def get_revision(self):
+        cnxn = pypyodbc.connect("Driver={SQL Server};"
+                                "Server=cvdpc93;"
+                                "Database=CVD;"
+                                "UID=READ_ONLY;pwd=Readonly2019")
+
+        sql = "SELECT Revision FROM CVD_WO_WOOP_Rev2 WHERE [JOB NO] = '" + self.job_number + "' AND WORK_ORDER = '" \
+              + self.work_number + "';"
+        # operation = 0020???????????????????????????
+
+        df = pd.read_sql_query(sql, cnxn)
+
+        result = df['revision'].values[0]
+
+        cnxn.close()
+
+        return result
+
     def get_actual_time(self):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
@@ -120,16 +141,15 @@ class Schedule(db.Model):
             result = "None"
             return result
 
-    @staticmethod
-    def get_quantity(part_number, release_wo):
+    def get_quantity(self):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
                                 "Database=CVD;"
                                 "UID=READ_ONLY;pwd=Readonly2019")
 
         sql = "select QTY_REQUIRED from CVD_WO_WOOP_Rev2 where CATALOGUE_NUMBER = '"\
-              + str(part_number) + "' and [JOB NO] = '" + release_wo.split()[0]\
-              + "' and WORK_ORDER = '" + release_wo.split()[1] + "';"
+              + str(self.part_number) + "' and [JOB NO] = '" + self.job_number\
+              + "' and WORK_ORDER = '" + self.work_number + "';"
 
         df = pd.read_sql_query(sql, cnxn)
         cnxn.close()

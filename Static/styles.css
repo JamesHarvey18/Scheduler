@@ -93,6 +93,8 @@ nav a:hover {
   background-color: white;
 }
 
+
+
 .cvd:active {
   transform: translateY(2px);
   filter: saturate(150%);
@@ -220,15 +222,3 @@ dt {
 #myTable_filter{
   padding-right: 20px;
 }
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
