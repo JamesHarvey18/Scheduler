@@ -18,6 +18,7 @@ class Results(Table):
     quantity_complete = Col('QCP')
     part_description = Col('Description')
     part_location = Col('Location')
+    priority = Col('Priority')
     due_date = Col('Due Date')
     entry_date = Col('Scanned')
     entry_time = Col('Time')

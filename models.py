@@ -34,6 +34,7 @@ class Schedule(db.Model):
     quantity_complete = db.Column(db.String)
     actual_time = db.Column(db.String)
     archived = db.Column(db.Boolean)
+    priority = db.Column(db.Integer)
 
     def get_material_status(self):
         pass
@@ -102,6 +103,7 @@ class Schedule(db.Model):
         work_order = barcode.split()[1]
         work_order = work_order[0:4]
         return work_order
+
 
     def get_machine_center(self):
         cnxn = pypyodbc.connect("Driver={SQL Server};"

@@ -29,6 +29,7 @@ class Schedule(base):
     quantity_complete = Column(String)
     mtl = Column(String)
     archived = Column(Boolean)
+    priority = Column(Integer)
 
     def __repr__(self):
         return "{}".format(self.name)

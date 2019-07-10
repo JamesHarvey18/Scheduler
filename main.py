@@ -1,15 +1,13 @@
 from app import app
 import db_creator
 from db_setup import init_db, db_session
-from forms import SchedulerDataEntryForm, LocationForm, RegistrationForm, LoginForm
+from forms import SchedulerDataEntryForm, LocationForm
 from flask import Flask, flash, render_template, redirect, url_for, request, session, make_response
 from models import Schedule, User, Password
 from tables import Results
 import datetime
 from functools import wraps
 from validate_email import validate_email
-import pypyodbc
-import pandas as pd
 
 
 init_db()
@@ -68,6 +66,27 @@ def login():
         else:
             flash('Incorrect Password.')
     return render_template('login.html')
+
+
+@app.route('/edit_priority/<int:id>', methods=['GET', 'POST'])
+def edit_priority(id):
+    qry = db_session.query(Schedule).filter(Schedule.id == id)
+    entry = qry.first()
+
+    if entry:
+        if request.method == 'POST':
+            priority = request.form['priority']
+            entry.priority = priority
+            flash('Priority updated')
+            return redirect('/schedules/master')
+        return render_template('edit_priority.html')
+    else:
+        return 'Error loading #{id}. Please report this issue.'.format(id=id)
+
+    qry = db_session()
+    qry.add(entry)
+    qry.commit()
+
 
 
 @app.route('/schedules/CNCP', methods=['GET', 'POST'])
@@ -335,6 +354,7 @@ def save_changes(form):
     schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
     schedule.quantity_complete = form.quantity_complete.data  # Manual
     schedule.actual_time = schedule.get_actual_time() # Jobscope
+    schedule.priority = request.form['priority']
 
     qry = db_session()
     qry.add(schedule)

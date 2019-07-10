@@ -24,16 +24,6 @@ class LocationForm(Form):
     location = StringField("Location")
 
 
-class RegistrationForm(Form):
-    username = StringField("Username")
-    email = StringField("Email")
-    password = StringField("Password")
-
-
 class PasswordForm(Form):
     password = PasswordField('Password')
 
-
-class LoginForm(Form):
-    username = StringField("Username")
-    password = PasswordField("Password")
