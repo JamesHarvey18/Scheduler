@@ -294,14 +294,10 @@ def preprocess_date(date):
     month = int(date[5:7])
     day = int(date[8:10])
     year = int(date[0:4])
-    # date = year + "-" + month + "-" + day
     return datetime.date(year, month, day)
 
 
 def edit_entry(form, schedule):
-    dt = datetime.datetime.now()
-    barcode = form.part_number.data
-
     schedule.due_date = preprocess_date(form.due_date.data)  # Manual
     schedule.comments = form.comments.data.upper()  # Manual
     schedule.revision = form.revision.data.upper()  # Manual
