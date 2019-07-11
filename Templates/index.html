@@ -41,9 +41,14 @@
             <dl>
               {{ render_field(form.part_number, class="form-control", maxlength="30", placeholder="Work Order") }}
               {{ render_field(form.revision, class="form-control", maxlength="10", placeholder="Revision") }}
-              
+
+              <!-- Javascript limits the length of the input to only 2 digits. Doesn't work with maxlength attribute -->
               <dt><label>Priority</label></dt>
-              <input type='number' class='form-control' placeholder='00' name='priority' maxlength='2'>
+              <input name='priority'
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  type='number' class='form-control' placeholder='00'
+              />
+
             </dl>
           </div>
 

@@ -33,8 +33,11 @@
       <div class="wrap-entry">
         <div class="row">
 
-          <input class="priority_input" type="number" name="priority" placeholder='00'>
-          
+          <input name="priority"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              class="priority_input" type="number" placeholder='00'
+          />
+
           <div class="container-login100-form-btn">
             <button class="login100-form-btn">
               Edit
