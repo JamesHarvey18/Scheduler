@@ -68,27 +68,6 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/edit_priority/<int:id>', methods=['GET', 'POST'])
-def edit_priority(id):
-    qry = db_session.query(Schedule).filter(Schedule.id == id)
-    entry = qry.first()
-
-    if entry:
-        if request.method == 'POST':
-            priority = request.form['priority']
-            entry.priority = priority
-            flash('Priority updated')
-            return redirect('/schedules/master')
-        return render_template('edit_priority.html')
-    else:
-        return 'Error loading #{id}. Please report this issue.'.format(id=id)
-
-    qry = db_session()
-    qry.add(entry)
-    qry.commit()
-
-
-
 @app.route('/schedules/CNCP', methods=['GET', 'POST'])
 def cncp():
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'CNCP')
@@ -322,6 +301,7 @@ def edit_entry(form, schedule):
     schedule.revision = form.revision.data.upper()  # Manual
     schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
     schedule.quantity_complete = form.quantity_complete.data  # Manual
+    schedule.priority = request.form['priority']
 
     qry = db_session()
     qry.add(schedule)

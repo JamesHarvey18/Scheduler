@@ -18,6 +18,7 @@ class SchedulerDataEntryForm(Form):
     revision = StringField('Revision')
     original_estimated_time = StringField('Time Estimate')
     quantity_complete = StringField('Quantity Complete')
+    priority = StringField('Priority')
 
 
 class LocationForm(Form):

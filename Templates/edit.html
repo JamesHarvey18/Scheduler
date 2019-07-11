@@ -40,6 +40,8 @@
           <div class="col-xs-4">
             <dl>
               {{ render_field(form.revision, class="form-control", maxlength="10", placeholder="Revision") }}
+              {{ render_field(form.priority, oninput="javascript: if (this.value.length > 2) this.value = this.value.slice(0, 2);", type='number', class="form-control", maxlength="2", placeholder="00") }}
+
             </dl>
           </div>
 
