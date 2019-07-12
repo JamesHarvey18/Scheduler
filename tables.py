@@ -25,7 +25,7 @@ class Results(Table):
     material_status = Col('Order Status')
     machine_center = Col('Center')
     original_estimated_time = Col('Est.')
-    actual_time = Col('Actual')
+    actual_time = Col('Act.')
     comments = Col('Notes')
     edit = LinkCol('Edit', 'edit', url_kwargs=dict(id='id'))
     delete = LinkCol('Delete', 'delete', url_kwargs=dict(id='id'))

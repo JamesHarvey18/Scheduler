@@ -7,9 +7,13 @@
   <link rel="shortcut icon" href="{{url_for('static', filename='CVD-Logo-250px-sqaure.png') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Schedule - Machine Shop</title>
+
+  <!-- Bootstrap css, js, and jQuery -->
   <link rel="stylesheet" href="../static/bootstrap.min.css">
   <script src="../static/jquery.min.js"></script>
   <script src="../static/bootstrap.min.js"></script>
+
+  <!-- Datatables -->
   <script src="../static/jquery.dataTables.min.js"></script>
   <script src="../static/dataTables.bootstrap4.min.js"></script>
   <link rel="stylesheet" href="../static/dataTables.bootstrap4.min.css">
@@ -19,9 +23,16 @@
   <script src="../static/buttons.html5.min.js"></script>
   <script src="../static/jszip.min.js"></script>
   <script src="../static/js/tables.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel='stylesheet' href='../static/fontAwesome/fas.css'>
+  <script src='../static/fontAwesome/fas.js'></script>
+
+  <!-- Custom styling (styles.css), and login/register styling (main.css) -->
   <link rel="stylesheet" type="text/css" href="../static/css/main.css">
   <link rel="stylesheet" type="text/css" href="../static/styles.css">
 
+  <!-- JavaScript for datatables -->
   <script>
     $(document).ready(function() {
       $('#myTable').DataTable({
@@ -58,6 +69,7 @@
 
 </head>
 
+<!-- Nav bar links -->
 <header>
   <nav>
     <ul>
@@ -73,7 +85,12 @@
 
 
   <div><br />
-    <table id="myTable" class="table table-hover table-striped table-bordered" {{ table }} </div> <script>highlightRows();</script><br />
+    <table id="myTable" class="table table-hover table-striped table-bordered" {{ table }} </div>
+    <script>highlightRows();</script><br />
+    <script>
+      changeDeleteToTrashIcon();
+    </script>
+
       <div class="foo red"></div>
       <p> = Over time</p><br />
       <div class="foo yellow"></div>

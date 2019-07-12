@@ -40,7 +40,18 @@ function highlightRows() {
       table.rows[i].getElementsByTagName('a')[0].style.color = 'black';
       table.rows[i].getElementsByTagName('a')[1].style.color = 'black';
     }
-    console.log('here --------------');
+  }
+}
 
+function changeDeleteToTrashIcon() {
+  var table = document.getElementById('myTable');
+  var rows = table.getElementsByTagName("tr");
+
+  table.getElementsByTagName('th')[18].innerHTML = '<i class="fas fa-trash-alt"></i>';
+  table.getElementsByTagName('th')[17].innerHTML = '<i class="fas fa-edit"></i>';
+  
+  for(i = 1; i < rows.length; i++) {
+    table.rows[i].getElementsByTagName('a')[0].innerHTML = '<i class="fas fa-edit"></i>';
+    table.rows[i].getElementsByTagName('a')[1].innerHTML = '<i class="fas fa-trash-alt"></i>';
   }
 }
