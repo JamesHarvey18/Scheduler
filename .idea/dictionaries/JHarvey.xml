@@ -2,6 +2,7 @@
   <dictionary name="JHarvey">
     <words>
       <w>amch</w>
+      <w>cncp</w>
       <w>cnxn</w>
       <w>cvdequipment</w>
       <w>delc</w>
@@ -11,7 +12,11 @@
       <w>dplc</w>
       <w>dprc</w>
       <w>edft</w>
+      <w>lasr</w>
       <w>mdft</w>
+      <w>mnul</w>
+      <w>nllg</w>
+      <w>nlmd</w>
       <w>preprocess</w>
       <w>psop</w>
       <w>pwdhash</w>

@@ -30,6 +30,37 @@ class Schedule(base):
     mtl = Column(String)
     archived = Column(Boolean)
     priority = Column(Integer)
+    finish = Column(String)
+
+    def __repr__(self):
+        return "{}".format(self.name)
+
+
+class ScheduleArchive(base):
+    __tablename__ = "scheduleArchive"
+
+    id = Column(Integer, primary_key=True)
+    due_date = Column(String)
+    part_number = Column(String)
+    part_description = Column(String)
+    job_number = Column(Integer)
+    work_number = Column(String)
+    part_quantity = Column(Integer)
+    part_location = Column(String)
+    entry_time = Column(String)
+    entry_date = Column(Date)
+    employee_id = Column(String)
+    comments = Column(String)
+    revision = Column(String)
+    material_status = Column(String)
+    machine_center = Column(String)
+    original_estimated_time = Column(String)
+    revised_estimated_time = Column(String)
+    actual_time = Column(String)
+    quantity_complete = Column(String)
+    mtl = Column(String)
+    archived = Column(Boolean)
+    priority = Column(Integer)
 
     def __repr__(self):
         return "{}".format(self.name)

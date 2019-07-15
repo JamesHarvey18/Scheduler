@@ -14,6 +14,7 @@ class Results(Table):
     job_number = Col('Job #')
     part_number = Col('Part Number')
     revision = Col('Rev.')
+    finish = Col('Finish')
     part_quantity = Col('Qty.')
     quantity_complete = Col('QCP')
     part_description = Col('Description')

@@ -8,6 +8,7 @@ from tables import Results
 import datetime
 from functools import wraps
 from validate_email import validate_email
+import sqlite3
 
 
 init_db()
@@ -24,6 +25,57 @@ def login_required(f):
     return wrap
 
 
+def archive(part):
+    entries = db_session.query(Schedule).filter(Schedule.part_number == part).count()
+
+    for i in range(entries):
+        entry = db_session.query(Schedule).filter(Schedule.part_number == part).one()
+
+
+
+        qry = db_session()
+        qry.add(entry)
+        qry.commit()
+
+
+def close(form):
+    # When scanning at QC, set the archived column to True
+    schedule = Schedule()
+    dt = datetime.datetime.now()
+    barcode = form.part_number.data
+
+    schedule.due_date = preprocess_date(form.due_date.data)  # Manual
+    schedule.job_number = schedule.get_job_number(barcode)  # Manual
+    schedule.work_number = schedule.get_work_order(barcode)  # Manual
+    schedule.part_number = schedule.get_part_number()
+    schedule.part_description = schedule.get_description()  # Jobscope
+    try:
+        schedule.part_quantity = schedule.get_quantity()  # Jobscope
+    except:
+        schedule.part_quantity = 0
+    schedule.part_location = request.cookies.get('location').upper()  # Auto
+    schedule.entry_time = dt.strftime("%H:%M:%S")  # Auto
+    schedule.entry_date = datetime.date.today()  # Auto
+    schedule.comments = form.comments.data.upper()  # Manual
+    if form.revision.data == '':
+        schedule.revision = schedule.get_revision().upper()
+    else:
+        schedule.revision = form.revision.data.upper()  # Manual
+    schedule.machine_center = schedule.get_machine_center()  # schedule.get_machine_center()  # Manual
+    schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
+    schedule.quantity_complete = form.quantity_complete.data  # Manual
+    schedule.actual_time = schedule.get_actual_time()  # Jobscope
+    schedule.priority = request.form['priority']
+    schedule.material_status = request.form['status'].upper()
+    schedule.archived = True
+
+    archive(schedule.part_number)
+
+    qry = db_session()
+    qry.add(schedule)
+    qry.commit()
+
+
 # @login_required
 @app.route('/', methods=['GET', 'POST', 'PUT'])
 def index():
@@ -34,6 +86,10 @@ def index():
     form = SchedulerDataEntryForm(request.form)
 
     if request.method == 'POST':
+
+        # if request.cookies.get('location') == 'QUALITY CONTROL':
+            # close(form)
+            # return redirect(url_for('index'))
 
         try:
             save_changes(form)
@@ -336,6 +392,8 @@ def save_changes(form):
     schedule.actual_time = schedule.get_actual_time() # Jobscope
     schedule.priority = request.form['priority']
     schedule.material_status = request.form['status'].upper()
+    schedule.archived = False
+    schedule.finish = request.form['finish']
 
     qry = db_session()
     qry.add(schedule)

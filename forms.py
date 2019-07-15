@@ -20,6 +20,7 @@ class SchedulerDataEntryForm(Form):
     quantity_complete = StringField('Quantity Complete')
     priority = StringField('Priority')
     material_status = StringField('Status')
+    finish = StringField('Finish')
 
 
 class LocationForm(Form):
