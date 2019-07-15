@@ -22,7 +22,7 @@ class Results(Table):
     due_date = Col('Due Date')
     entry_date = Col('Scanned')
     entry_time = Col('Time')
-    material_status = Col('Order Status')
+    material_status = Col('Status')
     machine_center = Col('Center')
     original_estimated_time = Col('Est.')
     actual_time = Col('Act.')

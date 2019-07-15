@@ -58,7 +58,6 @@ def login():
     if request.method == 'POST':
         user.password = request.form['pass']
         user.username = request.form['email']
-        print('test ', user.username)
         if user.verify():
             session['logged_in'] = True
             session['username'] = user.username
@@ -302,6 +301,7 @@ def edit_entry(form, schedule):
     schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
     schedule.quantity_complete = form.quantity_complete.data  # Manual
     schedule.priority = request.form['priority']
+    schedule.material_status = request.form['material_status']
 
     qry = db_session()
     qry.add(schedule)
@@ -335,6 +335,7 @@ def save_changes(form):
     schedule.quantity_complete = form.quantity_complete.data  # Manual
     schedule.actual_time = schedule.get_actual_time() # Jobscope
     schedule.priority = request.form['priority']
+    schedule.material_status = request.form['status']
 
     qry = db_session()
     qry.add(schedule)

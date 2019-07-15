@@ -48,7 +48,7 @@
             <dl>
               {{ render_field(form.revision, class="form-control", maxlength="10", placeholder="Revision") }}
               {{ render_field(form.priority, oninput="javascript: if (this.value.length > 2) this.value = this.value.slice(0, 2);", type='number', class="form-control", maxlength="2", placeholder="00") }}
-
+              {{ render_field(form.material_status, class='form-control', placeholder='Status') }}
             </dl>
           </div>
 
@@ -56,11 +56,13 @@
             <dl>
               {{ render_field(form.due_date, type="date", class="form-control", maxlength="25", placeholder="2019-05-02") }}
               {{ render_field(form.original_estimated_time, class="form-control", maxlength="20", placeholder="4 Hours") }}
+
               <div class="container-login100-form-btn">
     						<button class="login100-form-btn">
     							Edit
     						</button>
     					</div>
+
             </dl>
           </div>
 

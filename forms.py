@@ -1,4 +1,4 @@
-from wtforms import Form, StringField, TextAreaField, PasswordField, SelectField
+from wtforms import Form, StringField, TextAreaField, PasswordField
 
 """
 File for all of the classes of forms that are used on the website front end.
@@ -19,6 +19,7 @@ class SchedulerDataEntryForm(Form):
     original_estimated_time = StringField('Time Estimate')
     quantity_complete = StringField('Quantity Complete')
     priority = StringField('Priority')
+    material_status = StringField('Status')
 
 
 class LocationForm(Form):
