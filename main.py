@@ -301,7 +301,7 @@ def edit_entry(form, schedule):
     schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
     schedule.quantity_complete = form.quantity_complete.data  # Manual
     schedule.priority = request.form['priority']
-    schedule.material_status = request.form['material_status']
+    schedule.material_status = request.form['material_status'].upper()
 
     qry = db_session()
     qry.add(schedule)
@@ -327,7 +327,7 @@ def save_changes(form):
     schedule.entry_date = datetime.date.today()  # Auto
     schedule.comments = form.comments.data.upper()  # Manual
     if form.revision.data == '':
-        schedule.revision = schedule.get_revision()
+        schedule.revision = schedule.get_revision().upper()
     else:
         schedule.revision = form.revision.data.upper()  # Manual
     schedule.machine_center = schedule.get_machine_center()  # schedule.get_machine_center()  # Manual
@@ -335,7 +335,7 @@ def save_changes(form):
     schedule.quantity_complete = form.quantity_complete.data  # Manual
     schedule.actual_time = schedule.get_actual_time() # Jobscope
     schedule.priority = request.form['priority']
-    schedule.material_status = request.form['status']
+    schedule.material_status = request.form['status'].upper()
 
     qry = db_session()
     qry.add(schedule)
