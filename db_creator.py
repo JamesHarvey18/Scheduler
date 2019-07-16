@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Date, create_engine, Boolean
+from sqlalchemy import Column, Integer, String, Date, create_engine, Boolean, update
 from sqlalchemy.ext.declarative import declarative_base
 
 engine = create_engine('sqlite:///scheduler.db', echo=True)
