@@ -61,6 +61,7 @@ class ScheduleArchive(base):
     mtl = Column(String)
     archived = Column(Boolean)
     priority = Column(Integer)
+    finish = Column(String)
 
     def __repr__(self):
         return "{}".format(self.name)

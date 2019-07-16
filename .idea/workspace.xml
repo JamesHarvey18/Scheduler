@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c54d04f-72df-4550-8063-92db200eb218" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/JHarvey.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/JHarvey.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/add_location.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/add_location.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/alter_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/alter_table.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_creator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scheduler.db" beforeDir="false" afterPath="$PROJECT_DIR$/scheduler.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/tables.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedulerArchive.db" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,29 +37,20 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/alter_table.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="92">
-                  <caret line="4" column="62" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/tables.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
+                <state relative-caret-position="273">
                   <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/forms.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="295">
-                  <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+                <state relative-caret-position="134">
+                  <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
@@ -72,8 +58,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-3584">
-                  <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+                <state relative-caret-position="330">
+                  <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -81,11 +67,21 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4048">
-                  <caret line="176" column="24" selection-start-line="176" selection-start-column="24" selection-end-line="176" selection-end-column="24" />
+                <state relative-caret-position="-131">
+                  <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
                   <folding>
-                    <element signature="e#1#20#0" expanded="true" />
+                    <element signature="e#0#19#0" expanded="true" />
+                    <element signature="e#696#2766#1" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/alter_table.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="92">
+                  <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
@@ -97,8 +93,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/db_creator.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="454">
-                  <caret line="30" column="29" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="29" />
+                <state relative-caret-position="961">
+                  <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#76#0" expanded="true" />
                   </folding>
@@ -161,12 +157,12 @@
         <option value="$PROJECT_DIR$/db_setup.py" />
         <option value="$PROJECT_DIR$/password.py" />
         <option value="$PROJECT_DIR$/backupDB_creator.py" />
+        <option value="$PROJECT_DIR$/tables.py" />
         <option value="$PROJECT_DIR$/db_creator.py" />
         <option value="$PROJECT_DIR$/models.py" />
-        <option value="$PROJECT_DIR$/forms.py" />
-        <option value="$PROJECT_DIR$/tables.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/alter_table.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/forms.py" />
       </list>
     </option>
   </component>
@@ -212,7 +208,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.alter_table">
     <configuration name="alter_table" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MachineShopScheduler" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -299,8 +295,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.alter_table" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.db_creator" />
         <item itemvalue="Python.backupDB_creator" />
       </list>
@@ -323,12 +319,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.115625" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.115625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22703274" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22703274" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -360,37 +356,6 @@
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4048">
-          <caret line="176" column="24" selection-start-line="176" selection-start-column="24" selection-end-line="176" selection-end-column="24" />
-          <folding>
-            <element signature="e#1#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3584">
-          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db_creator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="736">
@@ -401,10 +366,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/alter_table.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
-          <caret line="4" column="62" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-131">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#696#2766#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
         </state>
       </provider>
     </entry>

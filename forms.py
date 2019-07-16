@@ -11,9 +11,9 @@ all variables you will need to enter into a textbox.
 
 
 class SchedulerDataEntryForm(Form):
-    due_date = StringField('Finish Date')
+    due_date = StringField('Finish Date *')
     employee_id = StringField('Employee')
-    part_number = StringField('Barcode')
+    part_number = StringField('Barcode *')
     comments = TextAreaField('Notes', render_kw={"rows": 1, "cols": 20})
     revision = StringField('Revision')
     original_estimated_time = StringField('Time Estimate')

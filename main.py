@@ -25,17 +25,20 @@ def login_required(f):
     return wrap
 
 
+"""
 def archive(part):
-    entries = db_session.query(Schedule).filter(Schedule.part_number == part).count()
+    sql = str('INSERT INTO scheduleArchive (SELECT * FROM schedule WHERE part_number = ' + part)
+    sql2 = str('SELECT * FROM scheduleArchive')
 
-    for i in range(entries):
-        entry = db_session.query(Schedule).filter(Schedule.part_number == part).one()
+    cnx = sqlite3.connect('scheduler.db')
+    cur = cnx.cursor()
 
-
-
-        qry = db_session()
-        qry.add(entry)
-        qry.commit()
+    try:
+        cur.execute(sql)
+        db_session.query(Schedule).filter(Schedule.part_number == part).delete()
+        db_session.commit()
+    except Exception as e:
+        print(str(e))
 
 
 def close(form):
@@ -74,6 +77,7 @@ def close(form):
     qry = db_session()
     qry.add(schedule)
     qry.commit()
+"""
 
 
 # @login_required

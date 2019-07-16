@@ -35,7 +35,6 @@ class Schedule(db.Model):
     actual_time = db.Column(db.String)
     archived = db.Column(db.Boolean)
     priority = db.Column(db.Integer)
-    archive = db.Column(db.String)
     finish = db.Column(db.String)
 
     def get_material_status(self):
