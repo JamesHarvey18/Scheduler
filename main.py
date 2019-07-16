@@ -37,7 +37,7 @@ def index():
         try:
             save_changes(form)
         except Exception as e:
-            return str(e)
+            flash('Scan barcode from work order and include finish date.')
 
         return redirect(url_for('index'))
     return render_template('index.html', form=form)
