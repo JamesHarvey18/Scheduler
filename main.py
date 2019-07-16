@@ -3,7 +3,7 @@ import db_creator
 from db_setup import init_db, db_session
 from forms import SchedulerDataEntryForm, LocationForm
 from flask import Flask, flash, render_template, redirect, url_for, request, session, make_response
-from models import Schedule, User, Password
+from models import Schedule, User, Password, ScheduleArchive
 from tables import Results
 import datetime
 from functools import wraps
@@ -25,16 +25,16 @@ def login_required(f):
     return wrap
 
 
-"""
 def archive(part):
     sql = str('INSERT INTO scheduleArchive (SELECT * FROM schedule WHERE part_number = ' + part)
-    sql2 = str('SELECT * FROM scheduleArchive')
 
     cnx = sqlite3.connect('scheduler.db')
     cur = cnx.cursor()
 
     try:
         cur.execute(sql)
+        cur.close()
+        cnx.close()
         db_session.query(Schedule).filter(Schedule.part_number == part).delete()
         db_session.commit()
     except Exception as e:
@@ -43,7 +43,7 @@ def archive(part):
 
 def close(form):
     # When scanning at QC, set the archived column to True
-    schedule = Schedule()
+    schedule = ScheduleArchive()
     dt = datetime.datetime.now()
     barcode = form.part_number.data
 
@@ -77,7 +77,6 @@ def close(form):
     qry = db_session()
     qry.add(schedule)
     qry.commit()
-"""
 
 
 # @login_required
@@ -91,9 +90,9 @@ def index():
 
     if request.method == 'POST':
 
-        # if request.cookies.get('location') == 'QUALITY CONTROL':
-            # close(form)
-            # return redirect(url_for('index'))
+        if request.cookies.get('location') == 'QUALITY CONTROL':
+            close(form)
+            return redirect(url_for('index'))
 
         try:
             save_changes(form)
