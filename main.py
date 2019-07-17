@@ -45,7 +45,7 @@ def index():
 
 @app.route('/schedules/master', methods=['GET', 'POST'])
 def master():
-    qry = db_session.query(Schedule).group_by(Schedule.work_number)  # .filter(Schedule.archived != 1)
+    qry = db_session.query(Schedule).group_by(Schedule.job_number).group_by(Schedule.work_number)  # .filter(Schedule.archived != 1)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -201,7 +201,7 @@ def edit(id):
 
 @app.route('/work_order/<int:wo>', methods=['GET', 'POST'])
 def group(wo):
-    qry = db_session.query(Schedule).filter(Schedule.work_number == wo)
+    qry = db_session.query(Schedule).filter(Schedule.work_number == '0001')
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
