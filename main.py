@@ -45,7 +45,7 @@ def index():
 
 @app.route('/schedules/master', methods=['GET', 'POST'])
 def master():
-    qry = db_session.query(Schedule)  # .filter(Schedule.archived != 1)
+    qry = db_session.query(Schedule).group_by(Schedule.work_number)  # .filter(Schedule.archived != 1)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -199,6 +199,14 @@ def edit(id):
         return 'Error loading #{id}. Please report this issue.'.format(id=id)
 
 
+@app.route('/work_order/<int:wo>', methods=['GET', 'POST'])
+def group(wo):
+    qry = db_session.query(Schedule).filter(Schedule.work_number == wo)
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
 @app.route('/location', methods=['GET', 'POST'])
 def add_location():
     form = LocationForm(request.form)
@@ -313,7 +321,7 @@ def save_changes(form):
     barcode = form.part_number.data
 
     schedule.due_date = preprocess_date(form.due_date.data)  # Manual
-    schedule.job_number = schedule.get_job_number(barcode)  # Manual
+    schedule.job_number = schedule.get_job_number(barcode).upper()  # Manual
     schedule.work_number = schedule.get_work_order(barcode)  # Manual
     schedule.part_number = schedule.get_part_number()
     schedule.part_description = schedule.get_description()  # Jobscope

@@ -10,7 +10,7 @@ live. Unused currently. Also removes warning for abstract methods.
 
 
 class Results(Table):
-    work_number = Col('WO')
+    work_number = LinkCol('WO', 'group', url_kwargs=dict(wo='work_number'))
     job_number = Col('Job #')
     part_number = Col('Part Number')
     revision = Col('Rev.')
