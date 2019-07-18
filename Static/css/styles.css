@@ -221,6 +221,9 @@ dt {
   font-size: 24px;
   text-align: left;
 }
+th {
+  background-color: #ff7f50;
+}
 
 .dt-buttons{
   padding-left: 20px;

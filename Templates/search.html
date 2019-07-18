@@ -17,6 +17,8 @@
   <script src="../static/js/jquery.dataTables.min.js"></script>
   <script src="../static/js/dataTables.bootstrap4.min.js"></script>
   <link rel="stylesheet" href="../static/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../static/css/fixedHeader.dataTables.min.css">
+  <script src="../static/js/dataTables.fixedHeader.min.js"></script>
   <script src="../static/js/buttons.flash.min.js"></script>
   <script src="../static/js/dataTables.buttons.min.js"></script>
   <script src="../static/js/buttons.print.min.js"></script>
@@ -38,6 +40,10 @@
       $('#myTable').DataTable({
         "dom": 'Brftip',
         "deferRender": true,
+        fixedHeader: {
+          header: true,
+          headerOffset: -10
+        },
         buttons: [{
             extend: 'copy',
             text: 'COPY',

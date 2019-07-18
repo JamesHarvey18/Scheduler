@@ -45,7 +45,7 @@ def index():
 
 @app.route('/schedules/master', methods=['GET', 'POST'])
 def master():
-    qry = db_session.query(Schedule).group_by(Schedule.job_number).group_by(Schedule.work_number)  # .filter(Schedule.archived != 1)
+    qry = db_session.query(Schedule)# .group_by(Schedule.job_number).group_by(Schedule.work_number)  # .filter(Schedule.archived != 1)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
