@@ -197,8 +197,15 @@ dt {
     display: none;
   }
 }
-.dtrg-group dtrg-start dtrg-level-1 {
+.dtrg-group, .dtrg-start, .dtrg-level-1 {
   font-weight: 900;
+  font-size: 17px;
+}
+.dtrg-level-0 td:before {
+  content: "Job # ";
+}
+.dtrg-level-1 td:before {
+  content: "Work Order # ";
 }
 
 #hidden {
