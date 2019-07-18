@@ -197,6 +197,9 @@ dt {
     display: none;
   }
 }
+.dtrg-group dtrg-start dtrg-level-1 {
+  font-weight: 900;
+}
 
 #hidden {
   color: black;

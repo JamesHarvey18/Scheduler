@@ -19,12 +19,13 @@
   <link rel="stylesheet" href="../static/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../static/css/fixedHeader.dataTables.min.css">
   <script src="../static/js/dataTables.fixedHeader.min.js"></script>
-  <script src="../static/js/buttons.flash.min.js"></script>
   <script src="../static/js/dataTables.buttons.min.js"></script>
   <script src="../static/js/buttons.print.min.js"></script>
   <script src="../static/js/buttons.html5.min.js"></script>
   <script src="../static/js/jszip.min.js"></script>
   <script src="../static/js/tables.js"></script>
+  <script src="../static/js/dataTables.rowGroup.min.js"></script>
+  <link rel="stylesheet" href="../static/css/rowGroup.dataTables.min.css">
 
   <!-- Fontawesome -->
   <link rel='../stylesheet' href='../static/css/fas.css'>
@@ -43,6 +44,10 @@
         fixedHeader: {
           header: true,
           headerOffset: -10
+        },
+        rowGroup: {
+          dataSrc: [1, 0],
+
         },
         buttons: [{
             extend: 'copy',
@@ -93,9 +98,7 @@
   <div><br />
     <table id="myTable" class="table table-hover table-striped table-bordered" {{ table }} </div>
     <script>highlightRows();</script><br />
-    <script>
-      changeDeleteToTrashIcon();
-    </script>
+    <script>changeDeleteToTrashIcon();</script>
 
       <div class="foo red"></div>
       <p> = Over time</p><br />
