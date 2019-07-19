@@ -253,8 +253,9 @@ dt {
   text-align: left;
 }
 th {
-  background-color: #ff7f50;
+  background-color: #095e8c;
   border: 20px solid black;
+  color: #DDDDDD;
 }
 
 .dt-buttons{

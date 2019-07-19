@@ -26,7 +26,7 @@ function highlightRows() {
     // If the row has a completed qty. less than req., highlight yellow
     if (qty > qty_comp) {
 
-      table.rows[i].style.backgroundColor = 'yellow';
+      table.rows[i].style.backgroundColor = '#f5f242';
       table.rows[i].style.color = 'black';
       table.rows[i].style.fontWeight = '900';
     }
