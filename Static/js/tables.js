@@ -13,7 +13,7 @@ function highlightRows() {
     // If the row has the actual time going over est. time, highlight red
 
     if (actual > estimated) {
-      table.rows[i].style.backgroundColor = 'red';
+      table.rows[i].style.backgroundColor = '#f54242';
       table.rows[i].style.color = 'white';
       table.rows[i].style.fontWeight = '900';
       var row = table.rows[i];

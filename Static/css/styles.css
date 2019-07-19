@@ -34,22 +34,11 @@ nav a:hover {
   text-decoration: none;
   color: gray;
 }
-/*
-#icons{
-  width: 32px;
-  height: 32px;
-  font-size: 18px;
-  line-height: 29px;
-  margin-left: 0.5em;
-  border: 2px solid white;
-  border-radius: 100%;
-  box-sizing: border-box;
-  border: 2px solid white;
-}*/
 .container{
   font-family: "Calibri";
 }
 
+/* Default buttons styling */
 .cvd {
   /* default for <button>, but useful for <a> */
   display: inline-block;
@@ -74,18 +63,50 @@ nav a:hover {
   color: #095e8c;
   background-color: white;
 }
-
-
-
 .cvd:active {
   transform: translateY(2px);
   filter: saturate(150%);
   outline: none;
 }
-
 .cvd:hover {
   color: white;
   background-color: #095e8c;
+}
+
+/* Table preferences button styling */
+.buttons-colvisGroup {
+  /* default for <button>, but useful for <a> */
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Calibri";
+  font-size: 15px;
+  transition: all 0.3s ease 0s;
+  width: 80px;
+
+  /* create a small space when buttons wrap on 2 lines */
+  margin: 2px 0;
+
+  /* invisible border (will be colored on hover/focus) */
+  border: 2px solid #f54242;
+  border-radius: 20px;
+
+  /* size comes from text & padding (no width/height) */
+  padding: 0.8em 1em;
+
+  /* make sure colors have enough contrast! */
+  color: #f54242;
+  background-color: white;
+}
+.buttons-colvisGroup:active {
+  transform: translateY(2px);
+  filter: saturate(150%);
+  outline: none;
+}
+
+.buttons-colvisGroup:hover {
+  color: white;
+  background-color: #f54242;
 }
 
 
@@ -233,6 +254,7 @@ dt {
 }
 th {
   background-color: #ff7f50;
+  border: 20px solid black;
 }
 
 .dt-buttons{
