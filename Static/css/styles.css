@@ -146,6 +146,12 @@ nav a:hover {
   color: white;
   background-color: #f54242;
 }
+.dt-button-collection {
+  width: 150px;
+}
+.buttons-columnVisibility {
+  display: block;
+}
 
 
 /* Color squares for highlighter key */
