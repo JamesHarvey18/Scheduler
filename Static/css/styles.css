@@ -73,8 +73,46 @@ nav a:hover {
   background-color: #095e8c;
 }
 
+.dt-button-collection {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 150px;
+	margin-top: 3px;
+	padding: 8px 8px 4px 8px;
+	border: 1px solid #ccc;
+	border: 1px solid rgba( 0, 0, 0, 0.4 );
+	background-color: white;
+	overflow: hidden;
+	z-index: 2002;
+	border-radius: 5px;
+	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+
+	button.dt-button,
+	div.dt-button,
+	a.dt-button {
+		position: relative;
+		left: 0;
+		right: 0;
+		width: 100%;
+
+		display: block;
+		float: none;
+		margin-bottom: 4px;
+		margin-right: 0;
+
+		&:active:not(.disabled),
+		&.active:not(.disabled) {
+			@include dtb-two-stop-gradient(#f0f0f0, #dadada);
+			box-shadow: inset 1px 1px 3px #666;
+		}
+	}
+
+	@include dtb-fixed-collection();
+}
+
 /* Table preferences button styling */
-.buttons-colvisGroup {
+.buttons-colvis {
   /* default for <button>, but useful for <a> */
   display: inline-block;
   text-align: center;
@@ -82,7 +120,7 @@ nav a:hover {
   font-family: "Calibri";
   font-size: 15px;
   transition: all 0.3s ease 0s;
-  width: 80px;
+  width: 95px;
 
   /* create a small space when buttons wrap on 2 lines */
   margin: 2px 0;
@@ -104,7 +142,7 @@ nav a:hover {
   outline: none;
 }
 
-.buttons-colvisGroup:hover {
+.buttons-colvis:hover {
   color: white;
   background-color: #f54242;
 }
