@@ -152,6 +152,9 @@ nav a:hover {
 .buttons-columnVisibility {
   display: block;
 }
+.buttons-columnVisibility:hover {
+  color: #f54242;
+}
 
 
 /* Color squares for highlighter key */
