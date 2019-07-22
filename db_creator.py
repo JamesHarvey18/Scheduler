@@ -62,6 +62,7 @@ class ScheduleArchive(base):
     archived = Column(Boolean)
     priority = Column(Integer)
     finish = Column(String)
+    pdf = Column(String)
 
     def __repr__(self):
         return "{}".format(self.name)

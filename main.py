@@ -356,6 +356,7 @@ def save_changes(form):
     schedule.material_status = request.form['status'].upper()
     schedule.archived = 0
     schedule.finish = request.form['finish']
+    schedule.pdf = schedule.get_pdf()
 
     qry = db_session()
     qry.add(schedule)
@@ -395,6 +396,7 @@ def archive(form):
     schedule.material_status = request.form['status'].upper()
     schedule.archived = 1
     schedule.finish = request.form['finish']
+    schedule.pdf = schedule.get_pdf()
 
     qry = db_session()
     qry.add(schedule)

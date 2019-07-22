@@ -47,8 +47,8 @@ function changeDeleteToTrashIcon() {
   var table = document.getElementById('myTable');
   var rows = table.getElementsByTagName("tr");
 
-  table.getElementsByTagName('th')[19].innerHTML = '<i class="fas fa-trash-alt"></i>';
-  table.getElementsByTagName('th')[18].innerHTML = '<i class="fas fa-edit"></i>';
+  table.getElementsByTagName('th')[20].innerHTML = '<i class="fas fa-trash-alt"></i>';
+  table.getElementsByTagName('th')[19].innerHTML = '<i class="fas fa-edit"></i>';
 
   for(i = 1; i < rows.length; i++) {
     table.rows[i].getElementsByTagName('a')[0].innerHTML = '<i class="fas fa-edit"></i>';
