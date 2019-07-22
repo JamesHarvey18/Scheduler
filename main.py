@@ -8,7 +8,7 @@ from tables import Results
 import datetime
 from functools import wraps
 from validate_email import validate_email
-
+import sqlite3
 
 init_db()
 
@@ -27,17 +27,25 @@ def login_required(f):
 # @login_required
 @app.route('/', methods=['GET', 'POST', 'PUT'])
 def index():
-    if request.cookies.get('location') is None:
+    location = request.cookies.get('location')
+
+    if not location:
         flash("Enter your location.")
         return redirect(url_for('add_location'))
 
     form = SchedulerDataEntryForm(request.form)
 
     if request.method == 'POST':
-        try:
-            save_changes(form)
-        except Exception as e:
-            flash('Scan barcode from work order and include finish date.')
+        if location == 'QUALITY CONTROL' or location == 'QC':
+            try:
+                archive(form)
+            except Exception as e:
+                flash('error: ' + str(e))
+        else:
+            try:
+                save_changes(form)
+            except Exception as e:
+                flash('Scan barcode from work order and include finish date. ' + str(e))
 
         return redirect(url_for('index'))
     return render_template('index.html', form=form)
@@ -45,7 +53,7 @@ def index():
 
 @app.route('/schedules/master', methods=['GET', 'POST'])
 def master():
-    qry = db_session.query(Schedule)  #  .group_by(Schedule.job_number).group_by(Schedule.work_number)
+    qry = db_session.query(Schedule).filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -346,18 +354,58 @@ def save_changes(form):
     schedule.actual_time = schedule.get_actual_time() # Jobscope
     schedule.priority = request.form['priority']
     schedule.material_status = request.form['status'].upper()
-    if request.cookies.get('location') == 'QUALITY CONTROL':
-        schedule.archived = 1
-        for s in db_session.query(Schedule).filter(Schedule.part_number == schedule.part_number).all():
-            s.archived = 1
-        db_session.commit()
-    else:
-        schedule.archived = 0
+    schedule.archived = 0
     schedule.finish = request.form['finish']
 
     qry = db_session()
     qry.add(schedule)
     qry.commit()
+
+
+def archive(form):
+    schedule = Schedule()
+    dt = datetime.datetime.now()
+    barcode = form.part_number.data
+
+    schedule.due_date = preprocess_date(form.due_date.data)  # Manual
+    schedule.job_number = schedule.get_job_number(barcode).upper()  # Manual
+    schedule.work_number = schedule.get_work_order(barcode)  # Manual
+    schedule.part_number = schedule.get_part_number()
+    schedule.part_description = schedule.get_description()  # Jobscope
+
+    try:
+        schedule.part_quantity = schedule.get_quantity()  # Jobscope
+    except Exception as e:
+        print(str(e))
+        schedule.part_quantity = 0
+
+    schedule.part_location = request.cookies.get('location').upper()  # Auto
+    schedule.entry_time = dt.strftime("%H:%M:%S")  # Auto
+    schedule.entry_date = datetime.date.today()  # Auto
+    schedule.comments = form.comments.data.upper()  # Manual
+    if form.revision.data == '':
+        schedule.revision = schedule.get_revision().upper()
+    else:
+        schedule.revision = form.revision.data.upper()  # Manual
+    schedule.machine_center = schedule.get_machine_center()  # schedule.get_machine_center()  # Manual
+    schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
+    schedule.quantity_complete = form.quantity_complete.data  # Manual
+    schedule.actual_time = schedule.get_actual_time()  # Jobscope
+    schedule.priority = request.form['priority']
+    schedule.material_status = request.form['status'].upper()
+    schedule.archived = 1
+    schedule.finish = request.form['finish']
+
+    qry = db_session()
+    qry.add(schedule)
+    qry.commit()
+
+    # Archive all other entries with the same info
+    con = sqlite3.connect("scheduler.db")
+    cur = con.cursor()
+    sql = "UPDATE schedule SET archived=1 WHERE part_number = '" + str(schedule.part_number) + "' AND job_number = '" + str(schedule.job_number) + "' AND work_number = '" + str(schedule.work_number) + "'"
+    cur.execute(sql)
+    con.commit()
 
 
 if __name__ == '__main__':
