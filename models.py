@@ -51,7 +51,7 @@ class Schedule(db.Model):
             url = df['url_document'].values[0]
         else:
             return ""
-        url = "file:" + url
+        url = "file:" + str(url)
         return url
 
     def get_revision(self):
