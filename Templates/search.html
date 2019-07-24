@@ -43,6 +43,12 @@
       $('#myTable').DataTable({
         "dom": 'Brftip',
         "deferRender": true,
+        "columnDefs": [
+          {
+            "targets": [0, 1],
+            "visible": false
+          }
+        ],
         fixedHeader: {
           header: true,
           headerOffset: -10
@@ -79,7 +85,7 @@
         "order": [
           [10, "asc"]
         ],
-        "pageLength": 100,
+        "pageLength": 99999999,
       });
     });
   </script>

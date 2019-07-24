@@ -4,7 +4,7 @@ from db_setup import init_db, db_session
 from forms import SchedulerDataEntryForm, LocationForm
 from flask import Flask, flash, render_template, redirect, url_for, request, session, make_response
 from models import Schedule, User, Password
-from tables import Results
+from tables import Results, ReadOnly
 import datetime
 from functools import wraps
 from validate_email import validate_email
@@ -55,6 +55,14 @@ def index():
 def master():
     qry = db_session.query(Schedule).filter(Schedule.archived == 0)
     table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/master_read_only', methods=['GET', 'POST'])
+def read_only():
+    qry = db_session.query(Schedule).filter(Schedule.archived == 0)
+    table = ReadOnly(qry)
     table.border = True
     return render_template('search.html', table=table)
 
