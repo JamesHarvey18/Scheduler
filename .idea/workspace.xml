@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c54d04f-72df-4550-8063-92db200eb218" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/JHarvey.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/JHarvey.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alter_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/alter_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataInput.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scheduler.db" beforeDir="false" afterPath="$PROJECT_DIR$/scheduler.db" afterDir="false" />
     </list>
@@ -68,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="69" column="18" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="18" />
+            <state relative-caret-position="309">
+              <caret line="295" column="56" selection-start-line="295" selection-start-column="56" selection-end-line="295" selection-end-column="56" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -80,20 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pangram.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12">
-              <caret line="189" column="43" lean-forward="true" selection-start-line="189" selection-start-column="43" selection-end-line="189" selection-end-column="43" />
+            <state relative-caret-position="382">
+              <caret line="203" column="75" lean-forward="true" selection-start-line="203" selection-start-column="75" selection-end-line="203" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -149,8 +136,8 @@
       <find>preprocess</find>
       <find>preproc</find>
       <find>register</find>
-      <find>user</find>
       <find>login</find>
+      <find>user</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,8 +158,8 @@
         <option value="$PROJECT_DIR$/LinkedList.py" />
         <option value="$PROJECT_DIR$/alter_table.py" />
         <option value="$PROJECT_DIR$/models.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/pangram.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -218,7 +205,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.pangram">
+  <component name="RunManager" selected="Python.alter_table">
     <configuration name="BinaryTree" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MachineShopScheduler" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -326,8 +313,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.pangram" />
         <item itemvalue="Python.alter_table" />
+        <item itemvalue="Python.pangram" />
         <item itemvalue="Python.LinkedList" />
         <item itemvalue="Python.BinaryTree" />
         <item itemvalue="Python.main" />
@@ -432,6 +419,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pangram.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/alter_table.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -444,25 +438,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="189" column="43" lean-forward="true" selection-start-line="189" selection-start-column="43" selection-end-line="189" selection-end-column="43" />
+        <state relative-caret-position="382">
+          <caret line="203" column="75" lean-forward="true" selection-start-line="203" selection-start-column="75" selection-end-line="203" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="69" column="18" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="18" />
+        <state relative-caret-position="309">
+          <caret line="295" column="56" selection-start-line="295" selection-start-column="56" selection-end-line="295" selection-end-column="56" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pangram.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
         </state>
       </provider>
     </entry>

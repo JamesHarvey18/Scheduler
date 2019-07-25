@@ -293,7 +293,7 @@ def register():
 
             user.username = username
             user.email = email
-            user.password = password
+            user.password = user.hash_password(password)
             qry = db_session()
             qry.add(user)
             qry.commit()
