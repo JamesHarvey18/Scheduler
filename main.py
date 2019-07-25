@@ -265,9 +265,9 @@ def register():
             user = User()
             username = request.form['username']
             email = request.form['email']
-            print(email)
-            password = user.hash_password(request.form['pass'])
-            confirm_password = user.hash_password(request.form['confirm_pass'])
+
+            password = request.form['pass']
+            confirm_password = request.form['confirm_pass']
 
             qry = db_session.query(User).filter(User.username == username)
             qry_email = db_session.query(User).filter(User.email == email)
