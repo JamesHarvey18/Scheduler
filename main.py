@@ -258,6 +258,14 @@ def delete(id):
     return render_template('delete.html')
 
 
+@app.route('/update', methods=['GET', 'POST'])
+def update():
+    if request.method == 'POST':
+        pass
+
+    return render_template('update.html')
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     try:

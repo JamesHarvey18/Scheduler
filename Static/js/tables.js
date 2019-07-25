@@ -40,6 +40,9 @@ function highlightRows() {
       table.rows[i].getElementsByTagName('a')[0].style.color = 'black';
       table.rows[i].getElementsByTagName('a')[1].style.color = 'black';
     }
+
+    link = table.rows[i].cells[18].innerHTML;
+    table.rows[i].cells[18].innerHTML = '<a href="' + link + '">PDF LINK</a>';
   }
 }
 
@@ -51,7 +54,7 @@ function changeDeleteToTrashIcon() {
   table.getElementsByTagName('th')[19].innerHTML = '<i class="fas fa-edit"></i>';
 
   for(i = 1; i < rows.length; i++) {
-    table.rows[i].getElementsByTagName('a')[0].innerHTML = '<i class="fas fa-edit"></i>';
-    table.rows[i].getElementsByTagName('a')[1].innerHTML = '<i class="fas fa-trash-alt"></i>';
+    table.rows[i].getElementsByTagName('a')[1].innerHTML = '<i class="fas fa-edit"></i>';
+    table.rows[i].getElementsByTagName('a')[2].innerHTML = '<i class="fas fa-trash-alt"></i>';
   }
 }
