@@ -42,7 +42,7 @@ class Schedule(db.Model):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
                                 "Database=CVD;"
-                                "UID=READ_ONLY;pwd=Readonly2019")
+                                "UID=READ_ONLY;pwd=Readonly20")
 
         sql = "SELECT URL_Document FROM CVD_PART_REV_ADD_DATE WHERE PartNumber = '" + self.part_number + "'"
         df = pd.read_sql_query(sql, cnxn)
@@ -58,7 +58,7 @@ class Schedule(db.Model):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
                                 "Database=CVD;"
-                                "UID=READ_ONLY;pwd=Readonly2019")
+                                "UID=READ_ONLY;pwd=Readonly20")
 
         sql = "SELECT Revision FROM CVD_WO_WOOP_Rev2 WHERE [JOB NO] = '" + self.job_number + "' AND WORK_ORDER = '" \
               + self.work_number + "';"
@@ -76,7 +76,7 @@ class Schedule(db.Model):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
                                 "Database=CVD;"
-                                "UID=READ_ONLY;pwd=Readonly2019")
+                                "UID=READ_ONLY;pwd=Readonly20")
 
         sql = "SELECT SUM(HOURS_WORKED) FROM CVD_WO_WOOP_Rev2 WHERE [JOB NO] = '" + self.job_number\
               + "' AND WORK_ORDER = '" + self.work_number + "';"
@@ -94,7 +94,7 @@ class Schedule(db.Model):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
                                 "Database=CVD;"
-                                "UID=READ_ONLY;pwd=Readonly2019")
+                                "UID=READ_ONLY;pwd=Readonly20")
 
         sql = "SELECT CATALOGUE_NUMBER FROM CVD_WO_WOOP_Rev2 WHERE [JOB NO] = '" + self.job_number + "' AND WORK_ORDER = '" \
               + self.work_number + "';"
@@ -124,7 +124,7 @@ class Schedule(db.Model):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
                                 "Database=CVD;"
-                                "UID=READ_ONLY;pwd=Readonly2019")
+                                "UID=READ_ONLY;pwd=Readonly20")
 
         sql = "SELECT WORK_CENTER FROM CVD_WO_WOOP_Rev2 WHERE [JOB NO] = '" + self.job_number + "' AND WORK_ORDER = '" \
               + self.work_number + "' AND OPERATION = '0020';"
@@ -142,7 +142,7 @@ class Schedule(db.Model):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
                                 "Database=CVD;"
-                                "UID=READ_ONLY;pwd=Readonly2019")
+                                "UID=READ_ONLY;pwd=Readonly20")
 
         sql = "SELECT Description FROM PartMaster WHERE PartNumber = '" + self.part_number + "';"
 
@@ -162,7 +162,7 @@ class Schedule(db.Model):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
                                 "Database=CVD;"
-                                "UID=READ_ONLY;pwd=Readonly2019")
+                                "UID=READ_ONLY;pwd=Readonly20")
 
         sql = "select QTY_REQUIRED from CVD_WO_WOOP_Rev2 where CATALOGUE_NUMBER = '"\
               + str(self.part_number) + "' and [JOB NO] = '" + self.job_number\

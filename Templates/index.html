@@ -62,9 +62,9 @@
 
               <!-- Javascript limits the length of the input to only 2 digits. Doesn't work with maxlength attribute -->
               <dt><label>Priority</label></dt>
-              <input name='priority' maxLength='4'
+              <input name='priority' maxLength='2'
                   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                  type='text' class='form-control' placeholder='00'
+                  type='number' class='form-control' placeholder='00'
               />
 
             </dl>

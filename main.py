@@ -36,16 +36,18 @@ def index():
     form = SchedulerDataEntryForm(request.form)
 
     if request.method == 'POST':
+        ''' Scanning at QC removing disabled because process was not defined.
         if location == 'QUALITY CONTROL' or location == 'QC':
             try:
                 archive(form)
             except Exception as e:
                 flash('error: ' + str(e))
         else:
-            try:
-                save_changes(form)
-            except Exception as e:
-                flash('Scan barcode from work order and include finish date. ' + str(e))
+        '''
+        try:
+            save_changes(form)
+        except Exception as e:
+            flash('Scan barcode from work order and include finish date. ' + str(e))
 
         return redirect(url_for('index'))
     return render_template('index.html', form=form)
@@ -54,6 +56,14 @@ def index():
 @app.route('/schedules/master', methods=['GET', 'POST'])
 def master():
     qry = db_session.query(Schedule).filter(Schedule.archived == 0)
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/archived', methods=['GET', 'POST'])
+def archived():
+    qry = db_session.query(Schedule).filter(Schedule.archived == 1)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
