@@ -54,7 +54,7 @@ class ReadOnly(Table):
     due_date = Col('Due Date')
     entry_date = Col('Scanned')
     entry_time = Col('Time')
-    material_status = Col('Status')
+    material_status = Col('Mtl Status')
     machine_center = Col('Center')
     original_estimated_time = Col('Est.')
     actual_time = Col('Act.')
