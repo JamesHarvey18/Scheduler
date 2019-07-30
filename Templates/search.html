@@ -27,7 +27,9 @@
   <script src="../static/js/dataTables.rowGroup.min.js"></script>
   <link rel="stylesheet" href="../static/css/rowGroup.dataTables.min.css">
   <script src="../static/js/buttons.colVis.min.js"></script>
-  <link rel='stylesheet' href='..static/css/buttons.dataTables.min.css'>
+  <link rel='stylesheet' href="../static/css/buttons.dataTables.min.css">
+  <link rel='stylesheet' href='../static/css/colReorder.dataTables.min.css'>
+  <script src='../static/js/dataTables.colReorder.min.js'></script>
 
   <!-- Fontawesome -->
   <link rel='../stylesheet' href='../static/css/fas.css'>
@@ -43,6 +45,7 @@
       $('#myTable').DataTable({
         "dom": 'iBrftip',
         "deferRender": true,
+        colReorder: true,
         fixedHeader: {
           header: true,
           headerOffset: -10
