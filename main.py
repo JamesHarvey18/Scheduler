@@ -258,8 +258,12 @@ def delete(id):
     entry = qry.first()
 
     if entry:
-        db_session.delete(entry)
-        db_session.commit()
+        qry = db_session.query(Schedule).filter(Schedule.id == id)
+        entry = qry.first()
+        entry.archived = 1
+        qry = db_session()
+        qry.add(entry)
+        qry.commit()
         return redirect('/schedules/master')
     else:
         return 'ERROR DELETING #{id}'.format(id=id)
