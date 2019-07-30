@@ -1,4 +1,4 @@
-from wtforms import Form, StringField, TextAreaField, PasswordField
+from wtforms import Form, StringField, TextAreaField, PasswordField, SelectField
 
 """
 File for all of the classes of forms that are used on the website front end.
@@ -21,6 +21,10 @@ class SchedulerDataEntryForm(Form):
     priority = StringField('Priority')
     material_status = StringField('Status')
     finish = StringField('Finish')
+    work_center = SelectField(choices=[('CNCP', 'CNCP'), ('LASR', 'LASR'), ('MNUL', 'MNUL'), ('MS', 'MS'),
+                                       ('MSO', 'MSO'), ('NLLG', 'NLLG'), ('NLMD', 'NLMD'), ('NMLG', 'NMLG'),
+                                       ('NMSM', 'NMSM'), ('PNT', 'PNT'), ('SAWS', 'SAWS'), ('SMBK', 'SMBK'),
+                                       ('SMPC', 'SMPC'), ('WELD', 'WELD')])
 
 
 class LocationForm(Form):

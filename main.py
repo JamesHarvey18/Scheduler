@@ -379,7 +379,10 @@ def save_changes(form):
     schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
     schedule.quantity_complete = form.quantity_complete.data  # Manual
     schedule.actual_time = schedule.get_actual_time() # Jobscope
-    schedule.priority = request.form['priority']
+    if request.form['priority']:
+        schedule.priority = request.form['priority']
+    else:
+        schedule.priority = 99
     schedule.material_status = request.form['status'].upper()
     schedule.archived = 0
     schedule.finish = request.form['finish']
