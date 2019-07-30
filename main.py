@@ -253,19 +253,16 @@ def add_location():
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
 def delete(id):
-    if request.method == 'POST':
-        qry = db_session.query(Schedule).filter(Schedule.id == id)
-        entry = qry.first()
 
-        if entry:
-            db_session.delete(entry)
-            db_session.commit()
-            flash('Entry deleted')
-            return redirect('/')
-        else:
-            return 'ERROR DELETING #{id}'.format(id=id)
+    qry = db_session.query(Schedule).filter(Schedule.id == id)
+    entry = qry.first()
 
-    return render_template('delete.html')
+    if entry:
+        db_session.delete(entry)
+        db_session.commit()
+        return redirect('/schedules/master')
+    else:
+        return 'ERROR DELETING #{id}'.format(id=id)
 
 
 @app.route('/update', methods=['GET', 'POST'])

@@ -42,7 +42,7 @@ function highlightRows() {
     }
 
     link = table.rows[i].cells[18].innerHTML;
-    table.rows[i].cells[18].innerHTML = '<a href="' + link + '">PDF LINK</a>';
+    table.rows[i].cells[18].innerHTML = '<a href="' + link + '">PDF</a>';
   }
 }
 
