@@ -236,7 +236,7 @@ def group(wo):
 @app.route('/location', methods=['GET', 'POST'])
 def add_location():
     form = LocationForm(request.form)
-    location = form.location.data
+    location = form.location.data.upper()
     form.location.data = ''
 
     if request.method == 'POST':

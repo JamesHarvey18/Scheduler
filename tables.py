@@ -11,8 +11,8 @@ live. Unused currently. Also removes warning for abstract methods.
 
 class Results(Table):
     work_number = Col('WO') #  LinkCol('WO', 'group', url_kwargs=dict(wo='work_number'))
-    job_number = Col('Job #')
-    part_number = Col('Part Number')
+    job_number = Col('Job')
+    part_number = Col('Part')
     revision = Col('Rev.')
     finish = Col('Finish')
     part_quantity = Col('Qty.')
@@ -20,8 +20,8 @@ class Results(Table):
     part_description = Col('Description')
     part_location = Col('Location')
     priority = Col('Priority')
-    due_date = Col('Due Date')
-    entry_date = Col('Scanned')
+    due_date = Col('Due')
+    entry_date = Col('Date')
     entry_time = Col('Time')
     material_status = Col('Status')
     machine_center = Col('Center')
@@ -42,8 +42,8 @@ class Results(Table):
 
 class ReadOnly(Table):
     work_number = Col('WO') #  LinkCol('WO', 'group', url_kwargs=dict(wo='work_number'))
-    job_number = Col('Job #')
-    part_number = Col('Part Number')
+    job_number = Col('Job')
+    part_number = Col('Part')
     revision = Col('Rev.')
     finish = Col('Finish')
     part_quantity = Col('Qty.')
@@ -52,7 +52,7 @@ class ReadOnly(Table):
     part_location = Col('Location')
     priority = Col('Priority')
     due_date = Col('Due Date')
-    entry_date = Col('Scanned')
+    entry_date = Col('Date')
     entry_time = Col('Time')
     material_status = Col('Mtl Status')
     machine_center = Col('Center')
