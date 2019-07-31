@@ -19,9 +19,9 @@ class SchedulerDataEntryForm(Form):
     original_estimated_time = StringField('Time Estimate')
     quantity_complete = StringField('Quantity Complete')
     priority = StringField('Priority')
-    material_status = StringField('Status')
+    material_status = StringField('Material Status')
     finish = StringField('Finish')
-    work_center = SelectField(choices=[('CNCP', 'CNCP'), ('LASR', 'LASR'), ('MNUL', 'MNUL'), ('MS', 'MS'),
+    work_center = SelectField(choices=[('-', '-'), ('CNCP', 'CNCP'), ('LASR', 'LASR'), ('MNUL', 'MNUL'), ('MS', 'MS'),
                                        ('MSO', 'MSO'), ('NLLG', 'NLLG'), ('NLMD', 'NLMD'), ('NMLG', 'NMLG'),
                                        ('NMSM', 'NMSM'), ('PNT', 'PNT'), ('SAWS', 'SAWS'), ('SMBK', 'SMBK'),
                                        ('SMPC', 'SMPC'), ('WELD', 'WELD')])
