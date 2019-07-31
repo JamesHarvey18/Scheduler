@@ -383,7 +383,7 @@ def save_changes(form):
     if request.form['priority']:
         schedule.priority = request.form['priority']
     else:
-        schedule.priority = 99
+        schedule.priority = '--'
     schedule.material_status = request.form['status'].upper()
     schedule.archived = 0
     schedule.finish = request.form['finish']

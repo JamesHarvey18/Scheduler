@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c54d04f-72df-4550-8063-92db200eb218" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Static/js/tables.js" beforeDir="false" afterPath="$PROJECT_DIR$/Static/js/tables.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scheduler.db" beforeDir="false" afterPath="$PROJECT_DIR$/scheduler.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,8 +68,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="346" column="59" selection-start-line="346" selection-start-column="59" selection-end-line="346" selection-end-column="59" />
+            <state relative-caret-position="541">
+              <caret line="385" column="31" selection-start-line="385" selection-start-column="31" selection-end-line="385" selection-end-column="31" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -450,8 +452,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="346" column="59" selection-start-line="346" selection-start-column="59" selection-end-line="346" selection-end-column="59" />
+        <state relative-caret-position="541">
+          <caret line="385" column="31" selection-start-line="385" selection-start-column="31" selection-end-line="385" selection-end-column="31" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

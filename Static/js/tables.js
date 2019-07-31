@@ -5,40 +5,35 @@ function highlightRows() {
   // Iterate through each row of the table and get variables from columns
 
   for(i = 1; i < rows.length; i++){
+    var due_date = Date.parse(table.rows[i].cells[10].innerHTML);
+    var date_entered = Date.parse(table.rows[i].cells[11].innerHTML);
     var estimated = parseFloat(table.rows[i].cells[15].innerHTML);
     var actual = parseFloat(table.rows[i].cells[16].innerHTML);
     var qty = parseInt(table.rows[i].cells[5].innerHTML);
     var qty_comp = parseInt(table.rows[i].cells[6].innerHTML);
 
-    // If the row has the actual time going over est. time, highlight red
+    // If the due date is two days away, highlight due date red
+    if (date_entered + 172800000 >= due_date) {
+      table.rows[i].cells[10].style.backgroundColor = '#f54242';
+      table.rows[i].cells[10].style.color = 'white';
+      table.rows[i].cells[10].style.fontWeight = '600';
+    }
 
+    // If the row has the actual time going over est. time, highlight act. time cell red
     if (actual > estimated) {
-      table.rows[i].style.backgroundColor = '#f54242';
-      table.rows[i].style.color = 'white';
-      table.rows[i].style.fontWeight = '900';
-      var row = table.rows[i];
-      var edit = row.getElementsByTagName('a')[0];
-      var del = row.getElementsByTagName('a')[1];
-      edit.style.color = 'white';
-      del.style.color = 'white';
+      table.rows[i].cells[16].style.backgroundColor = '#f54242';
+      table.rows[i].cells[16].style.color = 'white';
+      table.rows[i].cells[16].style.fontWeight = '600';
+      table.rows[i].cells[15].style.backgroundColor = '#f54242';
+      table.rows[i].cells[15].style.color = 'white';
+      table.rows[i].cells[15].style.fontWeight = '600';
     }
 
-    // If the row has a completed qty. less than req., highlight yellow
+    // If the row has a completed qty. less than req., highlight qcp cell yellow
     if (qty > qty_comp) {
-
-      table.rows[i].style.backgroundColor = '#f5f242';
-      table.rows[i].style.color = 'black';
-      table.rows[i].style.fontWeight = '900';
-    }
-
-    // If the row has a completed quantity less than req. and is over time, highlight orange
-
-    if (qty > qty_comp && actual > estimated) {
-      table.rows[i].style.backgroundColor = 'orange';
-      table.rows[i].style.color = 'black';
-      table.rows[i].style.fontWeight = '900';
-      table.rows[i].getElementsByTagName('a')[0].style.color = 'black';
-      table.rows[i].getElementsByTagName('a')[1].style.color = 'black';
+      table.rows[i].cells[6].style.backgroundColor = '#f54242';
+      table.rows[i].cells[6].style.color = 'white';
+      table.rows[i].cells[6].style.fontWeight = '900';
     }
 
     link = table.rows[i].cells[18].innerHTML;
