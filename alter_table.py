@@ -4,7 +4,7 @@ import pandas as pd
 
 con = sqlite3.connect("scheduler.db")
 cur = con.cursor()
-addColumn = "DELETE FROM schedule"
+addColumn = "UPDATE schedule SET part_location = 'MSO'"
 cur.execute(addColumn)
 con.commit()
 

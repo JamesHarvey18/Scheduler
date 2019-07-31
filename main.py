@@ -218,7 +218,6 @@ def edit(id):
         form = SchedulerDataEntryForm(formdata=request.form, obj=entry)
         if request.method == 'POST':
             edit_entry(form, entry)
-            flash('Schedule updated successfully')
             return redirect('/schedules/master')
         return render_template('edit.html', form=form)
     else:
@@ -368,7 +367,7 @@ def save_changes(form):
         print(str(e))
         schedule.part_quantity = 0
 
-    schedule.part_location = request.cookies.get('location').upper()  # Auto
+    schedule.part_location = "MSO"# request.cookies.get('location').upper()  # Auto
     schedule.entry_time = dt.strftime("%H:%M:%S")  # Auto
     schedule.entry_date = datetime.date.today()  # Auto
     schedule.comments = form.comments.data.upper()  # Manual
