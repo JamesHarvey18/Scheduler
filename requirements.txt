@@ -1,0 +1,9 @@
+Flask
+flask_table
+wtforms
+pandas
+pypyodbc
+flask-sqlalchemy
+sqlalchemy
+openpyxl
+validate_email
