@@ -6,14 +6,14 @@ function highlightRows() {
 
   for(i = 1; i < rows.length; i++){
     var due_date = Date.parse(table.rows[i].cells[10].innerHTML);
-    var date_entered = Date.parse(table.rows[i].cells[11].innerHTML);
+    var current_date = Date.now();
     var estimated = parseFloat(table.rows[i].cells[15].innerHTML);
     var actual = parseFloat(table.rows[i].cells[16].innerHTML);
     var qty = parseInt(table.rows[i].cells[5].innerHTML);
     var qty_comp = parseInt(table.rows[i].cells[6].innerHTML);
 
     // If the due date is two days away, highlight due date red
-    if (date_entered + 172800000 >= due_date) {
+    if (current_date + 172800000 >= due_date) {
       table.rows[i].cells[10].style.backgroundColor = '#f54242';
       table.rows[i].cells[10].style.color = 'white';
       table.rows[i].cells[10].style.fontWeight = '600';
