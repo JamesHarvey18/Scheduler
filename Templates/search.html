@@ -30,6 +30,8 @@
   <link rel='stylesheet' href="../static/css/buttons.dataTables.min.css">
   <link rel='stylesheet' href='../static/css/colReorder.dataTables.min.css'>
   <script src='../static/js/dataTables.colReorder.min.js'></script>
+  <script src='../static/js/dataTables.select.min.js'></script>
+  <link rel='stylesheet' href='../static/css/select.dataTables.min.css'>
 
   <!-- Fontawesome -->
   <link rel='../stylesheet' href='../static/css/fas.css'>
@@ -47,6 +49,9 @@
         "deferRender": true,
         colReorder: true,
         stateSave: true,
+        select: {
+          style: 'single'
+        },
         fixedHeader: {
           header: true,
           headerOffset: -10

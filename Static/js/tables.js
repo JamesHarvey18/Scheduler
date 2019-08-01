@@ -5,7 +5,7 @@ function highlightRows() {
   // Iterate through each row of the table and get variables from columns
 
   for(i = 1; i < rows.length; i++){
-    var due_date = Date.parse(table.rows[i].cells[10].innerHTML);
+    var due_date = Date.parse(table.rows[i].cells[11].innerHTML);
     var current_date = Date.now();
     var estimated = parseFloat(table.rows[i].cells[15].innerHTML);
     var actual = parseFloat(table.rows[i].cells[16].innerHTML);
@@ -29,7 +29,7 @@ function highlightRows() {
       table.rows[i].cells[15].style.fontWeight = '600';
     }
 
-    // If the row has a completed qty. less than req., highlight qcp cell yellow
+    // If the row has a completed qty. less than req., highlight qcp cell red
     if (qty > qty_comp) {
       table.rows[i].cells[6].style.backgroundColor = '#f54242';
       table.rows[i].cells[6].style.color = 'white';
@@ -40,6 +40,8 @@ function highlightRows() {
     table.rows[i].cells[18].innerHTML = '<a href="' + link + '">PDF</a>';
   }
 }
+
+// Changes the links for editing and deleting to favicons
 
 function changeDeleteToTrashIcon() {
   var table = document.getElementById('myTable');
