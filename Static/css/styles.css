@@ -1,6 +1,7 @@
 html, body{
   background-color: white;
   font-family: Poppins-Regular, sans-serif;
+  cursor: url(bugsbunny2.cur), pointer;
 }
 header{
   width: 100%;
