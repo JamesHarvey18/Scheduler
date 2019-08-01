@@ -27,6 +27,7 @@
       <li><a href="{{url_for('schedules')}}">Schedules</a></li>
       <li><a href="{{url_for('register')}}">Register</a></li>
       <li><a href="{{url_for('login')}}">Login</a></li>
+      <li><a href="static/ledger.pdf">Ledger</a></li>
     </ul>
   </nav>
 </header>
@@ -62,10 +63,7 @@
 
               <!-- Javascript limits the length of the input to only 2 digits. Doesn't work with maxlength attribute -->
               <dt><label>Priority</label></dt>
-              <input name='priority' maxLength='2'
-                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                  type='number' class='form-control' placeholder='00'
-              />
+              <input name='priority' maxLength='2' oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type='number' class='form-control' placeholder='00' />
               {{ render_field(form.work_center, class="form-control") }}
 
             </dl>
@@ -76,12 +74,12 @@
               {{ render_field(form.due_date, type="date", class="form-control", maxlength="25", placeholder="2019-05-02") }}
               {{ render_field(form.original_estimated_time, class="form-control", maxlength="20", placeholder="4 Hours") }}
               <dt><label>Material Status</label></dt>
-              <input name='status' type='text' class='form-control' placeholder='Status'/>
+              <input name='status' type='text' class='form-control' placeholder='Status' />
               <div class="container-login100-form-btn">
-    						<button class="login100-form-btn">
-    							Submit
-    						</button>
-    					</div>
+                <button class="login100-form-btn">
+                  Submit
+                </button>
+              </div>
             </dl>
           </div>
 
@@ -90,7 +88,7 @@
               {{ render_field(form.quantity_complete, class="form-control", maxlength="20", placeholder="1") }}
               {{ render_field(form.comments, class="form-control", maxlength="150", placeholder="Max length - 150 characters") }}
               <dt><label>Finish</label></dt>
-              <input name='finish' type='text' class='form-control' placeholder='Finish'/>
+              <input name='finish' type='text' class='form-control' placeholder='Finish' />
             </dl>
           </div>
           <p></p>
