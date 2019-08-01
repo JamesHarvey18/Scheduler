@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c54d04f-72df-4550-8063-92db200eb218" name="Default Changelist" comment="" />
+    <list default="true" id="1c54d04f-72df-4550-8063-92db200eb218" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Static/js/tables.js" beforeDir="false" afterPath="$PROJECT_DIR$/Static/js/tables.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/tables.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tables.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="32" column="66" lean-forward="true" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
+            <state relative-caret-position="481">
+              <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="30" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -451,8 +456,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tables.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="32" column="66" lean-forward="true" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
+        <state relative-caret-position="481">
+          <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="30" selection-end-column="20" />
         </state>
       </provider>
     </entry>

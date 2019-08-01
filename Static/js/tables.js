@@ -14,9 +14,9 @@ function highlightRows() {
 
     // If the due date is two days away, highlight due date red
     if (current_date + 172800000 >= due_date) {
-      table.rows[i].cells[10].style.backgroundColor = '#f54242';
-      table.rows[i].cells[10].style.color = 'white';
-      table.rows[i].cells[10].style.fontWeight = '600';
+      table.rows[i].cells[11].style.backgroundColor = '#f54242';
+      table.rows[i].cells[11].style.color = 'white';
+      table.rows[i].cells[11].style.fontWeight = '600';
     }
 
     // If the row has the actual time going over est. time, highlight act. time cell red
@@ -36,8 +36,9 @@ function highlightRows() {
       table.rows[i].cells[6].style.fontWeight = '900';
     }
 
-    link = table.rows[i].cells[18].innerHTML;
-    table.rows[i].cells[18].innerHTML = '<a href="' + link + '">PDF</a>';
+    var link = table.rows[i].cells[18].innerHTML;
+    var partnum = table.rows[i].cells[2].innerHTML;
+    table.rows[i].cells[2].innerHTML = '<a href="' + link + '">' + partnum + '</a>';
   }
 }
 
