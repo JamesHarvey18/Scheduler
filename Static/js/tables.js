@@ -12,11 +12,18 @@ function highlightRows() {
     var qty = parseInt(table.rows[i].cells[5].innerHTML);
     var qty_comp = parseInt(table.rows[i].cells[6].innerHTML);
 
-    // If the due date is two days away, highlight due date red
+    // If the due date is two days away, highlight due date orange
     if (current_date + 172800000 >= due_date) {
-      table.rows[i].cells[11].style.backgroundColor = '#f54242';
-      table.rows[i].cells[11].style.color = 'white';
-      table.rows[i].cells[11].style.fontWeight = '600';
+      table.rows[i].cells[10].style.backgroundColor = 'orange';
+      table.rows[i].cells[10].style.color = 'black';
+      table.rows[i].cells[10].style.fontWeight = '600';
+    }
+
+    // If the current date is past the due date, highlight due date red
+    if (current_date > due_date) {
+      table.rows[i].cells[10].style.backgroundColor = '#f54242';
+      table.rows[i].cells[10].style.color = 'white';
+      table.rows[i].cells[10].style.fontWeight = '600';
     }
 
     // If the row has the actual time going over est. time, highlight act. time cell red

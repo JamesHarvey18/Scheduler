@@ -4,7 +4,7 @@ from db_setup import init_db, db_session
 from forms import SchedulerDataEntryForm, LocationForm
 from flask import Flask, flash, render_template, redirect, url_for, request, session, make_response
 from models import Schedule, User, Password
-from tables import Results, ReadOnly
+from tables import Results, ReadOnly, Archived
 import datetime
 from functools import wraps
 from validate_email import validate_email
@@ -64,7 +64,7 @@ def master():
 @app.route('/schedules/archived', methods=['GET', 'POST'])
 def archived():
     qry = db_session.query(Schedule).filter(Schedule.archived == 1)
-    table = Results(qry)
+    table = Archived(qry)
     table.border = True
     return render_template('search.html', table=table)
 
