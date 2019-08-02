@@ -217,6 +217,7 @@ def edit(id):
     if entry:
         form = SchedulerDataEntryForm(formdata=request.form, obj=entry)
         form.work_center.data = entry.machine_center
+        flash('Part: ' + entry.part_number)
         if request.method == 'POST':
             edit_entry(form, entry)
             return redirect('/schedules/master')

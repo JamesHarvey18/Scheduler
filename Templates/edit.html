@@ -27,7 +27,7 @@
       <li><a href="{{url_for('schedules')}}">Schedules</a></li>
       <li><a href="{{url_for('register')}}">Register</a></li>
       <li><a href="{{url_for('login')}}">Login</a></li>
-<li><a href="static/ledger.pdf">Ledger</a></li>
+      <li><a href="static/ledger.pdf">Ledger</a></li>
     </ul>
   </nav>
 </header>
@@ -36,6 +36,17 @@
 
   <h1>Machine Shop Scheduler</h1><br /><br /><br />
   <h2>Edit Entry</h2>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+    {{message}}
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
 
   <div class="container-entry">
 
@@ -60,10 +71,10 @@
               {{ render_field(form.finish, class='form-control', maxlength='20', placeholder='Finish') }}
 
               <div class="container-login100-form-btn">
-    						<button class="login100-form-btn">
-    							Save
-    						</button>
-    					</div>
+                <button class="login100-form-btn">
+                  Save
+                </button>
+              </div>
 
             </dl>
           </div>
