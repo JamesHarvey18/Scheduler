@@ -37,7 +37,7 @@ def index():
 
     if request.method == 'POST':
         ''' Scanning at QC removing disabled because process was not defined.
-        if location == 'QUALITY CONTROL' or location == 'QC':
+        if (location == 'QUALITY CONTROL' or location == 'QC') and :
             try:
                 archive(form)
             except Exception as e:
@@ -216,6 +216,7 @@ def edit(id):
 
     if entry:
         form = SchedulerDataEntryForm(formdata=request.form, obj=entry)
+        form.work_center.data = entry.machine_center
         if request.method == 'POST':
             edit_entry(form, entry)
             return redirect('/schedules/master')
