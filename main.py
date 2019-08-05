@@ -426,7 +426,10 @@ def archive(form):
     schedule.actual_time = schedule.get_actual_time()  # Jobscope
     schedule.priority = request.form['priority']
     schedule.material_status = request.form['status'].upper()
-    schedule.archived = 1
+    if schedule.quantity_complete != schedule.part_quantity:
+        schedule.archived = 0
+    else:
+        schedule.archived = 1
     schedule.finish = request.form['finish']
     schedule.pdf = schedule.get_pdf()
 
