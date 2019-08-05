@@ -94,7 +94,7 @@ def login():
 
 @app.route('/schedules/CNCP', methods=['GET', 'POST'])
 def cncp():
-    qry = db_session.query(Schedule) .filter(Schedule.machine_center == 'CNCP')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'CNCP').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -102,7 +102,7 @@ def cncp():
 
 @app.route('/schedules/LASR', methods=['GET', 'POST'])
 def lasr():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'LASR')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'LASR').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -110,7 +110,7 @@ def lasr():
 
 @app.route('/schedules/MNUL', methods=['GET', 'POST'])
 def mnul():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MNUL')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MNUL').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -118,7 +118,7 @@ def mnul():
 
 @app.route('/schedules/MS', methods=['GET', 'POST'])
 def ms():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MS')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MS').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -126,7 +126,7 @@ def ms():
 
 @app.route('/schedules/MSO', methods=['GET', 'POST'])
 def mso():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MSO')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MSO').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -134,7 +134,7 @@ def mso():
 
 @app.route('/schedules/NLLG', methods=['GET', 'POST'])
 def nllg():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NLLG')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NLLG').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -142,7 +142,7 @@ def nllg():
 
 @app.route('/schedules/NLMD', methods=['GET', 'POST'])
 def nlmd():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NLMD')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NLMD').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -150,7 +150,7 @@ def nlmd():
 
 @app.route('/schedules/NMLG', methods=['GET', 'POST'])
 def nmlg():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NMLG')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NMLG').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -158,7 +158,7 @@ def nmlg():
 
 @app.route('/schedules/NMSM', methods=['GET', 'POST'])
 def nmsm():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NMSM')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NMSM').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -166,7 +166,7 @@ def nmsm():
 
 @app.route('/schedules/PNT', methods=['GET', 'POST'])
 def pnt():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'PNT')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'PNT').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -174,7 +174,7 @@ def pnt():
 
 @app.route('/schedules/SAWS', methods=['GET', 'POST'])
 def saws():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SAWS')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SAWS').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -182,7 +182,7 @@ def saws():
 
 @app.route('/schedules/SMBK', methods=['GET', 'POST'])
 def smbk():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SMBK')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SMBK').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -190,7 +190,7 @@ def smbk():
 
 @app.route('/schedules/SMPC', methods=['GET', 'POST'])
 def smpc():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SMPC')
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SMPC').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -198,7 +198,7 @@ def smpc():
 
 @app.route('/schedules/WELD', methods=['GET', 'POST'])
 def weld():
-    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'WELD')# .filter(Schedule.archived == 0)
+    qry = db_session.query(Schedule).filter(Schedule.machine_center == 'WELD').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
     return render_template('search.html', table=table)
@@ -262,6 +262,12 @@ def delete(id):
         qry = db_session.query(Schedule).filter(Schedule.id == id)
         entry = qry.first()
         entry.archived = 1
+        entry.date_deleted = datetime.date.today()
+        try:
+            entry.location_deleted = request.cookies.get('location').upper()
+        except Exception as e:
+            entry.location_deleted = 'Not set'
+            print(e)
         qry = db_session()
         qry.add(entry)
         qry.commit()
@@ -432,6 +438,11 @@ def archive(form):
         schedule.archived = 1
     schedule.finish = request.form['finish']
     schedule.pdf = schedule.get_pdf()
+    try:
+        schedule.location_deleted = request.cookies.get('location').upper()
+    except Exception as e:
+        print(e)
+    schedule.date_deleted = datetime.date.today()
 
     qry = db_session()
     qry.add(schedule)

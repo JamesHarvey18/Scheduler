@@ -37,6 +37,8 @@ class Schedule(db.Model):
     priority = db.Column(db.Integer)
     finish = db.Column(db.String)
     pdf = db.Column(db.String)
+    location_deleted = db.Column(db.String)
+    date_deleted = db.Column(db.Date)
 
     def get_pdf(self):
         cnxn = pypyodbc.connect("Driver={SQL Server};"

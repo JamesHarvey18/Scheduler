@@ -4,7 +4,7 @@ import pandas as pd
 
 con = sqlite3.connect("scheduler.db")
 cur = con.cursor()
-addColumn = "UPDATE schedule SET priority = 99 WHERE priority IS NULL"
+addColumn = "ALTER TABLE schedule ADD location_deleted varchar(255)"
 cur.execute(addColumn)
 con.commit()
 

@@ -51,8 +51,8 @@ class ReadOnly(Table):
     part_description = Col('Description')
     part_location = Col('Location')
     priority = Col('Priority')
-    due_date = Col('Due Date')
     entry_date = Col('Date')
+    due_date = Col('Due Date')
     entry_time = Col('Time')
     material_status = Col('Mtl Status')
     machine_center = Col('Center')
@@ -80,8 +80,8 @@ class Archived(Table):
     part_description = Col('Description')
     part_location = Col('Location')
     priority = Col('Priority')
-    due_date = Col('Due Date')
     entry_date = Col('Date')
+    due_date = Col('Due Date')
     entry_time = Col('Time')
     material_status = Col('Mtl Status')
     machine_center = Col('Center')
@@ -89,6 +89,10 @@ class Archived(Table):
     actual_time = Col('Act.')
     comments = Col('Notes')
     pdf = Col('PDF')
+    edit = LinkCol('Edit', 'edit', url_kwargs=dict(id='id'))
+    delete = LinkCol('Delete', 'delete', url_kwargs=dict(id='id'))
+    location_deleted = Col('Loc. Deleted')
+    date_deleted = Col('Date Deleted')
 
     def sort_url(self, col_id, reverse=False):
         if reverse:
