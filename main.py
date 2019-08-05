@@ -437,12 +437,14 @@ def archive(form):
     qry.add(schedule)
     qry.commit()
 
-    # Archive all other entries with the same info
-    con = sqlite3.connect("scheduler.db")
-    cur = con.cursor()
-    sql = "UPDATE schedule SET archived=1 WHERE part_number = '" + str(schedule.part_number) + "' AND job_number = '" + str(schedule.job_number) + "' AND work_number = '" + str(schedule.work_number) + "'"
-    cur.execute(sql)
-    con.commit()
+    if schedule.quantity_complete != schedule.part_quantity:
+
+        # Archive all other entries with the same info
+        con = sqlite3.connect("scheduler.db")
+        cur = con.cursor()
+        sql = "UPDATE schedule SET archived=1 WHERE part_number = '" + str(schedule.part_number) + "' AND job_number = '" + str(schedule.job_number) + "' AND work_number = '" + str(schedule.work_number) + "'"
+        cur.execute(sql)
+        con.commit()
 
 
 if __name__ == '__main__':
