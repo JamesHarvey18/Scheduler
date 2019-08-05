@@ -345,7 +345,7 @@ def edit_entry(form, schedule):
     schedule.quantity_complete = form.quantity_complete.data  # Manual
     schedule.priority = request.form['priority']
     schedule.material_status = request.form['material_status'].upper()
-    schedule.machine_center = form.work_center.data.upper()
+    schedule.machine_center = request.form['work_center']
 
     qry = db_session()
     qry.add(schedule)
