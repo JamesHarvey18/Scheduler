@@ -47,6 +47,11 @@
       cursor: url("../static/images/fatbugs.jpeg"), default;
     }
   </style>
+
+  <!-- Gets flashed messages so that it prevents two from showing on edit -->
+  {% with messages = get_flashed_messages() %}
+  {% endwith %}
+
   <!-- JavaScript for datatables -->
   <script>
     $(document).ready(function() {
