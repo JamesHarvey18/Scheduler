@@ -67,7 +67,7 @@
           <div class="col-xs-4">
             <dl>
               {{ render_field(form.due_date, type="date", class="form-control", maxlength="25", placeholder="2019-05-02") }}
-              {{ render_field(form.original_estimated_time, class="form-control", maxlength="20", placeholder="4 Hours") }}
+              {{ render_field(form.original_estimated_time, type='number', class="form-control", maxlength="20", placeholder="4 Hours") }}
               {{ render_field(form.finish, class='form-control', maxlength='20', placeholder='Finish') }}
 
               <div class="container-login100-form-btn">
@@ -81,7 +81,7 @@
 
           <div class="col-xs-4">
             <dl>
-              {{ render_field(form.quantity_complete, class="form-control", maxlength="20", placeholder="1") }}
+              {{ render_field(form.quantity_complete, type="number", class="form-control", maxlength="20", placeholder="1") }}
               {{ render_field(form.comments, class="form-control", maxlength="150", placeholder="Max length - 150 characters") }}
               {{ render_field(form.work_center, class="form-control") }}
             </dl>
