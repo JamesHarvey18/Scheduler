@@ -170,6 +170,10 @@ iframe {
   background: white;
 }
 
+.edit {
+  padding: 15px;
+}
+
 .wrap-login100 {
   width: 600px;
   background: #fff;
