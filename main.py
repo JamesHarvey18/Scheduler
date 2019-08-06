@@ -11,6 +11,7 @@ from validate_email import validate_email
 import sqlite3
 
 init_db()
+referers = []  # Global list to contain referral urls when editing so the user can return to the same page they were on.
 
 
 def login_required(f):
@@ -211,19 +212,21 @@ def schedules():
 
 @app.route('/item/<int:id>', methods=['GET', 'POST'])
 def edit(id):
+    if 'schedules' in request.headers.get('Referer'):
+        referer = request.headers.get('Referer')
+        referers.clear()
+        referers.append(referer)
+
     qry = db_session.query(Schedule).filter(Schedule.id == id)
     entry = qry.first()
 
-    if entry:
-        form = SchedulerDataEntryForm(formdata=request.form, obj=entry)
-        form.work_center.data = entry.machine_center
-        flash('Part: ' + entry.part_number)
-        if request.method == 'POST':
-            edit_entry(form, entry)
-            return redirect('/schedules/master')
-        return render_template('edit.html', form=form)
-    else:
-        return 'Error loading #{id}. Please report this issue.'.format(id=id)
+    form = SchedulerDataEntryForm(formdata=request.form, obj=entry)
+    form.work_center.data = entry.machine_center
+    flash('Part: ' + entry.part_number)
+    if request.method == 'POST':
+        edit_entry(form, entry)
+        return redirect(referers[0])
+    return render_template('edit.html', form=form)
 
 
 @app.route('/work_order/<int:wo>', methods=['GET', 'POST'])
