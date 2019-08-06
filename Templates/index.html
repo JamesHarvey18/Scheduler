@@ -79,7 +79,7 @@
           <div class="col-xs-4">
             <dl>
               {{ render_field(form.part_number, class="form-control", maxlength="30", placeholder="Work Order") }}
-              {{ render_field(form.original_estimated_time, type='number', class="form-control", maxlength="20", placeholder="4 Hours") }}
+              {{ render_field(form.original_estimated_time, step='0.1', type='number', class="form-control", maxlength="20", placeholder="4 Hours") }}
               <dt><label>Material Status</label></dt>
               <input name='status' type='text' class='form-control' placeholder='Status' />
               <div class="container-login100-form-btn">
