@@ -284,6 +284,7 @@ dt {
 .alert {
   font-size: 40px;
   text-align: center;
+  color: #f54242;
 }
 .save_name {
   float:left;
