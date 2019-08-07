@@ -3,6 +3,8 @@ import hashlib, binascii, os
 from db_setup import db_session
 import pandas as pd
 import pypyodbc
+import datetime
+from flask import request
 
 """
 This file is needed as a model of the database so the data can be entered
@@ -55,6 +57,22 @@ class Schedule(db.Model):
             return ""
         url = "file:" + str(url)
         return url
+
+    def delete_permanent(self):
+        db_session.delete(self)
+        db_session.commit()
+
+    def archive(self):
+        self.archived = 1
+        self.date_deleted = datetime.date.today()
+        try:
+            self.location_deleted = request.cookies.get('location').upper()
+        except Exception as e:
+            self.location_deleted = 'Not set'
+            print(e)
+        qry = db_session()
+        qry.add(self)
+        qry.commit()
 
     def get_revision(self):
         cnxn = pypyodbc.connect("Driver={SQL Server};"

@@ -263,22 +263,10 @@ def delete(id):
 
     if entry:
         if entry.archived == 1:
-            db_session.delete(entry)
-            db_session.commit()
+            entry.delete_permanent()
             return redirect(request.headers.get('Referer'))
         else:
-            qry = db_session.query(Schedule).filter(Schedule.id == id)
-            entry = qry.first()
-            entry.archived = 1
-            entry.date_deleted = datetime.date.today()
-            try:
-                entry.location_deleted = request.cookies.get('location').upper()
-            except Exception as e:
-                entry.location_deleted = 'Not set'
-                print(e)
-            qry = db_session()
-            qry.add(entry)
-            qry.commit()
+            entry.archive()
             return redirect(request.headers.get('Referer'))
     else:
         return 'ERROR DELETING #{id}'.format(id=id)
