@@ -265,7 +265,7 @@ def delete(id):
         if entry.archived == 1:
             db_session.delete(entry)
             db_session.commit()
-            return redirect('/schedules/master')
+            return redirect(request.headers.get('Referer'))
         else:
             qry = db_session.query(Schedule).filter(Schedule.id == id)
             entry = qry.first()
@@ -279,7 +279,7 @@ def delete(id):
             qry = db_session()
             qry.add(entry)
             qry.commit()
-            return redirect('/schedules/master')
+            return redirect(request.headers.get('Referer'))
     else:
         return 'ERROR DELETING #{id}'.format(id=id)
 

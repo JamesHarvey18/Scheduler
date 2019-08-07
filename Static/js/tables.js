@@ -43,9 +43,12 @@ function highlightRows() {
       table.rows[i].cells[6].style.fontWeight = '900';
     }
 
+    // Wraps part number in link to the pdf
     var link = table.rows[i].cells[18].innerHTML;
     var partnum = table.rows[i].cells[2].innerHTML;
-    table.rows[i].cells[2].innerHTML = '<a href="' + link + '">' + partnum + '</a>';
+    if (link != 'file:None' && link != '') {
+      table.rows[i].cells[2].innerHTML = '<a href="' + link + '">' + partnum + '</a>';
+    }
   }
 }
 
