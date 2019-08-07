@@ -62,7 +62,16 @@ function changeDeleteToTrashIcon() {
   table.getElementsByTagName('th')[19].innerHTML = '<i class="fas fa-edit"></i>';
 
   for(i = 1; i < rows.length; i++) {
-    table.rows[i].getElementsByTagName('a')[1].innerHTML = '<i class="fas fa-edit"></i>';
-    table.rows[i].getElementsByTagName('a')[2].innerHTML = '<i class="fas fa-trash-alt"></i>';
+    var link = table.rows[i].cells[18].innerHTML;
+
+    if (link == 'file:None' || link == '') {
+      table.rows[i].getElementsByTagName('a')[0].innerHTML = '<i class="fas fa-edit"></i>';
+      table.rows[i].getElementsByTagName('a')[1].innerHTML = '<i class="fas fa-trash-alt"></i>';
+    }
+    else {
+      table.rows[i].getElementsByTagName('a')[1].innerHTML = '<i class="fas fa-edit"></i>';
+      table.rows[i].getElementsByTagName('a')[2].innerHTML = '<i class="fas fa-trash-alt"></i>';
+    }
+
   }
 }
