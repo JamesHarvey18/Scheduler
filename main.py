@@ -9,6 +9,7 @@ import datetime
 from functools import wraps
 from validate_email import validate_email
 import sqlite3
+import re
 
 init_db()
 referers = []  # Global list to contain referral urls when editing so the user can return to the same page they were on.
@@ -274,15 +275,54 @@ def delete(id):
 
 @app.route('/update', methods=['GET', 'POST'])
 def update():
+    form = SchedulerDataEntryForm(request.form)
     if request.method == 'POST':
-        if request.form['job'] == '' and request.form['work'] == '':
-            flash('Enter a valid job number and/or work order.')
-        elif request.form['job'] != '' and request.form['work'] == '':
-            pass
-        elif request.form['job'] != '' and request.form['work'] != '':
-            pass
+        if str(request.form['date']) is not None and str(request.form['date']) != '':
+            job = request.form['job'].upper()
+            work = request.form['work'].upper()
+            work_center = form.work_center.data
 
-    return render_template('update.html')
+            if job == '' and work == '':
+                flash('Enter a valid job number and/or work order.')
+            elif job != '' and work == '':
+                try:
+                    sql = 'UPDATE schedule SET due_date = "' + request.form['date'] + '", quantity_complete = "' \
+                              + request.form['qty'] + '", original_estimated_time = "' + request.form['time'] + '", comments = "' \
+                              + request.form['notes'].upper() + '", priority = "' + request.form['priority'] + '", material_status = "' \
+                              + request.form['status'].upper() + '", finish = "' + request.form['finish'].upper() + '", machine_center = "' + work_center + '" WHERE job_number = "' \
+                              + job + '"'
+
+                    con = sqlite3.connect("scheduler.db")
+                    cur = con.cursor()
+                    cur.execute(sql)
+                    con.commit()
+                    con.close()
+                    return render_template('update.html')
+                except Exception as e:
+                    flash('Invalid entry. Include date.')
+
+            elif job != '' and work != '':
+                try:
+                    sql = 'UPDATE schedule SET due_date = "' + request.form['date'] + '", quantity_complete = "' \
+                          + request.form['qty'] + '", original_estimated_time = "' + request.form['time'] + '", comments = "' \
+                          + request.form['notes'].upper() + '", priority = "' + request.form['priority'] + '", material_status = "' \
+                          + request.form['status'].upper() + '", finish = "' + request.form['finish'].upper() + '", machine_center = "' + work_center + '" WHERE job_number = "' \
+                          + job + '" AND work_number = "' + work + '"'
+
+                    con = sqlite3.connect("scheduler.db")
+                    cur = con.cursor()
+                    cur.execute(sql)
+                    con.commit()
+                    con.close()
+                    return render_template('update.html', form=form)
+                except Exception as e:
+                    flash('Invalid entry. Include date')
+            else:
+                flash('Invalid entry')
+        else:
+            flash('Invalid date')
+
+    return render_template('update.html', form=form)
 
 
 @app.route('/register', methods=['GET', 'POST'])
