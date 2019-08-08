@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c54d04f-72df-4550-8063-92db200eb218" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/schedules.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/schedules.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scheduler.db" beforeDir="false" afterPath="$PROJECT_DIR$/scheduler.db" afterDir="false" />
-    </list>
+    <list default="true" id="1c54d04f-72df-4550-8063-92db200eb218" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +54,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="513">
+                <state relative-caret-position="477">
                   <caret line="287" column="111" lean-forward="true" selection-start-line="287" selection-start-column="111" selection-end-line="287" selection-end-column="111" />
                   <folding>
                     <element signature="e#0#19#0" expanded="true" />
@@ -457,7 +450,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
+        <state relative-caret-position="477">
           <caret line="287" column="111" lean-forward="true" selection-start-line="287" selection-start-column="111" selection-end-line="287" selection-end-column="111" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />

@@ -28,6 +28,8 @@
       <li><a href="{{url_for('register')}}">Register</a></li>
       <li><a href="{{url_for('login')}}">Login</a></li>
       <li><a href="static/ledger.pdf">Ledger</a></li>
+      <li><a href="{{url_for('update')}}">Mass Update</a></li>
+      <li><a href="{{url_for('mass_delete')}}">Mass Delete</a></li>
     </ul>
   </nav>
 </header>
@@ -59,15 +61,15 @@
           <div class="col-xs-4">
             <dl>
               <dt><label>Job Number</label></dt>
-              <input name='job' type='text' class='form-control' placeholder='Status'/>
+              <input name='job' type='text' class='form-control' placeholder='Status' />
               <dt><label>Work Order</label></dt>
-              <input name='work' type='text' class='form-control' placeholder='Status'/>
+              <input name='work' type='text' class='form-control' placeholder='Status' />
 
               <div class="container-login100-form-btn">
-    						<button class="login100-form-btn">
-    							Edit
-    						</button>
-    					</div>
+                <button class="login100-form-btn">
+                  Edit
+                </button>
+              </div>
 
             </dl>
           </div>
@@ -75,24 +77,24 @@
           <div class="col-xs-4">
             <dl>
               <dt><label>Finish Date</label></dt>
-              <input name='date' type='date' class='form-control'/>
+              <input name='date' type='date' class='form-control' />
               <dt><label>Quantity Complete</label></dt>
-              <input name='qty' type='number' class='form-control' placeholder='0'/>
+              <input name='qty' type='number' class='form-control' placeholder='0' />
               <dt><label>Time Estimate</label></dt>
-              <input name='time' type='number' step='.1' class='form-control' placeholder='0'/>
+              <input name='time' type='number' step='.1' class='form-control' placeholder='0' />
               <dt><label>Notes</label></dt>
-              <input name='notes' type='text' class='form-control' placeholder='Complete'/>
+              <input name='notes' type='text' class='form-control' placeholder='Complete' />
             </dl>
           </div>
 
           <div class="col-xs-4">
             <dl>
               <dt><label>Priority</label></dt>
-              <input name='priority' type='number' class='form-control' placeholder='11'/>
+              <input name='priority' type='number' class='form-control' placeholder='11' />
               <dt><label>Status</label></dt>
-              <input name='status' type='text' class='form-control' placeholder='Status'/>
+              <input name='status' type='text' class='form-control' placeholder='Status' />
               <dt><label>Finish</label></dt>
-              <input name='finish' type='text' class='form-control' placeholder='Paint'/>
+              <input name='finish' type='text' class='form-control' placeholder='Paint' />
               {{ render_field(form.work_center, class="form-control") }}
             </dl>
           </div>
