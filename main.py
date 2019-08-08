@@ -276,7 +276,24 @@ def delete(id):
 @app.route('/mass_delete', methods=['GET', 'POST'])
 def mass_delete():
     if request.method == 'POST':
-        pass
+        job = request.form['job'].upper()
+        work = request.form['work'].upper()
+
+        if not job and not work:
+            sql = ''
+            flash('No entry specified.')
+        elif job and not work:
+            sql = 'UPDATE schedule SET archived = 1 WHERE job_number = "' + job + '"'
+        elif job and work:
+            sql = 'UPDATE schedule SET archived = 1 WHERE job_number = "' + job + '" AND work_number = "' + '"'
+
+        con = sqlite3.connect("scheduler.db")
+        cur = con.cursor()
+        cur.execute(sql)
+        con.commit()
+        con.close()
+        return redirect(url_for('mass_delete'))
+
     return render_template('mass_delete.html')
 
 
@@ -290,6 +307,7 @@ def update():
             work_center = form.work_center.data
 
             if job == '' and work == '':
+                sql = ''
                 flash('Enter a valid job number and/or work order.')
             elif job != '' and work == '':
                 try:
@@ -303,13 +321,6 @@ def update():
                           'finish = "' + request.form['finish'].upper() + '", ' \
                           'machine_center = "' + work_center + '" ' \
                           'WHERE job_number = "' + job + '"'
-
-                    con = sqlite3.connect("scheduler.db")
-                    cur = con.cursor()
-                    cur.execute(sql)
-                    con.commit()
-                    con.close()
-                    return render_template('update.html')
                 except Exception as e:
                     flash('Invalid entry. Include date.')
 
@@ -325,17 +336,18 @@ def update():
                           'finish = "' + request.form['finish'].upper() + '", ' \
                           'machine_center = "' + work_center + '" ' \
                           'WHERE job_number = "' + job + '" AND work_number = "' + work + '"'
-
-                    con = sqlite3.connect("scheduler.db")
-                    cur = con.cursor()
-                    cur.execute(sql)
-                    con.commit()
-                    con.close()
-                    return render_template('update.html', form=form)
                 except Exception as e:
                     flash('Invalid entry. Include date')
             else:
+                sql = ''
                 flash('Invalid entry')
+
+            con = sqlite3.connect("scheduler.db")
+            cur = con.cursor()
+            cur.execute(sql)
+            con.commit()
+            con.close()
+            return redirect(url_for('update'))
         else:
             flash('Invalid date')
 

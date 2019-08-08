@@ -480,3 +480,7 @@ iframe {
 .update {
   padding: 15px;
 }
+
+.delete {
+  background-color: red;
+}

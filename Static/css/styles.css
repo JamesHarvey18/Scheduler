@@ -313,3 +313,7 @@ th {
 #myTable_filter{
   padding-right: 20px;
 }
+
+.mass-delete {
+  color: red;
+}
