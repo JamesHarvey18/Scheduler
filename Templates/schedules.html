@@ -1,57 +1,150 @@
-<!DOCTYPE html>
-<html>
+<st<!DOCTYPE html>
+  <html>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Machine Shop Scheduler</title>
-  <link rel="shortcut icon" href="{{url_for('static', filename='CVD-Logo-250px-sqaure.png') }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Machine Shop Scheduler</title>
+    <link rel="shortcut icon" href="/static/images/CVD-Logo-250px-sqaure.png">
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="static/css/bootstrap.min.css">
-  <script src="static/js/jquery.min.js"></script>
-  <script src="static/js/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
 
-  <!-- Custom and login styling -->
-  <link rel="stylesheet" type="text/css" href="static/css/styles.css">
-  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <!-- Custom and login styling -->
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- accordion menu -->
+    <style>
+      .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: center;
+        outline: none;
+        font-size: 20px;
+        transition: max-height 0.5s ease-out;
+      }
 
-  <!-- Font Awesome -->
-  <script src="static/js/fas.js"></script>
-</head>
-<header>
-  <nav>
-    <ul>
-      <li><a href="{{url_for('index')}}">Home</a></li>
-      <li><a href="{{url_for('schedules')}}">Schedules</a></li>
-      <li><a href="{{url_for('register')}}">Register</a></li>
-      <li><a href="{{url_for('login')}}">Login</a></li>
-<li><a href="static/ledger.pdf">Ledger</a></li>
-    </ul>
-  </nav>
-</header>
+      .active,
+      .accordion:hover {
+        background-color: #ccc;
+      }
 
-<body>
-  <div class="schedule_wrap">
-    <div class="schedule_links"><br />
+      .accordion:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+      }
+
+      .active:after {
+        content: "\2212";
+      }
+
+
+      .panel {
+        padding: 0 20px;
+        background-color: white;
+        font-size: 18px;
+        text-align: center;
+        display: none;
+        overflow: hidden;
+        float: center;
+        transition: ;
+
+
+
+      }
+    </style>
+
+    <!-- Font Awesome -->
+    <script src="static/js/fas.js"></script>
+  </head>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{{url_for('index')}}">Home</a></li>
+        <li><a href="{{url_for('schedules')}}">Schedules</a></li>
+        <li><a href="{{url_for('register')}}">Register</a></li>
+        <li><a href="{{url_for('login')}}">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <body>
+
+    <h2>CVD Machine Shop</h2>
+    <button class="accordion">All Open Work Orders</button>
+    <div class="panel">
       <a href="{{url_for('master')}}">Master Schedule</a><br />
-      <a href="{{url_for('cncp')}}">CNC Programming - CNCP</a><br />
-      <a href="{{url_for('lasr')}}">Laser Etching - LASR</a><br />
-      <a href="{{url_for('mnul')}}">Manual Machining - MNUL</a><br />
-      <a href="{{url_for('ms')}}">Machine Shop General - MS</a><br />
-      <a href="{{url_for('mso')}}">Machine Shop Office - MSO</a><br />
-      <a href="{{url_for('nllg')}}">Large CNC Turning Machines - NLLG</a><br />
-      <a href="{{url_for('nlmd')}}">Small/Medium CNC Turning Machines - NLMD</a><br />
-      <a href="{{url_for('nmlg')}}">Large CNC Milling Machines - NMLG</a><br />
-      <a href="{{url_for('nmsm')}}">Small/Medium CNC Milling Machines - NMSM</a><br />
-      <a href="{{url_for('pnt')}}">Paint - PNT</a><br />
-      <a href="{{url_for('saws')}}">All Saws - SAWS</a><br />
-      <a href="{{url_for('smbk')}}">Sheet Metal Brake - SMBK</a><br />
-      <a href="{{url_for('smpc')}}">Sheet Metal Punch - SMPC</a><br />
-      <a href="{{url_for('weld')}}">Welding - WELD</a><br />
-      <a href="{{url_for('archived')}}">Archived</a>
     </div>
-  </div>
-</body>
+    <button class="accordion">CNC Programming</button>
+    <div class="panel">
+      <a href="{{url_for('cncp')}}">CNCP</a><br />
+    </div>
 
-</html>
+    <button class="accordion">CNC Mill</button>
+    <div class="panel">
+      <a href="{{url_for('nlmd')}}">Small and Medium</a><br />
+      <a href="{{url_for('nmlg')}}">Large</a><br />
+    </div>
+
+    <button class="accordion">CNC Lathe</button>
+    <div class="panel">
+      <a href="{{url_for('nlmd')}}">Small and Medium</a><br />
+      <a href="{{url_for('nllg')}}">Large</a><br />
+
+    </div>
+    <button class="accordion">Manual Machining</button>
+    <div class="panel">
+      <a href="{{url_for('saws')}}">Saws</a><br />
+      <a href="{{url_for('mnul')}}">Manual Lathe and Mill</a><br />
+
+
+    </div>
+    <button class="accordion">Sheet Metal</button>
+    <div class="panel">
+      <a href="{{url_for('smpc')}}">Punch, Shear, Prep, Pem, Roll, etc</a><br />
+      <a href="{{url_for('smbk')}}">Bending</a><br />
+
+    </div>
+    <button class="accordion">Welding</button>
+    <div class="panel">
+      <a href="{{url_for('weld')}}">All Welding</a><br />
+
+
+    </div>
+    <button class="accordion">Finishes</button>
+    <div class="panel">
+      <a href="{{url_for('pnt')}}">Powder Coating</a><br />
+      <a href="{{url_for('lasr')}}">Laser Etching</a><br />
+
+    </div>
+
+
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+    </script>
+  </body>
+
+  </html>
