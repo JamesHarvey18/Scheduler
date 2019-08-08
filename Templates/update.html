@@ -37,7 +37,7 @@
   <h1>Machine Shop Scheduler</h1><br /><br /><br />
   <h2>Mass Update</h2>
 
-  <div class="container-entry">
+  <div class="container-entry update">
 
     {%from "_formhelpers.html" import render_field %}
     <form method=post>
@@ -45,15 +45,24 @@
       <div class="wrap-entry">
         <div class="row">
 
-          <div class="col-xs-4">
+          <div class="col-xs-6">
             <dl>
               <dt><label>Job Number</label></dt>
               <input name='job' type='text' class='form-control' placeholder='Status'/>
               <dt><label>Work Order</label></dt>
               <input name='work' type='text' class='form-control' placeholder='Status'/>
-              <dt><label>Part Number</label></dt>
-              <input name='part' type='text' class='form-control' placeholder='Status'/>
 
+              <div class="container-login100-form-btn">
+    						<button class="login100-form-btn">
+    							Edit
+    						</button>
+    					</div>
+
+            </dl>
+          </div>
+
+          <div class="col-xs-4">
+            <dl>
               <dt><label>Finish Date</label></dt>
               <input name='date' type='text' class='form-control' placeholder='Status'/>
               <dt><label>Quantity Complete</label></dt>
@@ -68,19 +77,6 @@
               <input name='status' type='text' class='form-control' placeholder='Status'/>
               <dt><label>Finish</label></dt>
               <input name='finish' type='text' class='form-control' placeholder='Status'/>
-
-              <div class="container-login100-form-btn">
-    						<button class="login100-form-btn">
-    							Edit
-    						</button>
-    					</div>
-
-            </dl>
-          </div>
-
-          <div class="col-xs-4">
-            <dl>
-
             </dl>
           </div>
 

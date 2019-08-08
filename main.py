@@ -275,7 +275,12 @@ def delete(id):
 @app.route('/update', methods=['GET', 'POST'])
 def update():
     if request.method == 'POST':
-        pass
+        if request.form['job'] == '' and request.form['work'] == '':
+            flash('Enter a valid job number and/or work order.')
+        elif request.form['job'] != '' and request.form['work'] == '':
+            pass
+        elif request.form['job'] != '' and request.form['work'] != '':
+            pass
 
     return render_template('update.html')
 

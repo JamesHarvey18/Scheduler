@@ -476,3 +476,7 @@ iframe {
     opacity: 1;
   }
 }
+
+.update {
+  padding: 15px;
+}
