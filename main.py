@@ -273,6 +273,13 @@ def delete(id):
         return 'ERROR DELETING #{id}'.format(id=id)
 
 
+@app.route('/mass_delete', methods=['GET', 'POST'])
+def mass_delete():
+    if request.method == 'POST':
+        pass
+    return render_template('mass_delete.html')
+
+
 @app.route('/update', methods=['GET', 'POST'])
 def update():
     form = SchedulerDataEntryForm(request.form)
@@ -286,11 +293,16 @@ def update():
                 flash('Enter a valid job number and/or work order.')
             elif job != '' and work == '':
                 try:
-                    sql = 'UPDATE schedule SET due_date = "' + request.form['date'] + '", quantity_complete = "' \
-                              + request.form['qty'] + '", original_estimated_time = "' + request.form['time'] + '", comments = "' \
-                              + request.form['notes'].upper() + '", priority = "' + request.form['priority'] + '", material_status = "' \
-                              + request.form['status'].upper() + '", finish = "' + request.form['finish'].upper() + '", machine_center = "' + work_center + '" WHERE job_number = "' \
-                              + job + '"'
+                    sql = 'UPDATE schedule ' \
+                          'SET due_date = "' + request.form['date'] + '", ' \
+                          'quantity_complete = "' + request.form['qty'] + '", ' \
+                          'original_estimated_time = "' + request.form['time'] + '", ' \
+                          'comments = "' + request.form['notes'].upper() + '", ' \
+                          'priority = "' + request.form['priority'] + '", ' \
+                          'material_status = "' + request.form['status'].upper() + '", ' \
+                          'finish = "' + request.form['finish'].upper() + '", ' \
+                          'machine_center = "' + work_center + '" ' \
+                          'WHERE job_number = "' + job + '"'
 
                     con = sqlite3.connect("scheduler.db")
                     cur = con.cursor()
@@ -303,11 +315,16 @@ def update():
 
             elif job != '' and work != '':
                 try:
-                    sql = 'UPDATE schedule SET due_date = "' + request.form['date'] + '", quantity_complete = "' \
-                          + request.form['qty'] + '", original_estimated_time = "' + request.form['time'] + '", comments = "' \
-                          + request.form['notes'].upper() + '", priority = "' + request.form['priority'] + '", material_status = "' \
-                          + request.form['status'].upper() + '", finish = "' + request.form['finish'].upper() + '", machine_center = "' + work_center + '" WHERE job_number = "' \
-                          + job + '" AND work_number = "' + work + '"'
+                    sql = 'UPDATE schedule ' \
+                          'SET due_date = "' + request.form['date'] + '", ' \
+                          'quantity_complete = "' + request.form['qty'] + '", ' \
+                          'original_estimated_time = "' + request.form['time'] + '", ' \
+                          'comments = "' + request.form['notes'].upper() + '", ' \
+                          'priority = "' + request.form['priority'] + '", ' \
+                          'material_status = "' + request.form['status'].upper() + '", ' \
+                          'finish = "' + request.form['finish'].upper() + '", ' \
+                          'machine_center = "' + work_center + '" ' \
+                          'WHERE job_number = "' + job + '" AND work_number = "' + work + '"'
 
                     con = sqlite3.connect("scheduler.db")
                     cur = con.cursor()
