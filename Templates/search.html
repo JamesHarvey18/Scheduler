@@ -59,12 +59,10 @@
         "dom": 'iBrftip',
         "deferRender": true,
         colReorder: true,
-        'columnDefs': [
-          {
-            "visible": false,
-            "targets": 18
-          }
-        ],
+        'columnDefs': [{
+          "visible": false,
+          "targets": 18
+        }],
         stateSave: true,
         select: {
           style: 'single'
@@ -114,11 +112,10 @@
     <ul>
       <li><a href="{{url_for('index')}}">Home</a></li>
       <li><a href="{{url_for('schedules')}}">Schedules</a></li>
-      <li><a href="{{url_for('register')}}">Register</a></li>
       <li><a href="{{url_for('login')}}">Login</a></li>
-<li><a href="static/ledger.pdf">Ledger</a></li>
-<li><a href="{{url_for('update')}}">Mass Update</a></li>
-<li><a href="{{url_for('mass_delete')}}">Mass Delete</a></li>
+      <li><a href="static/ledger.pdf">Ledger</a></li>
+      <li><a href="{{url_for('update')}}">Mass Update</a></li>
+      <li><a href="{{url_for('mass_delete')}}">Mass Delete</a></li>
     </ul>
   </nav>
 </header>
