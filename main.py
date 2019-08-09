@@ -286,6 +286,8 @@ def mass_delete():
             sql = 'UPDATE schedule SET archived = 1 WHERE job_number = "' + job + '"'
         elif job and work:
             sql = 'UPDATE schedule SET archived = 1 WHERE job_number = "' + job + '" AND work_number = "' + '"'
+        else:
+            sql = ''
 
         con = sqlite3.connect("scheduler.db")
         cur = con.cursor()
