@@ -21,10 +21,10 @@ class SchedulerDataEntryForm(Form):
     priority = StringField('Priority')
     material_status = StringField('Material Status')
     finish = StringField('Finish')
-    work_center = SelectField(choices=[('NONE', 'NONE'), ('CNCP', 'CNCP'), ('LASR', 'LASR'), ('MNUL', 'MNUL'), ('MS', 'MS'),
-                                       ('MSO', 'MSO'), ('NLLG', 'NLLG'), ('NLMD', 'NLMD'), ('NMLG', 'NMLG'),
-                                       ('NMSM', 'NMSM'), ('PNT', 'PNT'), ('SAWS', 'SAWS'), ('SMBK', 'SMBK'),
-                                       ('SMPC', 'SMPC'), ('WELD', 'WELD')])
+    work_center = SelectField(choices=[('NONE', 'NONE'), ('CNCP', 'CNC Programming'), ('LASR', 'Laser Etching'), ('MNUL', 'Manual Machining'), ('MS', 'Machine Shop Gen.'),
+                                       ('MSO', 'Machine Shop Office'), ('NLLG', 'CNC Lathe - Large'), ('NLMD', 'CNC Mill - Small/Med.'), ('NMLG', 'CNC Mill - Large'),
+                                       ('NMSM', 'CNC Mill - Small/Med.'), ('PNT', 'Powder Coating'), ('SAWS', 'All Saws'), ('SMBK', 'Sheet Metal Brake'),
+                                       ('SMPC', 'Sheet Metal Punch'), ('WELD', 'Welding')])
 
 
 class LocationForm(Form):
