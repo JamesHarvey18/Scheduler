@@ -103,6 +103,15 @@ def login():
     return render_template('login.html')
 
 
+def selectTableType(qry):
+    if session['level'] == 'Admin':
+        return Results(qry)
+    elif session['level'] == 'Editor':
+        return ReadEdit(qry)
+    else:
+        return ReadOnly(qry)
+
+
 @app.route('/schedules/CNCP', methods=['GET', 'POST'])
 def cncp():
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'CNCP').filter(Schedule.archived == 0)
@@ -408,6 +417,7 @@ def register():
             flash("Registration Successful")
             session['logged_in'] = True
             session['username'] = username
+            user.set_permission_level()
 
             return redirect(url_for('index'))
 
