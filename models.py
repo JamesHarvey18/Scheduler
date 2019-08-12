@@ -4,7 +4,7 @@ from db_setup import db_session
 import pandas as pd
 import pypyodbc
 import datetime
-from flask import request
+from flask import request, session
 
 """
 This file is needed as a model of the database so the data can be entered
@@ -218,6 +218,15 @@ class User(db.Model):
         pwdhash = hashlib.pbkdf2_hmac('sha512', self.password.encode('utf-8'), salt.encode('ascii'), 100000)
         pwdhash = binascii.hexlify(pwdhash).decode('ascii')
         return pwdhash == stored_password
+
+    def set_permission_level(self):
+        username = self.username
+        type = ''
+        if username[-5:] == 'Admin':
+            type = 'Admin'
+        elif username[-6:] == 'Editor':
+            type = 'Editor'
+        session['level'] = type
 
     def get_stored_password(self):
         qry = db_session.query(User).filter(User.username == self.username)

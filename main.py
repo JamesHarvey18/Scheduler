@@ -96,6 +96,7 @@ def login():
         if user.verify():
             session['logged_in'] = True
             session['username'] = user.username
+            user.set_permission_level()
             return redirect(url_for('index'))
         else:
             flash('Incorrect Password.')
