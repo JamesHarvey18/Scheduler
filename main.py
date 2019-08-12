@@ -112,6 +112,19 @@ def selectTableType(qry):
         return ReadOnly(qry)
 
 
+def home_redirect():
+    if session['level'] != 'Admin':
+        flash('You must have admin privileges to add to the schedule')
+        return redirect(url_for('schedules'))
+
+
+def edit_redirect():
+    if session['level'] != 'Editor' and session['level'] != 'Admin':
+        flash('You must have admin or edit privileges to edit the schedule')
+        return redirect(url_for('schedules'))
+
+
+
 @app.route('/schedules/CNCP', methods=['GET', 'POST'])
 def cncp():
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'CNCP').filter(Schedule.archived == 0)
