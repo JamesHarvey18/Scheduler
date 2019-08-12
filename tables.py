@@ -69,6 +69,36 @@ class ReadOnly(Table):
         return url_for('index', sort=col_id, direction=direction)
 
 
+class ReadEdit(Table):
+    work_number = Col('WO')  # LinkCol('WO', 'group', url_kwargs=dict(wo='work_number'))
+    job_number = Col('Job')
+    part_number = Col('Part')
+    revision = Col('R.')
+    finish = Col('Finish')
+    part_quantity = Col('Qty.')
+    quantity_complete = Col('QCP')
+    part_description = Col('Description')
+    part_location = Col('Loc.')
+    priority = Col('Pty.')
+    entry_date = Col('Date')
+    due_date = Col('Due')
+    entry_time = Col('Time')
+    material_status = Col('Status')
+    machine_center = Col('Center')
+    original_estimated_time = Col('Est.')
+    actual_time = Col('Act.')
+    comments = Col('Notes')
+    pdf = Col('PDF')
+    edit = LinkCol('Edit', 'edit', url_kwargs=dict(id='id'))
+
+    def sort_url(self, col_id, reverse=False):
+        if reverse:
+            direction = 'desc'
+        else:
+            direction = 'asc'
+        return url_for('index', sort=col_id, direction=direction)
+
+
 class Archived(Table):
     work_number = Col('WO') #  LinkCol('WO', 'group', url_kwargs=dict(wo='work_number'))
     job_number = Col('Job')

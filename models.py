@@ -139,7 +139,6 @@ class Schedule(db.Model):
         work_order = work_order[0:4]
         return work_order
 
-
     def get_machine_center(self):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
                                 "Server=cvdpc93;"
