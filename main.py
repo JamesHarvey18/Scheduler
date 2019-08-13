@@ -47,7 +47,8 @@ def index():
         else:
         '''
         try:
-            save_changes(form)
+            schedule = Schedule()
+            schedule.save_changes(form)
         except Exception as e:
             flash('Scan barcode from work order and include finish date. ' + str(e))
 
@@ -55,20 +56,13 @@ def index():
     return render_template('index.html', form=form)
 
 
-@app.route('/schedules/master', methods=['GET', 'POST'])
-def master():
-    qry = db_session.query(Schedule).filter(Schedule.archived == 0)
-    table = Results(qry)
-    table.border = True
-    return render_template('search.html', table=table)
-
-
-@app.route('/schedules/archived', methods=['GET', 'POST'])
-def archived():
-    qry = db_session.query(Schedule).filter(Schedule.archived == 1)
-    table = Archived(qry)
-    table.border = True
-    return render_template('search.html', table=table)
+def selectTableType(qry):
+    if session['level'] == 'Admin':
+        return Results(qry)
+    elif session['level'] == 'Editor':
+        return ReadEdit(qry)
+    else:
+        return ReadOnly(qry)
 
 
 @app.route('/schedules/master_read_only', methods=['GET', 'POST'])
@@ -103,15 +97,6 @@ def login():
     return render_template('login.html')
 
 
-def selectTableType(qry):
-    if session['level'] == 'Admin':
-        return Results(qry)
-    elif session['level'] == 'Editor':
-        return ReadEdit(qry)
-    else:
-        return ReadOnly(qry)
-
-
 def home_redirect():
     if session['level'] != 'Admin':
         flash('You must have admin privileges to add to the schedule')
@@ -123,6 +108,22 @@ def edit_redirect():
         flash('You must have admin or edit privileges to edit the schedule')
         return redirect(url_for('schedules'))
 
+
+''' All schedule routes '''
+@app.route('/schedules/master', methods=['GET', 'POST'])
+def master():
+    qry = db_session.query(Schedule).filter(Schedule.archived == 0)
+    table = Results(qry)
+    table.border = True
+    return render_template('search.html', table=table)
+
+
+@app.route('/schedules/archived', methods=['GET', 'POST'])
+def archived():
+    qry = db_session.query(Schedule).filter(Schedule.archived == 1)
+    table = Archived(qry)
+    table.border = True
+    return render_template('search.html', table=table)
 
 
 @app.route('/schedules/CNCP', methods=['GET', 'POST'])
@@ -256,7 +257,8 @@ def edit(id):
     form.work_center.data = entry.machine_center
     flash('Part: ' + entry.part_number)
     if request.method == 'POST':
-        edit_entry(form, entry)
+        schedule = Schedule
+        schedule.edit_entry(form, entry)
         return redirect(referers[0])
     return render_template('edit.html', form=form)
 
@@ -289,7 +291,6 @@ def add_location():
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
 def delete(id):
-
     qry = db_session.query(Schedule).filter(Schedule.id == id)
     entry = qry.first()
 
@@ -438,128 +439,6 @@ def register():
         return str(e)
 
     return render_template('register.html')
-
-
-def preprocess_date(date):
-    month = int(date[5:7])
-    day = int(date[8:10])
-    year = int(date[0:4])
-    return datetime.date(year, month, day)
-
-
-def edit_entry(form, schedule):
-    schedule.due_date = preprocess_date(form.due_date.data)  # Manual
-    schedule.comments = form.comments.data.upper()  # Manual
-    schedule.revision = form.revision.data.upper()  # Manual
-    schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
-    schedule.quantity_complete = form.quantity_complete.data  # Manual
-    schedule.priority = request.form['priority']
-    schedule.material_status = request.form['material_status'].upper()
-    schedule.machine_center = request.form['work_center']
-
-    qry = db_session()
-    qry.add(schedule)
-    qry.commit()
-
-
-def save_changes(form):
-    schedule = Schedule()
-    dt = datetime.datetime.now()
-    barcode = form.part_number.data
-
-    schedule.due_date = preprocess_date(form.due_date.data)  # Manual
-    schedule.job_number = schedule.get_job_number(barcode).upper()  # Manual
-    schedule.work_number = schedule.get_work_order(barcode)  # Manual
-    schedule.part_number = schedule.get_part_number()
-    schedule.part_description = schedule.get_description()  # Jobscope
-
-    try:
-        schedule.part_quantity = schedule.get_quantity()  # Jobscope
-    except Exception as e:
-        print(str(e))
-        schedule.part_quantity = 0
-
-    schedule.part_location = "MSO"# request.cookies.get('location').upper()  # Auto
-    schedule.entry_time = dt.strftime("%H:%M:%S")  # Auto
-    schedule.entry_date = datetime.date.today()  # Auto
-    schedule.comments = form.comments.data.upper()  # Manual
-    if form.revision.data == '':
-        schedule.revision = schedule.get_revision().upper()
-    else:
-        schedule.revision = form.revision.data.upper()  # Manual
-    schedule.machine_center = form.work_center.data.upper()  # schedule.get_machine_center()  # Manual
-    schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
-    schedule.quantity_complete = form.quantity_complete.data  # Manual
-    schedule.actual_time = schedule.get_actual_time() # Jobscope
-    if request.form['priority']:
-        schedule.priority = request.form['priority']
-    else:
-        schedule.priority = '99'
-    schedule.material_status = request.form['status'].upper()
-    schedule.archived = 0
-    schedule.finish = request.form['finish']
-    schedule.pdf = schedule.get_pdf()
-
-    qry = db_session()
-    qry.add(schedule)
-    qry.commit()
-
-
-def archive(form):
-    schedule = Schedule()
-    dt = datetime.datetime.now()
-    barcode = form.part_number.data
-
-    schedule.due_date = preprocess_date(form.due_date.data)  # Manual
-    schedule.job_number = schedule.get_job_number(barcode).upper()  # Manual
-    schedule.work_number = schedule.get_work_order(barcode)  # Manual
-    schedule.part_number = schedule.get_part_number()
-    schedule.part_description = schedule.get_description()  # Jobscope
-
-    try:
-        schedule.part_quantity = schedule.get_quantity()  # Jobscope
-    except Exception as e:
-        print(str(e))
-        schedule.part_quantity = 0
-
-    schedule.part_location = request.cookies.get('location').upper()  # Auto
-    schedule.entry_time = dt.strftime("%H:%M:%S")  # Auto
-    schedule.entry_date = datetime.date.today()  # Auto
-    schedule.comments = form.comments.data.upper()  # Manual
-    if form.revision.data == '':
-        schedule.revision = schedule.get_revision().upper()
-    else:
-        schedule.revision = form.revision.data.upper()  # Manual
-    schedule.machine_center = schedule.get_machine_center()  # schedule.get_machine_center()  # Manual
-    schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
-    schedule.quantity_complete = form.quantity_complete.data  # Manual
-    schedule.actual_time = schedule.get_actual_time()  # Jobscope
-    schedule.priority = request.form['priority']
-    schedule.material_status = request.form['status'].upper()
-    if schedule.quantity_complete != schedule.part_quantity:
-        schedule.archived = 0
-    else:
-        schedule.archived = 1
-    schedule.finish = request.form['finish']
-    schedule.pdf = schedule.get_pdf()
-    try:
-        schedule.location_deleted = request.cookies.get('location').upper()
-    except Exception as e:
-        print(e)
-    schedule.date_deleted = datetime.date.today()
-
-    qry = db_session()
-    qry.add(schedule)
-    qry.commit()
-
-    if schedule.quantity_complete != schedule.part_quantity:
-
-        # Archive all other entries with the same info
-        con = sqlite3.connect("scheduler.db")
-        cur = con.cursor()
-        sql = "UPDATE schedule SET archived=1 WHERE part_number = '" + str(schedule.part_number) + "' AND job_number = '" + str(schedule.job_number) + "' AND work_number = '" + str(schedule.work_number) + "'"
-        cur.execute(sql)
-        con.commit()
 
 
 if __name__ == '__main__':

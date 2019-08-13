@@ -5,6 +5,7 @@ import pandas as pd
 import pypyodbc
 import datetime
 from flask import request, session
+import sqlite3
 
 """
 This file is needed as a model of the database so the data can be entered
@@ -41,6 +42,125 @@ class Schedule(db.Model):
     pdf = db.Column(db.String)
     location_deleted = db.Column(db.String)
     date_deleted = db.Column(db.Date)
+
+    @staticmethod
+    def preprocess_date(date):
+        month = int(date[5:7])
+        day = int(date[8:10])
+        year = int(date[0:4])
+        return datetime.date(year, month, day)
+
+    def save_changes(self, form):
+        dt = datetime.datetime.now()
+        barcode = form.part_number.data
+
+        self.due_date = self.preprocess_date(form.due_date.data)  # Manual
+        self.job_number = self.get_job_number(barcode).upper()  # Manual
+        self.work_number = self.get_work_order(barcode)  # Manual
+        self.part_number = self.get_part_number()
+        self.part_description = self.get_description()  # Jobscope
+
+        try:
+            self.part_quantity = self.get_quantity()  # Jobscope
+        except Exception as e:
+            print(str(e))
+            self.part_quantity = 0
+
+        self.part_location = "MSO"  # request.cookies.get('location').upper()  # Auto
+        self.entry_time = dt.strftime("%H:%M:%S")  # Auto
+        self.entry_date = datetime.date.today()  # Auto
+        self.comments = form.comments.data.upper()  # Manual
+        if form.revision.data == '':
+            self.revision = self.get_revision().upper()
+        else:
+            self.revision = form.revision.data.upper()  # Manual
+        self.machine_center = form.work_center.data.upper()  # schedule.get_machine_center()  # Manual
+        self.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
+        self.quantity_complete = form.quantity_complete.data  # Manual
+        self.actual_time = self.get_actual_time()  # Jobscope
+        if request.form['priority']:
+            self.priority = request.form['priority']
+        else:
+            self.priority = '99'
+        self.material_status = request.form['status'].upper()
+        self.archived = 0
+        self.finish = request.form['finish']
+        self.pdf = self.get_pdf()
+
+        qry = db_session()
+        qry.add(self)
+        qry.commit()
+
+    def edit_entry(self, form):
+        self.due_date = self.preprocess_date(form.due_date.data)  # Manual
+        self.comments = self.comments.data.upper()  # Manual
+        self.revision = self.revision.data.upper()  # Manual
+        self.original_estimated_time = self.original_estimated_time.data.upper()  # Time Estimate ( Manual )
+        self.quantity_complete = self.quantity_complete.data  # Manual
+        self.priority = request.form['priority']
+        self.material_status = request.form['material_status'].upper()
+        self.machine_center = request.form['work_center']
+
+        qry = db_session()
+        qry.add(self)
+        qry.commit()
+
+    def archive(self, form):
+        dt = datetime.datetime.now()
+        barcode = form.part_number.data
+
+        self.due_date = self.preprocess_date(form.due_date.data)  # Manual
+        self.job_number = self.get_job_number(barcode).upper()  # Manual
+        self.work_number = self.get_work_order(barcode)  # Manual
+        self.part_number = self.get_part_number()
+        self.part_description = self.get_description()  # Jobscope
+
+        try:
+            self.part_quantity = self.get_quantity()  # Jobscope
+        except Exception as e:
+            print(str(e))
+            self.part_quantity = 0
+
+        self.part_location = request.cookies.get('location').upper()  # Auto
+        self.entry_time = dt.strftime("%H:%M:%S")  # Auto
+        self.entry_date = datetime.date.today()  # Auto
+        self.comments = form.comments.data.upper()  # Manual
+        if form.revision.data == '':
+            self.revision = self.get_revision().upper()
+        else:
+            self.revision = form.revision.data.upper()  # Manual
+        self.machine_center = self.get_machine_center()  # schedule.get_machine_center()  # Manual
+        self.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
+        self.quantity_complete = form.quantity_complete.data  # Manual
+        self.actual_time = self.get_actual_time()  # Jobscope
+        self.priority = request.form['priority']
+        self.material_status = request.form['status'].upper()
+        if self.quantity_complete != self.part_quantity:
+            self.archived = 0
+        else:
+            self.archived = 1
+        self.finish = request.form['finish']
+        self.pdf = self.get_pdf()
+        try:
+            self.location_deleted = request.cookies.get('location').upper()
+        except Exception as e:
+            print(e)
+        self.date_deleted = datetime.date.today()
+
+        qry = db_session()
+        qry.add(self)
+        qry.commit()
+
+        if self.quantity_complete != self.part_quantity:
+            # Archive all other entries with the same info
+            con = sqlite3.connect("scheduler.db")
+            cur = con.cursor()
+            sql = "UPDATE schedule SET archived=1 " \
+                  "WHERE part_number = '" + str(self.part_number) + \
+                  "' AND job_number = '" + str(self.job_number) + \
+                  "' AND work_number = '" + str(self.work_number) + "'"
+            cur.execute(sql)
+            con.commit()
 
     def get_pdf(self):
         cnxn = pypyodbc.connect("Driver={SQL Server};"
