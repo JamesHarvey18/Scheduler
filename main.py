@@ -258,19 +258,15 @@ def edit(id):
     form = SchedulerDataEntryForm(formdata=request.form, obj=entry)
     form.work_center.data = entry.machine_center
     flash('Part: ' + entry.part_number)
+
     if request.method == 'POST':
         schedule = Schedule()
         schedule.edit_entry(form, entry)
-        return redirect(referrers[0])
+        try:
+            return redirect(referrers[0])
+        except LookupError as e:
+            return redirect(url_for('master'))
     return render_template('edit.html', form=form)
-
-
-@app.route('/work_order/<int:wo>', methods=['GET', 'POST'])
-def group(wo):
-    qry = db_session.query(Schedule).filter(Schedule.work_number == '0001')
-    table = Results(qry)
-    table.border = True
-    return render_template('search.html', table=table)
 
 
 @app.route('/location', methods=['GET', 'POST'])
@@ -346,34 +342,27 @@ def update():
                 sql = ''
                 flash('Enter a valid job number and/or work order.')
             elif job != '' and work == '':
-                try:
-                    sql = 'UPDATE schedule ' \
-                          'SET due_date = "' + request.form['date'] + '", ' \
-                          'quantity_complete = "' + request.form['qty'] + '", ' \
-                          'original_estimated_time = "' + request.form['time'] + '", ' \
-                          'comments = "' + request.form['notes'].upper() + '", ' \
-                          'priority = "' + request.form['priority'] + '", ' \
-                          'material_status = "' + request.form['status'].upper() + '", ' \
-                          'finish = "' + request.form['finish'].upper() + '", ' \
-                          'machine_center = "' + work_center + '" ' \
-                          'WHERE job_number = "' + job + '"'
-                except Exception as e:
-                    flash('Invalid entry. Include date.')
-
+                sql = 'UPDATE schedule ' \
+                      'SET due_date = "' + request.form['date'] + '", ' \
+                      'quantity_complete = "' + request.form['qty'] + '", ' \
+                      'original_estimated_time = "' + request.form['time'] + '", ' \
+                      'comments = "' + request.form['notes'].upper() + '", ' \
+                      'priority = "' + request.form['priority'] + '", ' \
+                      'material_status = "' + request.form['status'].upper() + '", ' \
+                      'finish = "' + request.form['finish'].upper() + '", ' \
+                      'machine_center = "' + work_center + '" ' \
+                      'WHERE job_number = "' + job + '"'
             elif job != '' and work != '':
-                try:
-                    sql = 'UPDATE schedule ' \
-                          'SET due_date = "' + request.form['date'] + '", ' \
-                          'quantity_complete = "' + request.form['qty'] + '", ' \
-                          'original_estimated_time = "' + request.form['time'] + '", ' \
-                          'comments = "' + request.form['notes'].upper() + '", ' \
-                          'priority = "' + request.form['priority'] + '", ' \
-                          'material_status = "' + request.form['status'].upper() + '", ' \
-                          'finish = "' + request.form['finish'].upper() + '", ' \
-                          'machine_center = "' + work_center + '" ' \
-                          'WHERE job_number = "' + job + '" AND work_number = "' + work + '"'
-                except Exception as e:
-                    flash('Invalid entry. Include date')
+                sql = 'UPDATE schedule ' \
+                      'SET due_date = "' + request.form['date'] + '", ' \
+                      'quantity_complete = "' + request.form['qty'] + '", ' \
+                      'original_estimated_time = "' + request.form['time'] + '", ' \
+                      'comments = "' + request.form['notes'].upper() + '", ' \
+                      'priority = "' + request.form['priority'] + '", ' \
+                      'material_status = "' + request.form['status'].upper() + '", ' \
+                      'finish = "' + request.form['finish'].upper() + '", ' \
+                      'machine_center = "' + work_center + '" ' \
+                      'WHERE job_number = "' + job + '" AND work_number = "' + work + '"'
             else:
                 sql = ''
                 flash('Invalid entry')
