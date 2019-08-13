@@ -12,7 +12,7 @@ import sqlite3
 import re
 
 init_db()
-referers = []  # Global list to contain referral urls when editing so the user can return to the same page they were on.
+referrers = []  # Global list to contain referral urls when editing so the user can return to the same page they were on.
 
 
 def login_required(f):
@@ -110,6 +110,8 @@ def edit_redirect():
 
 
 ''' All schedule routes '''
+
+
 @app.route('/schedules/master', methods=['GET', 'POST'])
 def master():
     qry = db_session.query(Schedule).filter(Schedule.archived == 0)
@@ -247,8 +249,8 @@ def schedules():
 def edit(id):
     if 'schedules' in request.headers.get('Referer'):
         referer = request.headers.get('Referer')
-        referers.clear()
-        referers.append(referer)
+        referrers.clear()
+        referrers.append(referer)
 
     qry = db_session.query(Schedule).filter(Schedule.id == id)
     entry = qry.first()
@@ -259,7 +261,7 @@ def edit(id):
     if request.method == 'POST':
         schedule = Schedule
         schedule.edit_entry(form, entry)
-        return redirect(referers[0])
+        return redirect(referrers[0])
     return render_template('edit.html', form=form)
 
 
