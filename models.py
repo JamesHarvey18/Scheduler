@@ -91,18 +91,18 @@ class Schedule(db.Model):
         qry.add(self)
         qry.commit()
 
-    def edit_entry(self, form):
-        self.due_date = self.preprocess_date(form.due_date.data)  # Manual
-        self.comments = self.comments.data.upper()  # Manual
-        self.revision = self.revision.data.upper()  # Manual
-        self.original_estimated_time = self.original_estimated_time.data.upper()  # Time Estimate ( Manual )
-        self.quantity_complete = self.quantity_complete.data  # Manual
-        self.priority = request.form['priority']
-        self.material_status = request.form['material_status'].upper()
-        self.machine_center = request.form['work_center']
+    def edit_entry(self, form, schedule):
+        schedule.due_date = self.preprocess_date(form.due_date.data)  # Manual
+        schedule.comments = form.comments.data.upper()  # Manual
+        schedule.revision = form.revision.data.upper()  # Manual
+        schedule.original_estimated_time = form.original_estimated_time.data.upper()  # Time Estimate ( Manual )
+        schedule.quantity_complete = form.quantity_complete.data  # Manual
+        schedule.priority = request.form['priority']
+        schedule.material_status = request.form['material_status'].upper()
+        schedule.machine_center = request.form['work_center']
 
         qry = db_session()
-        qry.add(self)
+        qry.add(schedule)
         qry.commit()
 
     def archive(self, form):

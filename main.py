@@ -259,7 +259,7 @@ def edit(id):
     form.work_center.data = entry.machine_center
     flash('Part: ' + entry.part_number)
     if request.method == 'POST':
-        schedule = Schedule
+        schedule = Schedule()
         schedule.edit_entry(form, entry)
         return redirect(referrers[0])
     return render_template('edit.html', form=form)
