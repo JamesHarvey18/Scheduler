@@ -7,6 +7,10 @@ header{
   height: 60px;
   background-color: white;
 }
+a {
+  cursor: url("../images/fatbugslink.png"), default;
+}
+
 h1 {
   position: absolute;
   padding: 3px;

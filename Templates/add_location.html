@@ -19,6 +19,26 @@
   <script src="static/js/fas.js"></script>
 </head>
 
+<header>
+  <h1>Machine Shop Scheduler</h1>
+  <nav>
+    <ul>
+      <li><a href="{{url_for('index')}}">Home</a></li>
+      <li><a href="{{url_for('schedules')}}">Schedules</a></li>
+      <li><a href="{{url_for('login')}}">Login</a></li>
+      <li><a href="static/Glossary.pdf">Glossary</a></li>
+      <li><a href="{{url_for('update')}}">Mass Update</a></li>
+      <li><a href="{{url_for('mass_delete')}}">Mass Delete</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style type="text/css">
+  html {
+    cursor: url("static/images/fatbugs.png"), default;
+  }
+</style>
+
 <body>
 
   <div class="container">
