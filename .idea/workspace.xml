@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c54d04f-72df-4550-8063-92db200eb218" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/scheduler.db" beforeDir="false" afterPath="$PROJECT_DIR$/scheduler.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/schedules.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/schedules.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="96" column="40" lean-forward="true" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
+            <state relative-caret-position="319">
+              <caret line="107" column="76" lean-forward="true" selection-start-line="107" selection-start-column="76" selection-end-line="107" selection-end-column="76" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -148,7 +149,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1912" />
     <option name="y" value="-9" />
     <option name="width" value="1936" />
@@ -328,7 +329,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1594509" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2439282" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -454,8 +455,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="96" column="40" lean-forward="true" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
+        <state relative-caret-position="319">
+          <caret line="107" column="76" lean-forward="true" selection-start-line="107" selection-start-column="76" selection-end-line="107" selection-end-column="76" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
