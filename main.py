@@ -49,6 +49,9 @@ def index():
         try:
             schedule = Schedule()
             schedule.save_changes(form)
+            
+            if schedule.is_duplicate():
+                flash('The entry you made was a duplicate')
         except Exception as e:
             flash('Scan barcode from work order and include finish date. ' + str(e))
 

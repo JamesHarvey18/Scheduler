@@ -50,6 +50,28 @@ class Schedule(db.Model):
         year = int(date[0:4])
         return datetime.date(year, month, day)
 
+    def is_duplicate(self):
+        part = self.part_number
+        job = self.job_number
+        work = self.work_number
+
+        sql = "SELECT COUNT(*) FROM schedule " \
+              "WHERE part_number = '" + part + \
+              "' AND job_number = '" + job + \
+              "' AND work_number = '" + work + \
+              "' AND archived = 0;"
+
+        con = sqlite3.connect("scheduler.db")
+        cur = con.cursor()
+        count = ''
+        for row in cur.execute(sql):
+            count = row
+        con.commit()
+        con.close()
+        print(str(count[0]) + '-------------------------------------------------------------------------')
+
+        return count[0] != 1
+
     def save_changes(self, form):
         dt = datetime.datetime.now()
         barcode = form.part_number.data
