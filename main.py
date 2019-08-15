@@ -49,7 +49,7 @@ def index():
         try:
             schedule = Schedule()
             schedule.save_changes(form)
-            
+
             if schedule.is_duplicate():
                 flash('The entry you made was a duplicate')
         except Exception as e:
@@ -117,6 +117,7 @@ def edit_redirect():
 
 @app.route('/schedules/master', methods=['GET', 'POST'])
 def master():
+    flash('Master Schedule')
     qry = db_session.query(Schedule).filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -125,6 +126,7 @@ def master():
 
 @app.route('/schedules/archived', methods=['GET', 'POST'])
 def archived():
+    flash('Archived')
     qry = db_session.query(Schedule).filter(Schedule.archived == 1)
     table = Archived(qry)
     table.border = True
@@ -133,6 +135,7 @@ def archived():
 
 @app.route('/schedules/CNCP', methods=['GET', 'POST'])
 def cncp():
+    flash('CNCP')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'CNCP').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -141,6 +144,7 @@ def cncp():
 
 @app.route('/schedules/LASR', methods=['GET', 'POST'])
 def lasr():
+    flash('LASR')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'LASR').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -149,6 +153,7 @@ def lasr():
 
 @app.route('/schedules/MNUL', methods=['GET', 'POST'])
 def mnul():
+    flash('MNUL')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MNUL').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -157,6 +162,7 @@ def mnul():
 
 @app.route('/schedules/MS', methods=['GET', 'POST'])
 def ms():
+    flash('MS')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MS').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -165,6 +171,7 @@ def ms():
 
 @app.route('/schedules/MSO', methods=['GET', 'POST'])
 def mso():
+    flash('MSO')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'MSO').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -173,6 +180,7 @@ def mso():
 
 @app.route('/schedules/NLLG', methods=['GET', 'POST'])
 def nllg():
+    flash('NLLG')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NLLG').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -181,6 +189,7 @@ def nllg():
 
 @app.route('/schedules/NLMD', methods=['GET', 'POST'])
 def nlmd():
+    flash('NLMD')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NLMD').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -189,6 +198,7 @@ def nlmd():
 
 @app.route('/schedules/NMLG', methods=['GET', 'POST'])
 def nmlg():
+    flash('NMLG')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NMLG').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -197,6 +207,7 @@ def nmlg():
 
 @app.route('/schedules/NMSM', methods=['GET', 'POST'])
 def nmsm():
+    flash('NMSM')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'NMSM').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -205,6 +216,7 @@ def nmsm():
 
 @app.route('/schedules/PNT', methods=['GET', 'POST'])
 def pnt():
+    flash('PNT')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'PNT').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -213,6 +225,7 @@ def pnt():
 
 @app.route('/schedules/SAWS', methods=['GET', 'POST'])
 def saws():
+    flash('SAWS')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SAWS').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -221,6 +234,7 @@ def saws():
 
 @app.route('/schedules/SMBK', methods=['GET', 'POST'])
 def smbk():
+    flash('SMBK')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SMBK').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -229,6 +243,7 @@ def smbk():
 
 @app.route('/schedules/SMPC', methods=['GET', 'POST'])
 def smpc():
+    flash('SMPC')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'SMPC').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True
@@ -237,6 +252,7 @@ def smpc():
 
 @app.route('/schedules/WELD', methods=['GET', 'POST'])
 def weld():
+    flash('WELD')
     qry = db_session.query(Schedule).filter(Schedule.machine_center == 'WELD').filter(Schedule.archived == 0)
     table = Results(qry)
     table.border = True

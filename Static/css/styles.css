@@ -290,6 +290,12 @@ dt {
   text-align: center;
   color: #f54242;
 }
+.schedules {
+  background-color: white;
+  color: black;
+  pading-bottom: 0;
+}
+
 .save_name {
   float:left;
   padding-right: 20px;
