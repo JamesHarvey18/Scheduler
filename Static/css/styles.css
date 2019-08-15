@@ -27,12 +27,15 @@ ul {
 li {
   display: inline-block;
   padding: 15px 30px;
+  padding-bottom: 0px;
 }
 nav a, nav a:active, nav a:visited,nav a:focus {
   text-align: center;
   color: black;
   font-size: 1.2vw;
   text-decoration: none;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 nav a:hover {
   text-decoration: none;
@@ -293,7 +296,14 @@ dt {
 .schedules {
   background-color: white;
   color: black;
-  pading-bottom: 0;
+  margin: 0 auto;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  box-sizing: content-box;
+}
+.dataTables_info, #myTable_info {
+  padding: 0px;
+
 }
 
 .save_name {

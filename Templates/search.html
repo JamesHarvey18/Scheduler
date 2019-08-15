@@ -52,7 +52,7 @@
   <script>
     $(document).ready(function() {
       $('#myTable').DataTable({
-        "scrollY": "500px",
+        "scrollY": "580px",
         "dom": 'iBrftip',
         "deferRender": true,
         colReorder: true,
@@ -63,10 +63,6 @@
         stateSave: true,
         select: {
           style: 'single'
-        },
-        fixedHeader: {
-          header: true,
-          headerOffset: -10
         },
         buttons: [{
             extend: 'copy',
@@ -122,7 +118,6 @@
 {% if messages %}
 {% for message in messages %}
 <div class="alert schedules" role="alert">
-  <button type="button" class="close" aria-label="Close"></button>
   {{message}}
 </div>
 {% endfor %}
